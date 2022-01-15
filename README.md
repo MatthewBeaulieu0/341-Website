@@ -17,12 +17,12 @@ This website will be an e-commerce website which will try to replicate the exper
 | Jonathan Riso | Jonathan Riso  |      jona10riso@gmail.com         |
 
 # Technologies 
-Frontend: Angular.js
-Design Software : ...
-Backend : Express.js 
-Project Base : Node.js 
-Database : SQL 
-Build System : Turborepo 
+Frontend: Angular.js <br />
+Design Software : ...<br />
+Backend : Express.js <br />
+Project Base : Node.js <br />
+Database : SQL <br />
+Build System : Turborepo <br />
 
 
 # Milestones 
