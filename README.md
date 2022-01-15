@@ -2,7 +2,8 @@
 
 # Objectives
 This website will be an e-commerce website which will try to replicate the experiene given by tech giants such as Amazon. Some of the most up-to-date technologies will be used as to build a great user experience. 
-#Team members
+
+# Team members
 
 |     Name      |    Github     |          Email|
 | :------------- | :-------------: | -------------: |
@@ -14,5 +15,23 @@ This website will be an e-commerce website which will try to replicate the exper
 | Anna Hsu | AnnaHsu1  |        annahsu2000@hotmail.com       |
 | Hao Yi Liu | Niniishere  |     liuhaoyi505@live.cn          |
 | Jonathan Riso | Jonathan Riso  |      jona10riso@gmail.com         |
+
+# Technologies 
+Frontend: Angular.js
+Design Software : ...
+Backend : Express.js 
+Project Base : Node.js 
+Database : SQL 
+Build System : Turborepo 
+
+
+# Milestones 
+|     Sprint 1    |    Sprint 2     |         Sprint 3 |Sprint 4 |
+| :-------------: | :-------------: | :-------------: |:-------------: |
+|  ||  ||
+|  ||  ||
+|  ||  ||
+|  ||  ||
+|  ||  ||
 
 
