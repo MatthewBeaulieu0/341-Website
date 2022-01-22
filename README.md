@@ -5,14 +5,14 @@
 The objective of this project is to have a working shopping website that can host two types of users: the consumers and the administrators. Each of them has access to different features on the site while sharing certain core features.
 
 # Core features
-Clients’ features: <br />
+<b> Clients’ features: <b> <br />
 Item browsing by search or by filters <br />
 Adding items to the shopping cart <br />
 Review and edit the cart with the cost of items and other fees (delivery and taxes) displayed <br />
 Fast and easy checkout process <br />
 Review and cancel orders <br />
 
-Administrators' and sellers' features: <br />
+<b> Administrators' and sellers' features: <b> <br />
 Item browsing by search or by filters <br />
 Post items to sell <br />
 Modification of their items’ posts (price, description, title, etc.) <br />
