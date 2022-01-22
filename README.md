@@ -5,21 +5,19 @@
 The objective of this project is to have a working shopping website that can host two types of users: the consumers and the administrators. Each of them has access to different features on the site while sharing certain core features.
 
 # Core features
-h5:before {
-    content: "• "
-}
+
 <b> Clients’ features: </b> <br />
-<h5>Item browsing by search or by filters </h5>
-<h5>Adding items to the shopping cart </h5>
-<h5>Review and edit the cart with the cost of items and other fees (delivery and taxes) displayed </h5>
-<h5>Fast and easy checkout process </h5>
-<h5>Review and cancel orders </h5>
+Markup : * Item browsing by search or by filters 
+           Adding items to the shopping cart 
+           Review and edit the cart with the cost of items and other fees (delivery and taxes) displayed 
+           Fast and easy checkout process
+           Review and cancel orders 
 
 <b> Administrators' and sellers' features: </b> <br />
-<h5>Item browsing by search or by filters </h5>
-<h5>Post items to sell </h5>
-<h5>Modification of their items’ posts (price, description, title, etc.) </h5>
-<h5>Remove item posts </h5>
+Markup : * Item browsing by search or by filters 
+           Post items to sell 
+           Modification of their items’ posts (price, description, title, etc.) 
+           Remove item posts 
 
 
 One of the main core features that our website supports is the browsing feature, which allows both clients and administrators to navigate the website and search for a desired item. A sub-feature that is implemented is the filtered search, which narrows the displayed items down to the filters applied. Each item will be in its designated category to facilitate the item search and the filter application.
