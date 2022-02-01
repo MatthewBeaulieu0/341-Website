@@ -6,8 +6,8 @@ enum type_enum {
 }; 
 
 export const user_schema = yup.object().shape({
-    name: yup.string().required(type_enum),
-    type: yup.string().oneOf(),
+    name: yup.string().required(),
+    type: yup.string().oneOf(type_enum),
     age: yup.number().required().positive().integer(),
     email: yup.string().email(),
     address: yup.string().address()
