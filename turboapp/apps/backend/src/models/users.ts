@@ -1,14 +1,9 @@
-let yup = require('yup');
-
-enum type_enum {
-    BUYER = 'buyer',
-    SELLER = 'seller'
-}; 
+import * as yup from 'yup';
 
 export const user_schema = yup.object().shape({
     name: yup.string().required(),
-    type: yup.string().oneOf(type_enum),
+    type: yup.string().oneOf(['buyer', 'seller']),
     age: yup.number().required().positive().integer(),
     email: yup.string().email(),
-    address: yup.string().address()
-  });
+    address: yup.string()
+});
