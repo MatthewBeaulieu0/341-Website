@@ -1,4 +1,4 @@
-let yup = require('yup'***REMOVED***
+import * as yup from 'yup';
 
 export const product_schema = yup.object().shape({
   name: yup.string().required(),
