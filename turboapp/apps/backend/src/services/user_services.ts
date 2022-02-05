@@ -22,3 +22,12 @@ export function find_user_by_id(user_id: string){
         return null;
     }
 }
+
+export function create_user(user: any){
+    try {
+        user_db[user.name] = user
+    } catch (err: any) {
+        return null;
+    }
+    return user_db[user.name];
+}
