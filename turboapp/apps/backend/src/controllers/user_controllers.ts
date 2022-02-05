@@ -1,4 +1,5 @@
-import { user_schema } from "../models/users";
+import { ErrorResponse } from "../models/errors";
+import { User, user_schema } from "../models/users";
 import { find_user_by_id, create_user } from "../services/user_services";
 
 export function get_user_by_id(user_id: string){
@@ -12,23 +13,26 @@ export function get_user_by_id(user_id: string){
     }
 }
 
-export function create_new_user(user: object){
+export function create_new_user(user: User){
     let [err, error_data] = validate_user_data(user);
     if(err){
         return [400, error_data];
     }
-
-    let new_user = create_user(user);
-    return [200, new_user];
-    
+    else{
+        let casted_user = user_schema.cast(user, {stripUnknown: true});
+        let new_user = create_user(casted_user);
+        return [200, new_user];
+    }
 }
 
-function validate_user_data(user: object){
-    let error_data: any = {};
-    let error_status = false;
-    user_schema.validate(user).catch(function (err: any){
+function validate_user_data(user: User){
+    let error_data: ErrorResponse = {"errMsg": '', "errType": ''};
+    try{
+        user_schema.validateSync(user)
+    } catch(err: any){
         error_data.errType = err.name;
         error_data.errMsg = err.errors;
-    });
-    return [error_status, error_data]
+        return [true, error_data]
+    }
+    return [false, {}]
 }

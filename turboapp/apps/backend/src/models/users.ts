@@ -7,3 +7,5 @@ export const user_schema = yup.object().shape({
     email: yup.string().email(),
     address: yup.string()
 });
+
+export type User = yup.InferType<typeof user_schema>;
