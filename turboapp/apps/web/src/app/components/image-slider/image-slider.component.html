@@ -1,0 +1,13 @@
+<div class="slideshow-container" #myDiv>
+    <div class="mySlides fade">
+      <div class="numbertext">{{ slideIndex + 1}} / {{ images.length }}</div>
+      <img
+      [src]="images[slideIndex]" 
+      style="width:100%"
+    />
+      <div class="text">Caption Text</div>
+    </div>
+  
+    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+    <a class="next" (click)="plusSlides(1)">&#10095;</a>
+  </div>
