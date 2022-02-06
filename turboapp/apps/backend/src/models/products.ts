@@ -10,3 +10,5 @@ export const product_schema = yup.object().shape({
   other: yup.object(),
   stock: yup.number().required().integer()
 });
+
+export type Product = yup.InferType<typeof product_schema>;
