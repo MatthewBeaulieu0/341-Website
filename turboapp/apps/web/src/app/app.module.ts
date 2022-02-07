@@ -14,7 +14,7 @@ import { DealsComponent } from './components/deals/deals.component';
     MainpageComponent,
     ImageSliderComponent,
     DealsComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
