@@ -39,10 +39,24 @@
       margin-right: auto;
       color: #edf0f1;
       width: 100%;
-      position: relative;
       height: 100vh;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .textcontent::after {
+    content: " ";
+    display: table;
+    clear: both;
   }
   
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   
     *{
       box-sizing: border-box;
@@ -101,25 +115,38 @@
     .my-second-row{
       color: #ffffff;
       text-align: center;
-      position: relative;
+      position: absolute;
       margin-bottom: 40%;
       display: inline;
       padding-top: 120px;
       padding-bottom: 25%;
-      padding-left: 23%;
+      padding-left: 22%;
       padding-right: 23%;
-      
+      margin-right:30px;
+    }
+
+    .my-second-row p{
+        padding-top: 45px;
     }
   
     .my-first-row{
-      padding-bottom: 25%;
+        
+        color: #ffffff;
+        text-align: center;
+        position: relative;
+        margin-bottom: 40%;
+        display: inline;
+        padding-top: 120px;
+        padding-bottom: 25%;
+        padding-left: 23%;
+        padding-right: 23%;
   
     }
   
     .my-third-row{
       color: #ffffff;
       text-align: center;
-      position: relative;
+      position: absolute;
       display: inline;
       padding-top: 200px;
       padding-bottom: 25%;
@@ -155,11 +182,15 @@
         clear: both;
         flex-direction: column;
         width: 100%;
-        position: relative;
+        position: fixed;
+        right:0;
+        left:0;
+        bottom: 0;
         padding-top: 10px;
         height: auto;
         text-align: center;
         font-size: smaller;
+        opacity: 1.1;
       }
 
       .medialogo .fa{
@@ -170,6 +201,7 @@
           font-size:x-large;
           padding: 10px;
           width: 30px;
+          
       }
 
       .medialogo p{
