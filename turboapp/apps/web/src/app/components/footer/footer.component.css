@@ -1,0 +1,38 @@
+.footer {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    background-color:rgb(28, 29, 31);
+    clear: both;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    padding-top: 10px;
+    height: auto;
+    text-align: center;
+    font-size: smaller;
+  }
+
+  .medialogo .fa{
+      align-items: center;
+      text-align: center;
+      color: white;
+      flex-direction: column;
+      font-size:x-large;
+      padding: 10px;
+      width: 30px;
+  }
+
+  .medialogo p{
+      padding-bottom: 40px;
+  }
+
+  
+  .fa:hover{
+      color: #f89c3c;
+      cursor: pointer;
+    
+  }

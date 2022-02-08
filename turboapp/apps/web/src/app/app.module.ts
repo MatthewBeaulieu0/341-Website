@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { DealsComponent } from './components/deals/deals.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
+import { ProductpageComponent } from './components/productpage/productpage.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { WelcomepageComponent } from './components/welcomepage/welcomepage.compo
     MainpageComponent,
     ImageSliderComponent,
     DealsComponent,
-    WelcomepageComponent
+    WelcomepageComponent,
+    ProductpageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
