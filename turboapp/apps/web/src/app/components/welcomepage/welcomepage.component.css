@@ -1,12 +1,86 @@
 
 .fakeFont{
-    font-family:'Dancing Script', cursive;
-    font-size:150%;
-    font-style: bold;
+  font-family:'Dancing Script', cursive;
+  font-size:150%;
+  font-style: bold;
+}
+#amazonName{
+  color: #f89c3c;
+}
+
+.header{
+    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    width: 100%;
+    position: flex;
+    height: 15vh;
+    display: flex;
   }
-  #amazonName{
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+  *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+.navbar{
+    color: #edf0f1;
+    position: relative;
+    z-index: 50;
+    display:flex;
+    opacity: 0.87;
+    margin-top: 10px;
+    padding: 0 40px;
+    align-items: baseline;
+    background-color: #282c3c;
+    width: 100%;
+    transition: 0.5s;
+    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+
+  
+  }
+  
+  
+  .navbar a, ul{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #fff;
+    font-weight: 400;
+    padding: 10px 15px;
+    font-weight: 20px;
+    margin: 0 5px;
+    display: flex;
+    text-decoration: none;
+  }
+
+
+  .navbar .colorofAmazonlogo{
+    color: #f89c3c;
+    }
+
+
+  .navbar li{
+    display: inline-block;
+    padding: 0 15px;
+    transition: all 0.5s ease-out;
+  }
+
+  .navbar a:hover{
     color: #f89c3c;
   }
+
+
   .container h1{
     font-size: 50px;
     text-align: center;
@@ -18,18 +92,21 @@
     text-align: center;
     display: center;
   }
-  .header{
-      background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin-left: auto;
-      margin-right: auto;
-      justify-content: space-between;
-      width: 100%;
-      position: flex;
-      height: 10vh;
-      display: flex;
-    }
+  .text-content{
+    align-items: center;
+    position: relative;
+    color: #edf0f1;
+    display: flex;
+    flex-direction:column;
+    margin-top: 40px;
+
+  }
+
+  .text-content::after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
   
     .textcontent {
       background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
@@ -57,61 +134,20 @@
     align-items: center;
   }
 
-  
+  .container-fluid{
+    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    height: 100%;
+  }
     *{
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
-  
-  .navbar{
-      color: #edf0f1;
-      position: fixed;
-      z-index: 50;
-      display: flex;
-      opacity: 0.87;
-      margin-top: 10px;
-      padding: 0 40px;
-      align-items: baseline;
-      background-color: #282c3c;
-      width: 100%;
-      transition: 0.5s;
-    
+
+    .test{
+      color: #282c3c;
     }
-    
-    
-    .navbar a, ul{
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      color: #fff;
-      font-weight: 400;
-      padding: 10px 15px;
-      font-weight: 20px;
-      margin: 0 5px;
-      display: flex;
-      text-decoration: none;
-    }
-  
-  
-    .navbar .colorofAmazonlogo{
-      color: #f89c3c;
-      }
-  
-  
-    .navbar li{
-      display: inline-block;
-      padding: 0 15px;
-      transition: all 0.5s ease-out;
-    }
-  
-    .navbar a:hover{
-      color: #f89c3c;
-    }
-  
-    .navbar{
-      background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
-    }
-    
+    /*
     .my-second-row{
       color: #ffffff;
       text-align: center;
@@ -154,7 +190,7 @@
       padding-right: 23%;
       
     }
-  
+  */
     .btn-dark{
       font-family: 'Dancing Script', cursive;
       font-size: 20px;
@@ -182,7 +218,7 @@
         clear: both;
         flex-direction: column;
         width: 100%;
-        position: fixed;
+        position: relative;
         right:0;
         left:0;
         bottom: 0;
