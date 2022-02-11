@@ -9,7 +9,7 @@
     clear: both;
     flex-direction: column;
     width: 100%;
-    position: fixed;
+    position: relative;
     right:0;
     left:0;
     bottom: 0;
@@ -18,6 +18,7 @@
     text-align: center;
     font-size: smaller;
     opacity: 1.1;
+    margin-top: 40px;
   }
 
   .medialogo .fa{
