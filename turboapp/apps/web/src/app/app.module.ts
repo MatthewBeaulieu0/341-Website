@@ -8,13 +8,15 @@ import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { DealsComponent } from './components/deals/deals.component';
+import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainpageComponent,
     ImageSliderComponent,
-    DealsComponent
+    DealsComponent,
+    FeaturedItemsComponent
   ],
   imports: [
     BrowserModule,
