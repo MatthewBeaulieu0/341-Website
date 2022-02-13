@@ -11,6 +11,7 @@ import { DealsComponent } from './components/deals/deals.component';
 import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
+import { ProductpageComponent } from './components/productpage/productpage.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { WelcomepageComponent } from './components/welcomepage/welcomepage.compo
     DealsComponent,
     ShoppingcartComponent,
     FeaturedItemsComponent,
-    WelcomepageComponent
+    WelcomepageComponent,
+    ProductpageComponent
   ],
   imports: [
     BrowserModule,
