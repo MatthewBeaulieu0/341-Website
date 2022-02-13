@@ -12,6 +12,7 @@ import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.co
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { ProductpageComponent } from './components/productpage/productpage.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProductpageComponent } from './components/productpage/productpage.compo
     ShoppingcartComponent,
     FeaturedItemsComponent,
     WelcomepageComponent,
-    ProductpageComponent
+    ProductpageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
