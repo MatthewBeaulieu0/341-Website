@@ -98,6 +98,7 @@ html{
 .featured .wrapper .box:hover{
     padding: 10px;
     border: 1px solid rgb(83, 126, 219***REMOVED***
+    transition: 0.3s
 }
 .featured .wrapper .box img{
     width:100%;
