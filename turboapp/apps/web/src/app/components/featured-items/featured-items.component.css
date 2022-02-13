@@ -18,13 +18,16 @@ html{
     position: relative;
     margin-top: 25px;
     background-color: white;
+    
 }
 .wrapper .box:hover{
-    padding: 10px;
     border: 1px solid rgb(83, 126, 219);
 }
 .wrapper .box img{
-    width:100%;
+    max-width:30em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 .featured-slider .box .content .btn{
 margin-top: .5rem;
