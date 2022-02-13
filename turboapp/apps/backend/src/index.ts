@@ -10,35 +10,35 @@
 ***REMOVED***
 
 ***REMOVED***
-  cors({
-    origin: ["http://localhost:4200"], // Origin frontend to change later when deployed
-  })
+***REMOVED***
+***REMOVED***
+***REMOVED***
 ***REMOVED***
 
 ***REMOVED***
 ***REMOVED***
-  connectionLimit : 10,
-  host: "localhost",
-  user: "root",
-  password: "soen341db",
-  database: "fake_amazon"
+***REMOVED***
+***REMOVED***
+***REMOVED***
+    password: "dominoadmin1234",
+***REMOVED***
 }***REMOVED***
 
 ***REMOVED***
-const user = require('./routes/user_routes'***REMOVED***
-***REMOVED***'/user', user)
+const user = require("./routes/user_routes"***REMOVED***
+***REMOVED***"/user", user***REMOVED***
 
-const product = require('./routes/product_routes'***REMOVED***
-***REMOVED***'/product', product)
+const product = require("./routes/product_routes"***REMOVED***
+***REMOVED***"/product", product***REMOVED***
 
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
-  res.send("Hello WORLD!"***REMOVED***
+    res.send("Hello WORLD!"***REMOVED***
 }***REMOVED***
 
 ***REMOVED***
-  console.log(`App is listening on port ${port} !`***REMOVED***
+    console.log(`App is listening on port ${port} !`***REMOVED***
 }***REMOVED***
 
 ***REMOVED***
