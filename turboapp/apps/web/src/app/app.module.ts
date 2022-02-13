@@ -8,11 +8,8 @@ import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { DealsComponent } from './components/deals/deals.component';
-<<<<<<< HEAD
 import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
-=======
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
->>>>>>> e498fd42c790fcb240783929d03525364377fc61
 
 @NgModule({
   declarations: [
@@ -20,11 +17,8 @@ import { FeaturedItemsComponent } from './components/featured-items/featured-ite
     MainpageComponent,
     ImageSliderComponent,
     DealsComponent,
-<<<<<<< HEAD
-    ShoppingcartComponent
-=======
+    ShoppingcartComponent,
     FeaturedItemsComponent
->>>>>>> e498fd42c790fcb240783929d03525364377fc61
   ],
   imports: [
     BrowserModule,
