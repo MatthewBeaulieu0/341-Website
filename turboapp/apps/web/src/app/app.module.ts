@@ -7,13 +7,15 @@ import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { DealsComponent } from './components/deals/deals.component';
+import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainpageComponent,
     ImageSliderComponent,
-    DealsComponent
+    DealsComponent,
+    ShoppingcartComponent
   ],
   imports: [
     BrowserModule,
