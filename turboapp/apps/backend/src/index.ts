@@ -5,6 +5,8 @@
 ***REMOVED***
 
 ***REMOVED***
+
+***REMOVED***
 ***REMOVED***
 
 ***REMOVED***
@@ -12,6 +14,15 @@
     origin: ["http://localhost:4200"], // Origin frontend to change later when deployed
   })
 ***REMOVED***
+
+***REMOVED***
+***REMOVED***
+  connectionLimit : 10,
+  host: "localhost",
+  user: "root",
+  password: "soen341db",
+  database: "fake_amazon"
+}***REMOVED***
 
 ***REMOVED***
 const user = require('./routes/user_routes'***REMOVED***
