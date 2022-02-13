@@ -10,6 +10,7 @@ import { ImageSliderComponent } from './components/image-slider/image-slider.com
 import { DealsComponent } from './components/deals/deals.component';
 import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
+import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FeaturedItemsComponent } from './components/featured-items/featured-ite
     ImageSliderComponent,
     DealsComponent,
     ShoppingcartComponent,
-    FeaturedItemsComponent
+    FeaturedItemsComponent,
+    WelcomepageComponent
   ],
   imports: [
     BrowserModule,
