@@ -1,21 +1,9 @@
 import { conn } from "..";
+// import { Product } from "../models/products";
 
-let product_db: any = {
-    product_1: {
-        name: "super cool usb 5000",
-        desc: "the name says it all",
-        price: 69,
-        currency: "CAD",
-        brand: "superCoolBrand",
-        seller: "superCoolCompany",
-        other: {},
-        stock: 69,
-    },
-};
-
-function query(sql: string, params: string) {
+function query(sql: string, params: Array<any>) {
     return new Promise(function (resolve, reject) {
-        conn.query(sql, [params], function (err: any, result: unknown) {
+        conn.query(sql, params, function (err: any, result: unknown) {
             if (err) {
                 reject(err);
             } else {
@@ -27,20 +15,35 @@ function query(sql: string, params: string) {
 export async function find_product_by_id(product_id: string) {
     var sql = `SELECT * FROM products WHERE ProductID = ?`;
     try {
-        var product = await query(sql, product_id);
-        console.log(product);
+        var product = await query(sql, [product_id]);
     } catch (error) {
         console.log(error);
+        throw error;
     }
 
     return product;
 }
 
-export function create_product(product: any) {
-    try {
-        product_db[product.name] = product;
-    } catch (err: any) {
-        return null;
+export async function create_product(product: any) {
+    var sql = "INSERT INTO products (??) VALUES (?)";
+    var params = [];
+    var keys = [];
+    
+    
+    for (const [key, value] of Object.entries(product)) {
+        keys.push(key);
+        params.push(value);
     }
-    return product_db[product.name];
+    
+    try {
+        let result: any = await query(sql, [keys, params]);
+        let product_id = result.insertId;
+
+        var created_product = await find_product_by_id(product_id);
+
+    } catch (error) {
+        console.log(error);
+    }
+
+    return created_product
 }

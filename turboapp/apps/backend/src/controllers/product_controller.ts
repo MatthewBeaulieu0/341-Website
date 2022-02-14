@@ -15,7 +15,7 @@ export async function get_product_by_id(product_id: string) {
     }
 }
 
-export function create_new_product(product: Product) {
+export async function create_new_product(product: Product) {
     let [err, error_data] = validate_product_data(product);
     if (err) {
         return [400, error_data];
@@ -23,7 +23,7 @@ export function create_new_product(product: Product) {
         let casted_product = product_schema.cast(product, {
             stripUnknown: true,
         });
-        let new_product = create_product(casted_product);
+        let new_product = await create_product(casted_product);
         return [200, new_product];
     }
 }

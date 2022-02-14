@@ -7,11 +7,11 @@ const product = express.Router();
 
 product.use(express.json());
 
-product.put("/", (req: Request, res: Response) => {
+product.post("/", async (req: Request, res: Response) => {
     try {
         let product = req.body;
         let status,
-            data = create_new_product(product);
+            data = await create_new_product(product);
         res.json({ data });
         if (status == 200) {
             res.sendStatus(200);
