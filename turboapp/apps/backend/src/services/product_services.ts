@@ -17,20 +17,20 @@ function query(sql: string, params: string) {
     return new Promise(function (resolve, reject) {
         conn.query(sql, [params], function (err: any, result: unknown) {
             if (err) {
-                reject(err***REMOVED***
+                reject(err);
             } else {
-                resolve(result***REMOVED***
+                resolve(result);
             }
-    ***REMOVED***;
-***REMOVED***;
+        });
+    });
 }
 export async function find_product_by_id(product_id: string) {
     var sql = `SELECT * FROM products WHERE ProductID = ?`;
     try {
-        var product = await query(sql, product_id***REMOVED***
-        console.log(product***REMOVED***
+        var product = await query(sql, product_id);
+        console.log(product);
     } catch (error) {
-        console.log(error***REMOVED***
+        console.log(error);
     }
 
     return product;

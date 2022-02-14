@@ -7,6 +7,6 @@ export const user_schema = yup.object().shape({
     email: yup.string().email(),
     address: yup.string(),
     shopping_cart: yup.array().of(yup.string()).default([])
-}***REMOVED***
+});
 
 export type User = yup.InferType<typeof user_schema>;
