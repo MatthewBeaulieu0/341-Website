@@ -6,9 +6,9 @@ import {
 } from "../services/product_services";
 
 export async function get_product_by_id(product_id: string) {
-    let product = await find_product_by_id(product_id***REMOVED***
+    let product = await find_product_by_id(product_id);
     if (product) {
-        // let updated_product = product_schema.cast(product***REMOVED***
+        // let updated_product = product_schema.cast(product);
         return [200, product];
     } else {
         return [404, { msg: "Product not found" }];
@@ -16,14 +16,14 @@ export async function get_product_by_id(product_id: string) {
 }
 
 export function create_new_product(product: Product) {
-    let [err, error_data] = validate_product_data(product***REMOVED***
+    let [err, error_data] = validate_product_data(product);
     if (err) {
         return [400, error_data];
     } else {
         let casted_product = product_schema.cast(product, {
             stripUnknown: true,
-    ***REMOVED***;
-        let new_product = create_product(casted_product***REMOVED***
+        });
+        let new_product = create_product(casted_product);
         return [200, new_product];
     }
 }
@@ -31,7 +31,7 @@ export function create_new_product(product: Product) {
 function validate_product_data(product: Product) {
     let error_data: ErrorResponse = { errMsg: "", errType: "" };
     try {
-        product_schema.validateSync(product***REMOVED***
+        product_schema.validateSync(product);
     } catch (err: any) {
         error_data.errType = err.name;
         error_data.errMsg = err.errors;
