@@ -24,7 +24,7 @@ let request =   {
 product_schema.validate(request).catch(function (err){
   err.name; // returns error type
   err.errors; // returns which fields are false
-});
+}***REMOVED***
 ```
 
 ### Casting returned data from db
@@ -39,7 +39,7 @@ let db_response = {
   stock: 25
 };
 
-let response = product_schema.cast(db_response);
+let response = product_schema.cast(db_response***REMOVED***
 /*
 console.log(response) => {
   stock: 25,
