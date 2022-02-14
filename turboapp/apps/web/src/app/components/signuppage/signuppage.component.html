@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Product page</title>
+    <title>Sign up page</title>
     <base href="/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +23,15 @@
     />
     <link
       rel="stylesheet"
-      href="/turboapp/apps/web/src/app/components/productpage/productpage.component.css"
+      href="/turboapp/apps/web/src/app/components/signuppage/signuppage.component.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/turboapp/apps/web/src/app/components/footer/footer.component.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/turboapp/apps/web/src/app/components/navbar1/navbar1.component.css"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -54,79 +62,42 @@
     </header>
 
     <div class="container">
-      <div class="row back-to-menu">
-        <div class="col-2 back-menu"></div>
-        <div class="col-2 back-menu">
-          <a href="#"> <- Go back</a>
-        </div>
-        <div class="col-2 back-menu"></div>
-        <div class="col-2 back-menu"></div>
-        <div class="col-2 back-menu"></div>
-        <div class="col-2 back-menu"></div>
-        <div class="col-2 back-menu"></div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-6 item-image">
-          <img
-            src="/turboapp/apps/web/src/images/airpods.jpeg"
-            alt="airpods"
-            width="300vh"
-          />
-        </div>
+      <div class="row">
+         <div class="col-3">
 
-        <div class="col-3 item-description">
-          <h2>Fake Airpods (3rd gen)</h2>
-          <h5>Fake price: 200.00$</h5>
-          <h6>Description</h6>
-          <br />
-          <div class="form">
-            <label for="quantity">Quantity selected:</label>
-            <select name="quantity">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
+            </div>
+          <div class="col-6 sign-up-form">
+              <form>
+                <h2>
+                    Sign up
+                </h2>
+                <br>
+                <h6> Enter Your First Name</h6>
+                <input type="firstName" class="input-first-name" placeholder="First Name">
+                
+                <br>
+                <h6> Enter Your Last Name</h6>
+                <input type="lastName" class="input-last-name" placeholder="Last Name">
+                <br>
+                <h6> Enter Your Email </h6>
+                <input type="email" class="input-email" placeholder="Email">
+                <br>
+                <h6> Enter Your Number</h6>
+                <input type="tel" class="input-number" placeholder="Number">
+                <br>
+                <h6> Enter a Password</h6>
+                <input type="password" class="input-password" placeholder="Password">
+                <p> Already have an account? <a href=""> Log in</a></p>
+                <br>
+                <button type="button"> Sign up </button>
+
+
+
+            </form>
           </div>
+          <div class="col-3">
 
-          <br />
-          <button type="button" class="btn btn-block">Add To Cart</button>
         </div>
-        <div class="col-3"></div>
-      </div>
-      <div class="row product-pictures-row">
-        <div class="col-2"></div>
-        <div class="col-2">
-          <img
-            src="/turboapp/apps/web/src/images/airpods.jpeg"
-            alt="originalairpods"
-            width="100vh"
-          />
-        </div>
-        <div class="col-2">
-          <img
-            src="/turboapp/apps/web/src/images/airpods1.jpeg"
-            alt="airpodsslide1"
-            width="100vh"
-          />
-        </div>
-        <div class="col-2">
-          <img
-            src="/turboapp/apps/web/src/images/airpods2.jpeg"
-            alt="airpodsslide2"
-            width="100vh"
-          />
-        </div>
-        <div class="col-2">
-          <img
-            src="/turboapp/apps/web/src/images/airpods3.jpeg"
-            alt="airpodsslide3"
-            width="100vh"
-          />
-        </div>
-        <div class="col-2"></div>
       </div>
     </div>
 
