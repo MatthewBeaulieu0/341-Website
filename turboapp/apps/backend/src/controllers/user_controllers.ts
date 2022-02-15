@@ -1,4 +1,5 @@
 import { ErrorResponse } from "../models/errors";
+import { Product } from "../models/products";
 import { User, user_schema } from "../models/users";
 import { find_user_by_id, create_user } from "../services/user_services";
 
@@ -27,7 +28,7 @@ export function get_user_cart(user_id: string) {
   return [200, { user_id: user_id }];
 }
 
-export function add_product_to_cart(product: any) {
+export function add_product_to_cart(product: Product) {
   return [200, product];
 }
 
