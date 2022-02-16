@@ -35,7 +35,7 @@ export function create_user(user: any){
     return user_db[user.name];
 }
 
-export function add_to_user_cart(user_id: number, product_id: number){
+export async function add_to_user_cart(user_id: number, product_id: number){
     var sql =   `
                     UPDATE users
                     SET shopping_cart=JSON_ARRAY_APPEND(shopping_cart, '$', ?)
