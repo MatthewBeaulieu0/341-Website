@@ -15,7 +15,7 @@ export const filter_schema = yup.object().shape({
   name: yup.string(),
   price: yup.number().positive(),
   limit: yup.number().positive().integer().default(20),
-  skip: yup.number().positive().integer().default(0) 
+  skip: yup.number().integer().default(0) 
 })
 
 

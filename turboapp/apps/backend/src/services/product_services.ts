@@ -1,6 +1,6 @@
 // import { ResultSetHeader } from "mysql2";
 import { conn } from "..";
-import { Filter, Product } from "../models/products";
+import { Filter } from "../models/products";
 // import { Product } from "../models/products";
 
 // Result is a ResultSetHeader
@@ -28,7 +28,7 @@ export async function find_product_by_id(product_id: number) {
 }
 
 export async function batch_find_products_by_ids(product_ids: Array<string>) {
-    var sql = `SELECT * FROM products WHERE ProductID IN ?`;
+    var sql = `SELECT * FROM products WHERE ProductID IN ? ORDER BY name`;
     try {
         var products = await query(sql, [product_ids]);
     } catch (error) {
@@ -39,7 +39,7 @@ export async function batch_find_products_by_ids(product_ids: Array<string>) {
     return products;
 }
 
-export async function create_product(product: Product) {
+export async function create_product(product: any) {
     var sql = "INSERT INTO products (??) VALUES (?)";
     var params = [];
     var keys = [];
@@ -52,7 +52,6 @@ export async function create_product(product: Product) {
     
     try {
         let result: any = await query(sql, [keys, params]);
-        console.log(result);
 
         let product_id = result.insertId;
 
@@ -71,15 +70,15 @@ export async function filter_products(filter: Filter) {
   var filter_cnt = 0;
 
   if ('name' in filter) {
-    sql = sql + "name LIKE \'%??%\' "
-    params.push(filter.name);
+    sql = sql + "name LIKE ?";
+    params.push('%' + filter.name + '%');
     filter_cnt++;
   }
   if ('price' in filter) {
 
     if (filter_cnt>0) {sql = sql + ' AND '}
     
-    sql = sql + "price <= ?"
+    sql = sql + " price <= ? "
     params.push(filter.price);
   }
 
