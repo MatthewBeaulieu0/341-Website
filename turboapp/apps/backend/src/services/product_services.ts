@@ -1,20 +1,8 @@
 // import { ResultSetHeader } from "mysql2";
-import { conn } from "..";
+import { query } from "../helpers/query_helper";
 import { Filter } from "../models/products";
 // import { Product } from "../models/products";
 
-// Result is a ResultSetHeader
-function query(sql: string, params: Array<any>): unknown {
-    return new Promise(function (resolve, reject) {
-        conn.query(sql, params, function (err: any, result: unknown) {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(result);
-            }
-        });
-    });
-}
 export async function find_product_by_id(product_id: number) {
     var sql = `SELECT * FROM products WHERE ProductID = ?`;
     try {
@@ -25,6 +13,18 @@ export async function find_product_by_id(product_id: number) {
     }
 
     return product;
+}
+
+export async function delete_product_by_id(product_id: number) {
+    var sql = `DELETE FROM products WHERE ProductID = ?`;
+    try {
+        var result = await query(sql, [product_id]);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+
+    return result;
 }
 
 export async function batch_find_products_by_ids(product_ids: Array<string>) {
