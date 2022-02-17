@@ -55,28 +55,16 @@ export async function add_to_user_cart(user_id: number, product_id: number){
     return true;
 }
 
-export async function remove_from_user_cart(user_id: number, product_id: number){
-    var sql =`
-                UPDATE users
-                SET shopping_cart=JSON_ARRAY_APPEND(??)
-                WHERE UserID = ?;
-            `;
+export async function remove_from_user_cart(product_ids: number, user_id: number){
+    var sql =`UPDATE users SET shopping_cart=JSON_ARRAY(?) WHERE UserID = ?`;
     try {
-        let product_ids: any = await get_user_cart_service(user_id)
-        const index = product_ids.indexOf(product_id);
-        if (index == -1){
-            return null;
-        }
-        else{
-            product_ids.splice(index, 1)
-            var result = await query(sql, [product_ids, user_id]) 
-        }
+        var result = await query(sql, [product_ids, user_id]) 
     } catch (error) {
     console.log(error);
     throw error;
-}
+    }
 
-return result;
+    return result;
 }
 
 export async function get_user_cart_service(user_id: number){

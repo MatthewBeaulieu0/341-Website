@@ -1,7 +1,7 @@
 import { ErrorResponse } from "../models/errors";
 import { User, user_schema } from "../models/users";
 import { batch_find_products_by_ids } from "../services/product_services";
-import { find_user_by_id, create_user, add_to_user_cart, get_user_cart_service } from "../services/user_services";
+import { find_user_by_id, create_user, add_to_user_cart, get_user_cart_service, remove_from_user_cart } from "../services/user_services";
 
 export function get_user_by_id(user_id: string) {
   let user = find_user_by_id(user_id);
@@ -41,6 +41,25 @@ export async function add_product_to_cart(user_id: number, product_id: number) {
     return [200, {"msg": "Product added to cart!"}];
   } else {
     return [404, { 'msg': "User or Product not found" }];
+  }
+}
+
+export async function delete_product_from_cart(user_id: number, product_id: number){
+  let cart: any = await get_user_cart_service(user_id)
+  if (cart[0]) {
+    var ids: any = cart[0]["shopping_cart"];
+    console.log(product_id)
+    const index = ids.indexOf(product_id);
+    console.log(index)
+    if (index == -1){
+        return [404, {"msg": "Item not found!"}];
+    } else{
+        ids.splice(index, 1)
+        await remove_from_user_cart(ids, user_id);
+        return [200, {'msg': "Item removed from cart!"}]
+    }
+  } else {
+    return [404, { 'msg': "User not found" }];
   }
 }
 
