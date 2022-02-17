@@ -8,18 +8,17 @@ describe('ProductpageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductpageComponent ]
-***REMOVED***
-    .compileComponents(***REMOVED***
-  }***REMOVED***
+      declarations: [ProductpageComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductpageComponent***REMOVED***
+    fixture = TestBed.createComponent(ProductpageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(***REMOVED***
-  }***REMOVED***
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    expect(component).toBeTruthy(***REMOVED***
-  }***REMOVED***
-}***REMOVED***
+    expect(component).toBeTruthy();
+  });
+});

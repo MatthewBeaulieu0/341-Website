@@ -8,18 +8,17 @@ describe('Navbar1Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Navbar1Component ]
-***REMOVED***
-    .compileComponents(***REMOVED***
-  }***REMOVED***
+      declarations: [Navbar1Component],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Navbar1Component***REMOVED***
+    fixture = TestBed.createComponent(Navbar1Component);
     component = fixture.componentInstance;
-    fixture.detectChanges(***REMOVED***
-  }***REMOVED***
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    expect(component).toBeTruthy(***REMOVED***
-  }***REMOVED***
-}***REMOVED***
+    expect(component).toBeTruthy();
+  });
+});

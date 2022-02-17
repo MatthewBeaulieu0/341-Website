@@ -8,18 +8,17 @@ describe('ImageSliderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImageSliderComponent ]
-***REMOVED***
-    .compileComponents(***REMOVED***
-  }***REMOVED***
+      declarations: [ImageSliderComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageSliderComponent***REMOVED***
+    fixture = TestBed.createComponent(ImageSliderComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(***REMOVED***
-  }***REMOVED***
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    expect(component).toBeTruthy(***REMOVED***
-  }***REMOVED***
-}***REMOVED***
+    expect(component).toBeTruthy();
+  });
+});

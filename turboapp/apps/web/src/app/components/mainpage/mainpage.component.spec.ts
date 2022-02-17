@@ -8,18 +8,17 @@ describe('MainpageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainpageComponent ]
-***REMOVED***
-    .compileComponents(***REMOVED***
-  }***REMOVED***
+      declarations: [MainpageComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainpageComponent***REMOVED***
+    fixture = TestBed.createComponent(MainpageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(***REMOVED***
-  }***REMOVED***
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    expect(component).toBeTruthy(***REMOVED***
-  }***REMOVED***
-}***REMOVED***
+    expect(component).toBeTruthy();
+  });
+});

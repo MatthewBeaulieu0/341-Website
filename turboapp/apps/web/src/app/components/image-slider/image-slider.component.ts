@@ -4,7 +4,7 @@ import { repeat } from 'rxjs';
 @Component({
   selector: 'app-image-slider',
   templateUrl: './image-slider.component.html',
-  styleUrls: ['./image-slider.component.css']
+  styleUrls: ['./image-slider.component.css'],
 })
 export class ImageSliderComponent {
   @Input() images: string[];
@@ -13,15 +13,15 @@ export class ImageSliderComponent {
 
   repeat() {
     setInterval(() => {
-      this.plusSlides(this.slideIndex***REMOVED***
-      this.repeat(***REMOVED***
-    }, 2000***REMOVED***
-    console.log("repeated"***REMOVED***
+      this.plusSlides(this.slideIndex);
+      this.repeat();
+    }, 2000);
+    console.log('repeated');
   }
 
   plusSlides(n: number) {
     this.slideIndex += n;
-    repeat(***REMOVED***
-    console.log("next image"***REMOVED***
+    repeat();
+    console.log('next image');
   }
 }
