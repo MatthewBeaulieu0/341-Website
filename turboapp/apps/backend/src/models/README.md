@@ -8,38 +8,39 @@ Below are examples of how to implement the schemas into the controllers
 
 ```typescript
 // Inializing sample request
-let request =   {
-  name: "jimmy",
-  desc: "is a person",
-  price: 50,
-  brand: "Okay???",
-  seller: "anon",
-  stock: 25,
-  other: {
-    broken: true
-  }
-}
+let request = {
+    name: "jimmy",
+    desc: "is a person",
+    price: 50,
+    brand: "Okay???",
+    seller: "anon",
+    stock: 25,
+    other: {
+        broken: true,
+    },
+};
 
 // running built in function to validate
-product_schema.validate(request).catch(function (err){
-  err.name; // returns error type
-  err.errors; // returns which fields are false
-}***REMOVED***
+product_schema.validate(request).catch(function (err) {
+    err.name; // returns error type
+    err.errors; // returns which fields are false
+});
 ```
 
 ### Casting returned data from db
+
 ```typescript
 // creating sample response from db
 let db_response = {
-  name: "jimmy",
-  desc: "is a person",
-  price: 50,
-  brand: "Okay???",
-  seller: "anon",
-  stock: 25
+    name: "jimmy",
+    desc: "is a person",
+    price: 50,
+    brand: "Okay???",
+    seller: "anon",
+    stock: 25,
 };
 
-let response = product_schema.cast(db_response***REMOVED***
+let response = product_schema.cast(db_response);
 /*
 console.log(response) => {
   stock: 25,
