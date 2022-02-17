@@ -1,14 +1,22 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { repeat } from 'rxjs';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbCarousel,
+  NgbSlideEvent,
+  NgbSlideEventSource,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-image-slider',
   templateUrl: './image-slider.component.html',
-  styleUrls: ['./image-slider.component.css']
+  styleUrls: ['./image-slider.component.css'],
 })
 export class ImageSliderComponent {
-  images = ["assets\\images\\cat1.jpg", "assets\\images\\cat2.jpg", "\\assets\\images\\vdaydeals.png"];
+  images = [
+    'assets\\images\\cat1.jpg',
+    'assets\\images\\cat2.jpg',
+    '\\assets\\images\\vdaydeals.png',
+  ];
 
   paused = false;
   unpauseOnArrow = false;
@@ -16,7 +24,7 @@ export class ImageSliderComponent {
   pauseOnHover = true;
   pauseOnFocus = true;
 
-  @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
+  @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
   togglePaused() {
     if (this.paused) {
@@ -28,11 +36,19 @@ export class ImageSliderComponent {
   }
 
   onSlide(slideEvent: NgbSlideEvent) {
-    if (this.unpauseOnArrow && slideEvent.paused &&
-      (slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)) {
+    if (
+      this.unpauseOnArrow &&
+      slideEvent.paused &&
+      (slideEvent.source === NgbSlideEventSource.ARROW_LEFT ||
+        slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)
+    ) {
       this.togglePaused();
     }
-    if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
+    if (
+      this.pauseOnIndicator &&
+      !slideEvent.paused &&
+      slideEvent.source === NgbSlideEventSource.INDICATOR
+    ) {
       this.togglePaused();
     }
   }

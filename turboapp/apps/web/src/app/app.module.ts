@@ -28,15 +28,10 @@ import { SignuppageComponent } from './components/signuppage/signuppage.componen
     ProductpageComponent,
     FooterComponent,
     Navbar1Component,
-    SignuppageComponent
+    SignuppageComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
