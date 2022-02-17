@@ -1,24 +1,25 @@
-.fakeFont {
-  font-family: "Dancing Script", cursive;
-  font-size: 150%;
+
+.fakeFont{
+  font-family:'Dancing Script', cursive;
+  font-size:150%;
   font-style: bold;
 }
-#amazonName {
+#amazonName{
   color: #f89c3c;
 }
 
-.header {
-  background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: space-between;
-  width: 100%;
-  position: flex;
-  height: 15vh;
-  display: flex;
-}
+.header{
+    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    width: 100%;
+    position: flex;
+    height: 15vh;
+    display: flex;
+  }
 
 body {
   display: flex;
@@ -26,119 +27,127 @@ body {
   align-items: center;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-.navbar {
-  color: #edf0f1;
-  position: relative;
-  z-index: 50;
-  display: flex;
-  opacity: 0.87;
-  margin-top: 10px;
-  padding: 0 40px;
-  align-items: baseline;
-  background-color: #282c3c;
-  width: 100%;
-  transition: 0.5s;
-  background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
-}
+  *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
 
-.navbar a,
-ul {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #fff;
-  font-weight: 400;
-  padding: 10px 15px;
-  font-weight: 20px;
-  margin: 0 5px;
-  display: flex;
-  text-decoration: none;
-}
+.navbar{
+    color: #edf0f1;
+    position: relative;
+    z-index: 50;
+    display:flex;
+    opacity: 0.87;
+    margin-top: 10px;
+    padding: 0 40px;
+    align-items: baseline;
+    background-color: #282c3c;
+    width: 100%;
+    transition: 0.5s;
+    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
 
-.navbar .colorofAmazonlogo {
-  color: #f89c3c;
-}
+  
+  }
+  
+  
+  .navbar a, ul{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #fff;
+    font-weight: 400;
+    padding: 10px 15px;
+    font-weight: 20px;
+    margin: 0 5px;
+    display: flex;
+    text-decoration: none;
+  }
 
-.navbar li {
-  display: inline-block;
-  padding: 0 15px;
-  transition: all 0.5s ease-out;
-}
 
-.navbar a:hover {
-  color: #f89c3c;
-}
+  .navbar .colorofAmazonlogo{
+    color: #f89c3c;
+    }
 
-.container h1 {
-  font-size: 50px;
-  text-align: center;
-  display: center;
-}
 
-.container p {
-  font-size: 20px;
-  text-align: center;
-  display: center;
-}
-.text-content {
-  align-items: center;
-  position: relative;
-  color: #edf0f1;
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px;
-}
+  .navbar li{
+    display: inline-block;
+    padding: 0 15px;
+    transition: all 0.5s ease-out;
+  }
 
-.text-content::after {
-  content: " ";
-  display: table;
-  clear: both;
-}
+  .navbar a:hover{
+    color: #f89c3c;
+  }
 
-.textcontent {
-  background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-left: auto;
-  margin-right: auto;
-  color: #edf0f1;
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-}
 
-.textcontent::after {
-  content: " ";
-  display: table;
-  clear: both;
-}
+  .container h1{
+    font-size: 50px;
+    text-align: center;
+    display: center;
+  }
+  
+  .container p{
+    font-size: 20px;
+    text-align: center;
+    display: center;
+  }
+  .text-content{
+    align-items: center;
+    position: relative;
+    color: #edf0f1;
+    display: flex;
+    flex-direction:column;
+    margin-top: 40px;
 
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  }
 
-.container-fluid {
-  background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
-  height: 100%;
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  .text-content::after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+  
+    .textcontent {
+      background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-left: auto;
+      margin-right: auto;
+      color: #edf0f1;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+  }
 
-.test {
-  color: #282c3c;
-}
-/*
+  .textcontent::after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-fluid{
+    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    height: 100%;
+  }
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .test{
+      color: #282c3c;
+    }
+    /*
     .my-second-row{
       color: #ffffff;
       text-align: center;
@@ -182,59 +191,64 @@ body {
       
     }
   */
-.btn-dark {
-  font-family: "Dancing Script", cursive;
-  font-size: 20px;
-}
+    .btn-dark{
+      font-family: 'Dancing Script', cursive;
+      font-size: 20px;
+    }
+  
+    .btn-dark:hover{
+      background-color:#f89c3c;
+      color: black;
+      cursor: pointer;
+    }
+  
+    .btn-dark span::after{
+      cursor: pointer;
+      transition: 0.4;
+    }
 
-.btn-dark:hover {
-  background-color: #f89c3c;
-  color: black;
-  cursor: pointer;
-}
+    .footer {
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        background-color:rgb(28, 29, 31);
+        clear: both;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        right:0;
+        left:0;
+        bottom: 0;
+        padding-top: 10px;
+        height: auto;
+        text-align: center;
+        font-size: smaller;
+        opacity: 1.1;
+      }
 
-.btn-dark span::after {
-  cursor: pointer;
-  transition: 0.4;
-}
+      .medialogo .fa{
+          align-items: center;
+          text-align: center;
+          color: white;
+          flex-direction: column;
+          font-size:x-large;
+          padding: 10px;
+          width: 30px;
+          
+      }
 
-.footer {
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(28, 29, 31);
-  clear: both;
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  padding-top: 10px;
-  height: auto;
-  text-align: center;
-  font-size: smaller;
-  opacity: 1.1;
-}
+      .medialogo p{
+          padding-bottom: 40px;
+      }
 
-.medialogo .fa {
-  align-items: center;
-  text-align: center;
-  color: white;
-  flex-direction: column;
-  font-size: x-large;
-  padding: 10px;
-  width: 30px;
-}
+      
+      .fa:hover{
+          color: #f89c3c;
+          cursor: pointer;
+        
+      }
 
-.medialogo p {
-  padding-bottom: 40px;
-}
-
-.fa:hover {
-  color: #f89c3c;
-  cursor: pointer;
-}
+      

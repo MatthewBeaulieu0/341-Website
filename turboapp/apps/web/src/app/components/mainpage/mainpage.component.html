@@ -1,6 +1,59 @@
-<h1 class="title">Fake Amazon</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeAmazon</title>
+    <link rel="stylesheet" href="mainpage.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
 
-<app-image-slider [images]="[
-  '/assets/images/cat1.jpg',
-  '/assets/images/cat2.jpg',
-  '/assets/images/cat3.jpg']"></app-image-slider>
+<!-- header section starts -->
+<header class="header">
+    <div class="nav-bar">
+        <a href="#" class="logo">FakeAmazon</a>
+        <form action="" class="search-bar">
+            <input type="search" name="" placeholder="Search" id="search-box">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+        <div class="left-icons">
+            <a href="../shoppingcart/shoppingcart.component.html" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-user"></a>
+        </div>
+    </div>
+
+    <div class="nav-bar-2">
+        <nav class="nav-bar-aisle">
+            <a href="#">Home</a>
+            <a href="#">Deals</a>
+            <a href="#">Featured</a>
+        </nav>
+    
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<app-image-slider></app-image-slider>
+
+
+<!-- featured section starts -->
+
+<section class="featured" id="featured">
+    <h1 class="heading"><span>Featured items</span></h1>
+           
+            <app-featured-items></app-featured-items>
+
+</section>
+
+
+
+<!-- featured section ends -->
+
+</body>
+</html>
+
