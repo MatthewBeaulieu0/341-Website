@@ -1,0 +1,15 @@
+         
+<div class="featured-slider">   
+    <div class="wrapper"> 
+        <div class="box" *ngFor="let image of images">
+            <div class="image">
+                <img [src]="image" alt="">
+            </div>
+            <div class="content">
+                <h3>Featured item</h3>
+                <div class="price"><span>5.99</span></div>
+                <a href="#" class="btn">Add to cart</a>
+            </div>
+        </div>
+    </div>
+</div>
