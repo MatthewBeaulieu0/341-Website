@@ -18,7 +18,7 @@ user.put("/", (req: Request, res: Response) => {
     }
 });
 
-user.get("/:user_id", (req: Request, res: Response) => {
+user.get("/id/:user_id", (req: Request, res: Response) => {
     let user_id = req.params.user_id
     try{
         let status, data = get_user_by_id(user_id)
@@ -32,10 +32,11 @@ user.get("/:user_id", (req: Request, res: Response) => {
     }
 });
 
-user.put("users/:user_id/shopping_cart/", (req: Request, res: Response) => {
+user.put("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
     try{
-        let product = req.body;
-        let status, data = add_product_to_cart(product);
+        let product_id = parseInt(req.body.product_id);
+        let user_id = parseInt(req.params.user_id);
+        let status, data = await add_product_to_cart(user_id, product_id);
         res.json({data})
         if (status == 200) {res.sendStatus(200);}
         if (status == 400) {res.sendStatus(400);}
@@ -46,10 +47,10 @@ user.put("users/:user_id/shopping_cart/", (req: Request, res: Response) => {
     }
 });
 
-user.get("users/:user_id/shopping_cart/", (req: Request, res: Response) => {
-    let user_id = req.params.user_id
+user.get("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
     try{
-        let status, data = get_user_cart(user_id)
+        let user_id = req.params.user_id
+        let status, data = await get_user_cart(user_id)
         res.json({data})
         if (status == 200) {res.sendStatus(200);}
         if (status == 404) {res.sendStatus(404);}

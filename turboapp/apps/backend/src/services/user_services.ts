@@ -42,14 +42,18 @@ export async function add_to_user_cart(user_id: number, product_id: number){
                     WHERE UserID = ?;
                 `;
     try {
-        let product_ids: any = await query(sql, [product_id, user_id]);
-        var products = batch_find_products_by_ids(product_ids);
+        var result: any = await query(sql, [product_id, user_id]);
+        console.log(result)
     } catch (error) {
         console.log(error);
         throw error;
     }
 
-    return products;
+    if (result.affectedRows == 0) {
+        return false;
+    }
+
+    return true;
 }
 
 export async function remove_from_user_cart(user_id: number, product_id: number){

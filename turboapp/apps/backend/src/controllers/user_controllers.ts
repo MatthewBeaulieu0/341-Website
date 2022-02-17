@@ -1,7 +1,6 @@
 import { ErrorResponse } from "../models/errors";
-import { Product } from "../models/products";
 import { User, user_schema } from "../models/users";
-import { find_user_by_id, create_user } from "../services/user_services";
+import { find_user_by_id, create_user, add_to_user_cart } from "../services/user_services";
 
 export function get_user_by_id(user_id: string) {
   let user = find_user_by_id(user_id);
@@ -28,8 +27,13 @@ export function get_user_cart(user_id: string) {
   return [200, { user_id: user_id }];
 }
 
-export function add_product_to_cart(product: Product) {
-  return [200, product];
+export async function add_product_to_cart(user_id: number, product_id: number) {
+  let result = await add_to_user_cart(user_id, product_id);
+  if (result) {
+    return [200, {"msg": "Product added to cart!"}];
+  } else {
+    return [404, { 'msg': "User or Product not found" }];
+  }
 }
 
 function validate_user_data(user: User) {
