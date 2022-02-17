@@ -9,7 +9,7 @@
 }
 
 .header{
-    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    background: url("/turboapp/apps/web/src/assets/images/Amazon.jpeg") center fixed;
     background-repeat: no-repeat;
     background-size: cover;
     margin-left: auto;
@@ -47,7 +47,7 @@ body {
     background-color: #282c3c;
     width: 100%;
     transition: 0.5s;
-    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    background: url("/turboapp/apps/web/src/assets/images/Amazon.jpeg") center fixed;
 
   
   }
@@ -109,7 +109,7 @@ body {
   }
   
     .textcontent {
-      background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+      background: url("/turboapp/apps/web/src/assets/images/Amazon.jpeg") center fixed;
       background-repeat: no-repeat;
       background-size: cover;
       margin-left: auto;
@@ -135,7 +135,7 @@ body {
   }
 
   .container-fluid{
-    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    background: url("/turboapp/apps/web/src/assets/images/Amazon.jpeg") center fixed;
     height: 100%;
   }
     *{
