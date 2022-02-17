@@ -49,7 +49,7 @@ user.put("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
 
 user.get("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
     try{
-        let user_id = req.params.user_id
+        let user_id = parseInt(req.params.user_id)
         let status, data = await get_user_cart(user_id)
         res.json({data})
         if (status == 200) {res.sendStatus(200);}

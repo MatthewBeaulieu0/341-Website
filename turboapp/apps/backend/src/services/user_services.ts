@@ -1,5 +1,4 @@
 import { query } from "../helpers/query_helper";
-import { batch_find_products_by_ids } from "./product_services";
 
 let user_db: any = {
     "jim_1": {
@@ -63,7 +62,7 @@ export async function remove_from_user_cart(user_id: number, product_id: number)
                 WHERE UserID = ?;
             `;
     try {
-        let product_ids: any = await get_user_cart(user_id)
+        let product_ids: any = await get_user_cart_service(user_id)
         const index = product_ids.indexOf(product_id);
         if (index == -1){
             return null;
@@ -80,15 +79,14 @@ export async function remove_from_user_cart(user_id: number, product_id: number)
 return result;
 }
 
-export async function get_user_cart(user_id: number){
+export async function get_user_cart_service(user_id: number){
     var sql = `SELECT (shopping_cart) FROM users WHERE UserID = ?;`;
     try {
-        let product_ids: any = await query(sql, [user_id]);
-        var products = batch_find_products_by_ids(product_ids);
+        var product_ids: any = await query(sql, [user_id]);
     } catch (error) {
         console.log(error);
         throw error;
     }
 
-    return products;
+    return product_ids;
 }
