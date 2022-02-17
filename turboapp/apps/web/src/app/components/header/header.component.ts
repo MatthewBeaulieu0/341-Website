@@ -20,4 +20,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/shoppingcart']);
   }
 
+  routeToProductPage(){
+    this.router.navigate(['/productpage']);
+  }
+
 }
