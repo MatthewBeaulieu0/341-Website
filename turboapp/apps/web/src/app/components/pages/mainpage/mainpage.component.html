@@ -11,33 +11,7 @@
 </head>
 <body>
 
-<!-- header section starts -->
-<header class="header">
-    <div class="nav-bar">
-        <a href="#" class="logo">FakeAmazon</a>
-        <form action="" class="search-bar">
-            <input type="search" name="" placeholder="Search" id="search-box">
-            <label for="search-box" class="fas fa-search"></label>
-        </form>
-
-        <div class="left-icons">
-            <a [routerLink]='["/shoppingcart"]' class="fas fa-shopping-cart" (click)="routeToShoppingCart()"></a>
-            <a href="#" class="fas fa-user"></a>
-        </div>
-    </div>
-
-    <div class="nav-bar-2">
-        <nav class="nav-bar-aisle">
-            <a href="#">Home</a>
-            <a href="#">Deals</a>
-            <a href="#">Featured</a>
-        </nav>
-    
-    </div>
-
-</header>
-
-<!-- header section ends -->
+<app-header></app-header>
 
 <app-image-slider></app-image-slider>
 
