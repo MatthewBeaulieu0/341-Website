@@ -5,6 +5,7 @@ import { ProductpageComponent } from './components/productpage/productpage.compo
 import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
 
 const routes: Routes = [
+  {path: "", redirectTo: "mainpage", pathMatch: "full"},
   {path: "mainpage", component: MainpageComponent},
   {path: "productpage", component: ProductpageComponent},
   {path: "shoppingcart", component: ShoppingcartComponent}
