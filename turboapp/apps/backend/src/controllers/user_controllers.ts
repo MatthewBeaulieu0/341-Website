@@ -1,7 +1,7 @@
 import { ErrorResponse } from "../models/errors";
-import { Product } from "../models/products";
 import { User, user_schema } from "../models/users";
-import { find_user_by_id, create_user } from "../services/user_services";
+import { batch_find_products_by_ids } from "../services/product_services";
+import { find_user_by_id, create_user, add_to_user_cart, get_user_cart_service, remove_from_user_cart } from "../services/user_services";
 
 export function get_user_by_id(user_id: string) {
   let user = find_user_by_id(user_id);
@@ -24,12 +24,43 @@ export function create_new_user(user: User) {
   }
 }
 
-export function get_user_cart(user_id: string) {
-  return [200, { user_id: user_id }];
+export async function get_user_cart(user_id: number) {
+  let cart: any = await get_user_cart_service(user_id);
+  if (cart[0]) {
+    var ids: any = cart[0]["shopping_cart"];
+    var products = await batch_find_products_by_ids(ids);
+    return [200, products]
+  } else {
+    return [404, { 'msg': "User not found" }];
+  }
 }
 
-export function add_product_to_cart(product: Product) {
-  return [200, product];
+export async function add_product_to_cart(user_id: number, product_id: number) {
+  let result = await add_to_user_cart(user_id, product_id);
+  if (result) {
+    return [200, {"msg": "Product added to cart!"}];
+  } else {
+    return [404, { 'msg': "User or Product not found" }];
+  }
+}
+
+export async function delete_product_from_cart(user_id: number, product_id: number){
+  let cart: any = await get_user_cart_service(user_id)
+  if (cart[0]) {
+    var ids: any = cart[0]["shopping_cart"];
+    console.log(product_id)
+    const index = ids.indexOf(product_id);
+    console.log(index)
+    if (index == -1){
+        return [404, {"msg": "Item not found!"}];
+    } else{
+        ids.splice(index, 1)
+        await remove_from_user_cart(ids, user_id);
+        return [200, {'msg': "Item removed from cart!"}]
+    }
+  } else {
+    return [404, { 'msg': "User not found" }];
+  }
 }
 
 function validate_user_data(user: User) {
