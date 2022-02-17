@@ -7,16 +7,16 @@
 CREATE DATABASE fake_amazon;
 USE fake_amazon;
 CREATE TABLE `products` (
-  `ProductID` int NOT NULL AUTO_INCREMENT,
-  `Name` varchar(45) NOT NULL,
-  `Description` longtext,
-  `Price` decimal(10,2) NOT NULL,
-  `Currency` varchar(45) DEFAULT 'CAD',
-  `Brand` varchar(45) DEFAULT NULL,
-  `Seller` varchar(45) DEFAULT NULL,
-  `Stock` int NOT NULL,
-  `Link` varchar(180) DEFAULT NULL,
-  PRIMARY KEY (`ProductID`)
+  `product_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `description` longtext,
+  `price` decimal(10,2) NOT NULL,
+  `currency` varchar(45) DEFAULT 'CAD',
+  `brand` varchar(45) DEFAULT NULL,
+  `seller` varchar(45) DEFAULT NULL,
+  `stock` int NOT NULL,
+  `link` varchar(180) DEFAULT NULL,
+  PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `products` (`Name`,`Description`,`Price`,`Currency`,`Brand`,`Seller`,`Stock`, `Link`)
