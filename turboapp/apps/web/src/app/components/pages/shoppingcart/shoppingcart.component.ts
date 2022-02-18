@@ -34,7 +34,7 @@ export class ShoppingcartComponent implements OnInit {
 //         var priceItem = document.getElementsByClassName('cart-product-price')[i];
 //         var price = parseFloat(priceItem.innerHTML.replace("$",""));
 //         var quantityItem = document.getElementsByClassName('cart-quantity')[i];
-//         var quantity = quantityItem.value
+//         var quantity = quantityItem.value;
 //         total = (total + (price * quantity)).toFixed(2);
 
 //         document.getElementsByClassName("cart-price")[i].innerHTML = total +"$";
