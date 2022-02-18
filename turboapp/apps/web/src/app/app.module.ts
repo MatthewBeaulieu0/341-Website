@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { Navbar1Component } from './components/navbar1/navbar1.component';
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProductaisleComponent } from './components/pages/productaisle/productaisle.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HeaderComponent } from './components/header/header.component';
     Navbar1Component,
     SignuppageComponent,
     HeaderComponent,
+    ProductaisleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [],
