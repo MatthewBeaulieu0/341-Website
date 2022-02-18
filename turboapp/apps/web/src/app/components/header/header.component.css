@@ -70,6 +70,7 @@ font-weight: bolder;
   }
   .header .nav-bar-2 .nav-bar-aisle {
     padding: 5px;
+    background-color: #282c3c;
   }
   .header .nav-bar-2 .nav-bar-aisle a {
     padding-left: 25px;

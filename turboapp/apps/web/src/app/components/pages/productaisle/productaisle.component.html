@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="featured-slider">
+    <h3>Electronics</h3>   
+    <div class="wrapper"> 
+        <div class="box" *ngFor="let image of images">
+            <div class="image">
+                <img [src]="image" alt="">
+            </div>
+            <div class="content">
+                <h3>Featured item</h3>
+                <div>{{item}}</div>
+                <div class="price"><span >{{price}}</span></div>
+                <a href="#" class="btn" (click)="addToCart()">Add to cart</a>
+            </div>
+        </div>
+        <div class="box" *ngFor="let image of images">
+            <div class="image">
+                <img [src]="image" alt="">
+            </div>
+            <div class="content">
+                <h3>Featured item</h3>
+                <div>{{item}}</div>
+                <div class="price"><span >{{price}}</span></div>
+                <a href="#" class="btn" (click)="addToCart()">Add to cart</a>
+            </div>
+        </div>
+        <div class="box" *ngFor="let image of images">
+            <div class="image">
+                <img [src]="image" alt="">
+            </div>
+            <div class="content">
+                <h3>Featured item</h3>
+                <div>{{item}}</div>
+                <div class="price"><span >{{price}}</span></div>
+                <a href="#" class="btn" (click)="addToCart()">Add to cart</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
