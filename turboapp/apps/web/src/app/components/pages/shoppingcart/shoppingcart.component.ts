@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./shoppingcart.component.css']
 })
 export class ShoppingcartComponent implements OnInit {
+
+  @Input() image:string;
+  @Input() item:string;
+  @Input() price:number;
 
   cartItems: Array<Product> = [];
   total: number;

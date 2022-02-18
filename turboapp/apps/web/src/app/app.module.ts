@@ -4,17 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainpageComponent } from './components/mainpage/mainpage.component';
+import { MainpageComponent } from './components/pages/mainpage/mainpage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { DealsComponent } from './components/deals/deals.component';
-import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
+import { ShoppingcartComponent } from './components/pages/shoppingcart/shoppingcart.component';
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
-import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
-import { ProductpageComponent } from './components/productpage/productpage.component';
+import { WelcomepageComponent } from './components/pages/welcomepage/welcomepage.component';
+import { ProductpageComponent } from './components/pages/productpage/productpage.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { Navbar1Component } from './components/navbar1/navbar1.component';
-import { SignuppageComponent } from './components/signuppage/signuppage.component';
+import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SignuppageComponent } from './components/signuppage/signuppage.componen
     FooterComponent,
     Navbar1Component,
     SignuppageComponent,
+    HeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [],
