@@ -18,5 +18,9 @@ export class WelcomepageComponent implements OnInit {
   routeToMainPage(){
     this.router.navigate(['/mainpage']);
   }
+  
+  routeToShoppingCart(){
+    this.router.navigate(['/shoppingcart']);
+  }
 
 }

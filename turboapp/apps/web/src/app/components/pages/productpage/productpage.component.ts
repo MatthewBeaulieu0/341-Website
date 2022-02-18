@@ -22,4 +22,8 @@ export class ProductpageComponent implements OnInit {
     this.router.navigate(['/mainpage']);
   }
 
+  routeToShoppingCart(){
+    this.router.navigate(['/shoppingcart']);
+  }
+
 }

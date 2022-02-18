@@ -1,8 +1,13 @@
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
 <header class="header">
     <div class="nav-bar">
+        <a [routerLink]='["/mainpage"]' (click)="routeToMainPage()">
         <h2 class="colorofAmazonlogo">
             <span style="color:rgb(230, 8, 8)" class="fakeFont">Fake</span>Amazon
           </h2>
+        </a>
+
         <form action="" class="search-bar">
             <input type="search" name="" placeholder="Search" id="search-box">
             <label for="search-box" class="fas fa-search"></label>
@@ -16,9 +21,9 @@
 
     <div class="nav-bar-2">
         <nav class="nav-bar-aisle">
-            <a href="#">Home</a>
-            <a href="#">Deals</a>
-            <a href="#">Featured</a>
+            <a (click)="routeToMainPage()">Home</a>
+            <a (click)="routeToMainPage()">Deals</a>
+            <a (click)="routeToMainPage()">Featured</a>
             <a (click)="routeToProductPage()">Products</a>
         </nav>
     
