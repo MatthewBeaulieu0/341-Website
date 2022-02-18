@@ -25,6 +25,12 @@
       rel="stylesheet"
       href="/turboapp/apps/web/src/app/components/productpage/productpage.component.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
@@ -38,26 +44,15 @@
         background-color: transparent;
       }
     </style>
-    <header class="header">
-      <div class="navbar">
-        <h1 class="colorofAmazonlogo">
-          <span style="color: rgb(230, 8, 8)" class="fakeFont">Fake</span>Amazon
-        </h1>
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Shopping Cart</a></li>
-            <li><a href="#">Login</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <app-header> </app-header>
 
     <div class="container">
       <div class="row back-to-menu">
         <div class="col-2 back-menu"></div>
         <div class="col-2 back-menu">
-          <a href="#">- Go back</a>
+          <a [routerLink]='["/mainpage"]' (click)="routeToMainPage()">
+            - Go back
+          </a>
         </div>
         <div class="col-2 back-menu"></div>
         <div class="col-2 back-menu"></div>
@@ -75,8 +70,8 @@
         </div>
 
         <div class="col-3 item-description">
-          <h2>Fake Airpods (3rd gen)</h2>
-          <h5>Fake price: 200.00$</h5>
+          <h2>{{items}}</h2>
+          <h5>{{price}}</h5>
           <h6>Description</h6>
           <br />
           <div class="form">
@@ -92,7 +87,9 @@
           </div>
 
           <br />
+          <a [routerLink]='["/shoppingcart"]' (click)="routeToShoppingCart()">
           <button type="button" class="btn btn-block">Add To Cart</button>
+          </a>
         </div>
         <div class="col-3"></div>
       </div>
@@ -100,28 +97,32 @@
         <div class="col-2"></div>
         <div class="col-2">
           <img
-            src="/turboapp/apps/web/src/images/airpods.jpeg"
+            src="../../../../assets/images/airpods.jpeg
+            "
             alt="originalairpods"
             width="100vh"
           />
         </div>
         <div class="col-2">
           <img
-            src="/turboapp/apps/web/src/images/airpods1.jpeg"
+            src="../../../../assets/images/airpods1.jpeg
+            "
             alt="airpodsslide1"
             width="100vh"
           />
         </div>
         <div class="col-2">
           <img
-            src="/turboapp/apps/web/src/images/airpods2.jpeg"
+            src="../../../../assets/images/airpods2.jpeg
+            "
             alt="airpodsslide2"
             width="100vh"
           />
         </div>
         <div class="col-2">
           <img
-            src="/turboapp/apps/web/src/images/airpods3.jpeg"
+            src="../../../../assets/images/airpods3.jpeg
+            "
             alt="airpodsslide3"
             width="100vh"
           />

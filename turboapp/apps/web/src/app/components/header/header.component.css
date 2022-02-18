@@ -1,3 +1,19 @@
+a{
+  text-decoration: none;
+}
+.fakeFont{
+  font-family:'Dancing Script', cursive;
+  font-size:130%;
+  font-style: bold;
+}
+#amazonName{
+  color: #f89c3c;
+}
+
+.colorofAmazonlogo{
+  color: #f89c3c;
+  }
+
 .header .nav-bar {
     display: flex;
     flex-direction: row;
@@ -13,7 +29,7 @@
     color: rgb(83, 126, 219);
   }
   .header .nav-bar .search-bar {
-    width: 1000px;
+    width: 800px;
     height: 30px;
     background-color: white;
     display: flex;
