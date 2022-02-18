@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,9 @@ import { SignuppageComponent } from './components/pages/signuppage/signuppage.co
 import { HeaderComponent } from './components/header/header.component';
 import { ProductaisleComponent } from './components/pages/productaisle/productaisle.component';
 
+import { CartService } from './services/cart.service';
+import { ProductsService } from './services/products.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +38,8 @@ import { ProductaisleComponent } from './components/pages/productaisle/productai
     HeaderComponent,
     ProductaisleComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule, HttpClientModule],
+  providers: [CartService, ProductsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
