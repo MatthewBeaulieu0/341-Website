@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Welcome to Fake Amazon</title>
+  <base href="/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/turboapp/apps/web/src/app/components/pages/welcomepage/welcomepage.component.css">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <style>
+    .my-first-row{
+      background-color: transparent;
+    }
+
+    .my-second-row{
+      background-color: transparent;
+    }
+  </style>
+    <header class="header">
+        <div class="navbar">
+          <h1 class="colorofAmazonlogo">
+            <span style="color:rgb(230, 8, 8)" class="fakeFont">Fake</span>Amazon
+          </h1>
+          <nav>
+            <ul>
+              <li><a (click)="routeToMainPage()">Home</a></li>
+              <li> <a [routerLink]='["/shoppingcart"]' (click)="routeToShoppingCart()">Shopping Cart</a></li>
+              <li><a href="#">Login</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+      <div class="col-12 text-content"> 
+        <h1> Welcome to
+          <span style="color:rgb(230, 8, 8)" class="fakeFont">
+            Fake
+          </span>
+            <span style="color:#f89c3c">
+              Amazon 
+            </span>
+        </h1>
+        <h5> 
+          <br>
+
+          This website might be fake, but our products are real!  
+
+        </h5>
+          <p>
+            <br>
+            <a [routerLink]='["/mainpage"]' (click)="routeToMainPage()">
+              <button type="button" class="btn btn-dark">Start Shopping</button>
+            </a>
+          </p>
+      </div>
+      <div class="row test"> 
+        Congratulations!
+      </div>
+      <div class="row test"> 
+         You
+      </div>
+      <div class="row test"> 
+         have
+      </div>
+      <div class="row test"> 
+         found
+      </div>
+      <div class="row test"> 
+         the
+      </div>
+      <div class="row test"> 
+         secret
+      </div>
+      <div class="row test"> 
+         message
+      </div>
+      <div class="row test"> 
+        !
+      </div>
+      <div class="row test"> 
+         Good
+      </div>
+      <div class="row test"> 
+         luck
+      </div>
+      <div class="row test"> 
+         for 
+      </div>
+      <div class="row test"> 
+         next
+      </div>
+      <div class="row test"> 
+         time!
+      </div>
+      </div>
+    </div>
+    
+<!--
+        <div class="textcontent">
+          <div class="container">
+           
+            <div class="row my-second-row justify-content-center align-items-center">
+              <div class="col-12"> 
+                  <h1> Welcome to
+                    <span style="color:rgb(230, 8, 8)" class="fakeFont">
+                      Fake
+                    </span>
+                      <span style="color:#f89c3c">
+                        Amazon 
+                      </span>
+                  </h1>
+                  <h5> 
+                    <br>
+
+                    This website might be fake, but our products are real!  
+
+                  </h5>
+                    <p>
+                      <br>
+                      <button type="button" class="btn btn-dark">Start Shopping</button>
+                    </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+-->
+
+      
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+
+        <div class="container-fluid"> 
+        
+          <div class="row footer-row"> 
+              <footer class="col-12 footer">
+                  <h4> Fake Amazon Inc.</h4>
+                  <p> 
+                      Thank you for using our website. 
+                  <br>
+                      We are a small group of entrepreneurs trying to become the next Jeff Bezos.
+
+                  </p>
+                      <div class="medialogo">
+
+                          <a href="#" class="fa fa-facebook"></a>
+
+                          <a href="#" class="fa fa-twitter"></a>
+
+                          <a href="#" class="fa fa-instagram"></a>
+
+                          <a href="#" class="fa fa-reddit"></a>
+                  
+
+                      </div>
+
+                      <p>
+                          Don't forget to follow us on social media for a chance to win 1 year worth of free socks!
+
+                      </p>
+                  <br> Copyright &copy; FakeAmazon All rights reserved.
+
+              </footer>
+            </div>
+
+        </div>
+  
+</body>
+</html>
