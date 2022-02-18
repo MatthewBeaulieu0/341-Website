@@ -1,3 +1,21 @@
+/*
+.row{
+  align-items:center;
+
+}
+.col-4 {
+align-items: center;
+}
+
+.col-3{
+  justify-content: space-between;
+}
+.col-7{
+  position: relative;
+  align-items:center;
+}
+*/
+
 a{
   text-decoration: none;
 }
