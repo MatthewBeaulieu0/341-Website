@@ -5,8 +5,8 @@
     </h1>
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Shopping Cart</a></li>
+        <li><a (click)="routeToMainPage()">Home</a></li>
+        <li> <a [routerLink]='["/shoppingcart"]' (click)="routeToShoppingCart()">Shopping Cart</a></li>
         <li><a href="#">Login</a></li>
       </ul>
     </nav>

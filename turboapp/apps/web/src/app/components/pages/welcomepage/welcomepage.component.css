@@ -9,7 +9,7 @@
 }
 
 .header{
-    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    background: url("/turboapp/apps/web/src/assets/images/Amazon.jpeg") center fixed;
     background-repeat: no-repeat;
     background-size: cover;
     margin-left: auto;
@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("https://d2skuhm0vrry40.cloudfront.net/2021/articles/2021-10-08-09-24/amazon.jpg");
 }
 
 
@@ -47,7 +48,7 @@ body {
     background-color: #282c3c;
     width: 100%;
     transition: 0.5s;
-    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    background: url("/turboapp/apps/web/src/assets/images/Amazon.jpeg") center fixed;
 
   
   }
@@ -109,7 +110,7 @@ body {
   }
   
     .textcontent {
-      background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+      background: url("/turboapp/apps/web/src/assets/images/Amazon.jpeg") center fixed;
       background-repeat: no-repeat;
       background-size: cover;
       margin-left: auto;
@@ -135,7 +136,7 @@ body {
   }
 
   .container-fluid{
-    background: url("/turboapp/apps/web/src/images/Amazon.jpeg") center fixed;
+    background: url("/turboapp/apps/web/src/assets/images/Amazon.jpeg") center fixed;
     height: 100%;
   }
     *{
@@ -218,7 +219,6 @@ body {
         clear: both;
         flex-direction: column;
         width: 100%;
-        position: relative;
         right:0;
         left:0;
         bottom: 0;
@@ -227,6 +227,8 @@ body {
         text-align: center;
         font-size: smaller;
         opacity: 1.1;
+        position: fixed;
+        bottom: 0;
       }
 
       .medialogo .fa{
