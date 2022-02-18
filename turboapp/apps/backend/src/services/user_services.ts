@@ -1,3 +1,5 @@
+import { query } from "../helpers/query_helper";
+
 let user_db: any = {
     "jim_1": {
         "name": "jim",
@@ -30,4 +32,49 @@ export function create_user(user: any){
         return null;
     }
     return user_db[user.name];
+}
+
+export async function add_to_user_cart(user_id: number, product_id: number){
+    var sql =   `
+                    UPDATE users
+                    SET shopping_cart=JSON_ARRAY_APPEND(shopping_cart, '$', ?)
+                    WHERE user_id = ?;
+                `;
+    try {
+        var result: any = await query(sql, [product_id, user_id]);
+        console.log(result)
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+
+    if (result.affectedRows == 0) {
+        return false;
+    }
+
+    return true;
+}
+
+export async function remove_from_user_cart(product_ids: number, user_id: number){
+    var sql =`UPDATE users SET shopping_cart=JSON_ARRAY(?) WHERE user_id = ?`;
+    try {
+        var result = await query(sql, [product_ids, user_id]) 
+    } catch (error) {
+    console.log(error);
+    throw error;
+    }
+
+    return result;
+}
+
+export async function get_user_cart_service(user_id: number){
+    var sql = `SELECT (shopping_cart) FROM users WHERE user_id = ?;`;
+    try {
+        var product_ids: any = await query(sql, [user_id]);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+
+    return product_ids;
 }
