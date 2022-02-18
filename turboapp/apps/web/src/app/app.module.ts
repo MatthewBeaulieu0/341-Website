@@ -17,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { Navbar1Component } from './components/navbar1/navbar1.component';
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProductaisleComponent } from './components/pages/productaisle/productaisle.component';
 
 import { CartService } from './services/cart.service';
 import { ProductsService } from './services/products.service';
@@ -35,6 +36,7 @@ import { ProductsService } from './services/products.service';
     Navbar1Component,
     SignuppageComponent,
     HeaderComponent,
+    ProductaisleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule, HttpClientModule],
   providers: [CartService, ProductsService],

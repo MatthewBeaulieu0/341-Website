@@ -24,4 +24,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/productpage']);
   }
 
+  routeToAislePage(){
+    this.router.navigate(['/aislepage']);
+  }
+  routeToMainPage(){
+    this.router.navigate(['/mainpage']);
+  }
+
 }

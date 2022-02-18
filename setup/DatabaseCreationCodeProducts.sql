@@ -21,9 +21,9 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`Name`,`Description`,`Price`,`Currency`,`Brand`,`Seller`,`Stock`, `Link`)
 VALUES
-  ("Banana","yellow fruit",0.99,"CAD","Fake Amazon", "Fake Amazon",5, "turboapp/apps/web/src/assets/images/banana.jpeg"),
-  ("Calculator","math tools",39.99,"CAD","CASIO", "Fake Amazon",20, "turboapp/apps/web/src/assets/images/calculator.jpeg" ),
-  ("Chocolate","tasty chocolate",3.98,"CAD","Kit Kat", "Fake Amazon",30, "turboapp/apps/web/src/assets/images/chocalate.jpeg"),
-  ("Strawberry","red fruit", 4.99,"CAD","Fake Amazon", "South American Business ",6272, "/turboapp/apps/web/src/assets/images/strawberry.jpeg" ),
-  ("Bookshelf","wooden object that can hold books",249.99,"CAD","Fake Amazon", "Costco",29, "turboapp/apps/web/src/assets/images/bookshelf.jpeg"),
-  ("Phone","Electrical device that allows you to complete several tasks", 599.99,"CAD","Amazon", "Fake Amazon",92933, "turboapp/apps/web/src/assets/images/phone.jpeg")
+  ("Banana","yellow fruit",0.99,"CAD","Fake Amazon", "Fake Amazon",5, "/assets/images/banana.jpeg"),
+  ("Calculator","math tools",39.99,"CAD","CASIO", "Fake Amazon",20, "/assets/images/calculator.jpeg" ),
+  ("Chocolate","tasty chocolate",3.98,"CAD","Kit Kat", "Fake Amazon",30, "/assets/images/chocalate.jpeg"),
+  ("Strawberry","red fruit", 4.99,"CAD","Fake Amazon", "South American Business ",6272, "/assets/images/strawberry.jpeg" ),
+  ("Bookshelf","wooden object that can hold books",249.99,"CAD","Fake Amazon", "Costco",29, "/assets/images/bookshelf.jpeg"),
+  ("Phone","Electrical device that allows you to complete several tasks", 599.99,"CAD","Amazon", "Fake Amazon",92933, "/assets/images/phone.jpeg")
