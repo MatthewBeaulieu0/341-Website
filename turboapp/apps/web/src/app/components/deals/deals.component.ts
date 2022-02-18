@@ -31,15 +31,6 @@ export class DealsComponent implements OnInit {
   */
 
   creatingProducts() {
-    this.productList.push(
-      new Product({
-        name: 'fake banana',
-        price: 4,
-        image:
-          'https://i5.walmartimages.com/asr/b1e08b14-fcc6-4f73-89cd-face584cd755_1.b6900e81fa89bd897bc7cfe4549251bd.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
-        onSale: false,
-        description: 'non edible plastic babane',
-      })
-    );
+
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,9 @@ import { Navbar1Component } from './components/navbar1/navbar1.component';
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 import { HeaderComponent } from './components/header/header.component';
 
+import { CartService } from './services/cart.service';
+import { ProductsService } from './services/products.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +36,8 @@ import { HeaderComponent } from './components/header/header.component';
     SignuppageComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule, HttpClientModule],
+  providers: [CartService, ProductsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-featured-items',
@@ -13,14 +16,16 @@ export class FeaturedItemsComponent implements OnInit {
   price = 5.99;
   item = "airpods";
 
+  products: Product[];
 
-  constructor() { }
+
+  constructor(
+    private route: ActivatedRoute,
+    private cartService: CartService,
+    private httpClient: HttpClient
+  ) { }
 
   ngOnInit(): void {
-  }
-
-  addToCart(){
-
   }
 
 }
