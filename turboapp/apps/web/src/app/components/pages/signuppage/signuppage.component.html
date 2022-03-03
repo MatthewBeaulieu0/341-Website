@@ -46,7 +46,20 @@
         background-color: transparent;
       }
     </style>
-    <app-navbar1></app-navbar1>
+    <header class="header">
+      <div class="navbar">
+        <h1 class="colorofAmazonlogo">
+          <span style="color: rgb(230, 8, 8)" class="fakeFont">Fake</span>Amazon
+        </h1>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shopping Cart</a></li>
+            <li><a href="#">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
     <div class="container">
       <div class="row">
@@ -54,12 +67,12 @@
 
             </div>
           <div class="col-6 sign-up-form">
-              <form>                
-                <h1>
+              <form>
+                <h2>
                     Sign up
-                </h1>
+                </h2>
                 <br>
-                <h5> Enter Your First Name</h5>
+                <h6> Enter Your First Name</h6>
                 <input type="firstName" class="input-first-name" placeholder="First Name">
                 
                 <br>
@@ -69,14 +82,14 @@
                 <h6> Enter Your Email </h6>
                 <input type="email" class="input-email" placeholder="Email">
                 <br>
-                <h6> Enter Your Phone Number</h6>
+                <h6> Enter Your Number</h6>
                 <input type="tel" class="input-number" placeholder="Number">
                 <br>
                 <h6> Enter a Password</h6>
                 <input type="password" class="input-password" placeholder="Password">
                 <p> Already have an account? <a href=""> Log in</a></p>
                 <br>
-                <button type="button" class="btn btn-light"> Sign up </button>
+                <button type="button"> Sign up </button>
 
 
 
@@ -93,6 +106,34 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <app-footer></app-footer>
+    <div class="container-fluid">
+      <div class="row footer-row">
+        <footer class="col-12 footer">
+          <h4>Fake Amazon Inc.</h4>
+          <p>
+            Thank you for using our website.
+            <br />
+            We are a small group of entrepreneurs trying to become the next Jeff
+            Bezos.
+          </p>
+          <div class="medialogo">
+            <a href="#" class="fa fa-facebook"></a>
+
+            <a href="#" class="fa fa-twitter"></a>
+
+            <a href="#" class="fa fa-instagram"></a>
+
+            <a href="#" class="fa fa-reddit"></a>
+          </div>
+
+          <p>
+            Don't forget to follow us on social media for a chance to win 1 year
+            worth of free socks!
+          </p>
+          <br />
+          Copyright &copy; FakeAmazon All rights reserved.
+        </footer>
+      </div>
+    </div>
   </body>
 </html>
