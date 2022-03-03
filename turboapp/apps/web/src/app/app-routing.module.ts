@@ -5,7 +5,6 @@ import { ProductaisleComponent } from './components/pages/productaisle/productai
 import { ProductpageComponent } from './components/pages/productpage/productpage.component';
 import { ShoppingcartComponent } from './components/pages/shoppingcart/shoppingcart.component';
 import { WelcomepageComponent } from './components/pages/welcomepage/welcomepage.component';
-import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "welcomepage", pathMatch: "full"},
@@ -13,8 +12,7 @@ const routes: Routes = [
   {path: "welcomepage", component: WelcomepageComponent},
   {path: "productpage", component: ProductpageComponent},
   {path: "shoppingcart", component: ShoppingcartComponent},
-  {path: "aislepage", component: ProductaisleComponent},
-  {path: "signup", component: SignuppageComponent}
+  {path: "aislepage", component: ProductaisleComponent}
 ];
 
 @NgModule({
