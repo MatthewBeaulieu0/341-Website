@@ -63,8 +63,8 @@ Typescript <br />
 
 | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 | :------: | :------: | :------: | :------: |
-|          |          |          |          |
-|          |          |          |          |
-|          |          |          |          |
-|          |          |          |          |
+| Clear Goal For the Website         |          |          |          |
+| Task Breakdown         |          |          |          |
+| Issues        |          |          |          |
+| Work Assigned to Members         |          |          |          |
 |          |          |          |          |
