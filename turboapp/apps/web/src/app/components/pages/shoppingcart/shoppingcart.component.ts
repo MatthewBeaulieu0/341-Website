@@ -12,6 +12,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class ShoppingcartComponent implements OnInit {
   id: number;
   cart: Cart[] = [];
+  totalProduct: number;
+  
+  
+  deliveryFees = 10.00;
+
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
@@ -21,7 +26,30 @@ export class ShoppingcartComponent implements OnInit {
       .subscribe((response) => {
         this.cart = response.data[1];
         console.log('This cart' + JSON.stringify(this.cart[0].quantity));
+        console.log('This cart' + JSON.stringify(this.cart[0].product.name));
       });
+  }
+
+  subtotalProduct(cart: Cart){
+    return parseFloat((cart.quantity * cart.product.price).toFixed(2));
+  }
+
+  calculateSubtotal(){
+    let subtotal = 0;
+    for(let i = 0; i < this.cart.length; i++){
+      subtotal += this.subtotalProduct(this.cart[i]);
+      
+    }
+    console.log(subtotal);
+    return parseFloat(subtotal.toFixed(2));
+  }
+
+  calculateTax(){
+    return parseFloat(((this.calculateSubtotal() * 1.15) - this.calculateSubtotal()).toFixed(2));
+  }
+
+  calculateTotal(){
+    return (this.calculateSubtotal() + this.calculateTax() + this.deliveryFees).toFixed(2);
   }
 
   onDelete(product_id: number) {
@@ -44,7 +72,7 @@ export class ShoppingcartComponent implements OnInit {
     );
   }
 
-  updateTotal() {}
+
 
   ngOnInit(): void {
     this.getCart();

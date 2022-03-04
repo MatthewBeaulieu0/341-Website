@@ -26,11 +26,12 @@
           <th>Quantity</th>
           <th>Subtotal</th>
         </tr>
-        <tr>
+        <tr *ngFor="let cart of cart; let i = index">
           <td>
-            <div *ngFor="let cart of cart" class="cart-box">
+            <div  class="cart-box">
               <script>
                 console.log("Product: " + product);
+                
               </script>
               <img src="{{ cart.product.link }}" />
               <div class="info-box">
@@ -49,9 +50,12 @@
 
           <div class="detail-box">
             <td>
-              <input type="number" value="1" min="1" class="cart-quantity" />
+              <script>
+                console.log(i);
+              </script>
+              <input type="number" [(ngModel)]= "cart.quantity" min="1" class="cart-quantity" />
             </td>
-            <td class="cart-price">$</td>
+            <td class="cart-price"> {{subtotalProduct(cart)}} $</td>
           </div>
         </tr>
       </table>
@@ -60,19 +64,19 @@
         <table>
           <tr>
             <td>Subtotal</td>
-            <td class="subtotal-price"><span>$</span></td>
+            <td class="subtotal-price"><span> {{this.calculateSubtotal()}} $</span></td>
           </tr>
           <tr>
             <td>Tax</td>
-            <td>$</td>
+            <td> {{this.calculateTax()}} $</td>
           </tr>
           <tr>
             <td>Delivery Fees</td>
-            <td>$</td>
+            <td> {{this.deliveryFees}} $</td>
           </tr>
           <tr>
             <td>Total</td>
-            <td class="total-price">$</td>
+            <td class="total-price"> {{this.calculateTotal()}} $</td>
           </tr>
         </table>
       </div>
