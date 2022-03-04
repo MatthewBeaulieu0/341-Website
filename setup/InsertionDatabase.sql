@@ -1,4 +1,4 @@
-INSERT INTO `product` (`Name`,`Description`,`Price`,`Brand`,`Seller`,`Stock`, `Link`)
+INSERT INTO `product` (`Name`,`Description`,`Price`,`Brand`,`Seller`,`Stock`, `Link`,`Category`)
 VALUES
   ("Banana","yellow fruit",0.99,"Fake Amazon", "Fake Amazon",5, "/assets/images/banana.jpeg","Food"),
   ("Calculator","math tools",39.99,"CASIO", "Fake Amazon",20, "/assets/images/calculator.jpeg" ,"Electronic"),
