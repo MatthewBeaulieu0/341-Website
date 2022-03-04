@@ -46,6 +46,7 @@ CREATE TABLE `Product` (
     `seller` varchar(45)  NOT NULL ,
     `stock` int  NOT NULL ,
     `link` varchar(180)  NOT NULL ,
+    `category` varchar(45) NOT NULL , 
     PRIMARY KEY (
         `product_id`
     ),
