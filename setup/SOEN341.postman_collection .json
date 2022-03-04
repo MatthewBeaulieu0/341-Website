@@ -148,7 +148,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3001/product/filter/products?name=&price=10&limit=100&skip=0",
+							"raw": "http://localhost:3001/product/filter/products?name=&category&price=10&limit=100&skip=0",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -163,6 +163,10 @@
 								{
 									"key": "name",
 									"value": ""
+								},
+								{
+									"key": "category",
+									"value": null
 								},
 								{
 									"key": "price",
