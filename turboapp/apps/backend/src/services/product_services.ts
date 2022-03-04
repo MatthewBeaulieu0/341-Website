@@ -28,7 +28,7 @@ export async function delete_product_by_id(product_id: number) {
 }
 
 export async function batch_find_products_by_ids(product_ids: Array<string>) {
-    var sql = `SELECT * FROM product WHERE product_id IN (?) ORDER BY name`;
+    var sql = `SELECT * FROM product WHERE product_id IN (?)`;
     try {
         var products = await query(sql, [product_ids]);
         console.log(products)

@@ -66,15 +66,3 @@ export async function remove_from_user_cart(product_ids: number, user_id: number
 
     return result;
 }
-
-export async function get_user_cart_service(user_id: number){
-    var sql = `SELECT (shopping_cart) FROM user WHERE user_id = ?;`;
-    try {
-        var product_ids: any = await query(sql, [user_id]);
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
-
-    return product_ids;
-}
