@@ -36,7 +36,7 @@ export function create_user(user: any){
 
 export async function add_to_user_cart(user_id: number, product_id: number){
     var sql =   `
-                    UPDATE users
+                    UPDATE user
                     SET shopping_cart=JSON_ARRAY_APPEND(shopping_cart, '$', ?)
                     WHERE user_id = ?;
                 `;
@@ -56,7 +56,7 @@ export async function add_to_user_cart(user_id: number, product_id: number){
 }
 
 export async function remove_from_user_cart(product_ids: number, user_id: number){
-    var sql =`UPDATE users SET shopping_cart=JSON_ARRAY(?) WHERE user_id = ?`;
+    var sql =`UPDATE user SET shopping_cart=JSON_ARRAY(?) WHERE user_id = ?`;
     try {
         var result = await query(sql, [product_ids, user_id]) 
     } catch (error) {
@@ -65,16 +65,4 @@ export async function remove_from_user_cart(product_ids: number, user_id: number
     }
 
     return result;
-}
-
-export async function get_user_cart_service(user_id: number){
-    var sql = `SELECT (shopping_cart) FROM users WHERE user_id = ?;`;
-    try {
-        var product_ids: any = await query(sql, [user_id]);
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
-
-    return product_ids;
 }
