@@ -13,7 +13,7 @@
   </head>
   <body>
     <!-- header section starts -->
-    
+
     <app-header></app-header>
 
     <!-- cart starts-->
@@ -28,26 +28,31 @@
         </tr>
         <tr>
           <td>
-            <div *ngFor="let product of cart" class="cart-box">
+            <div *ngFor="let cart of cart" class="cart-box">
               <script>
-                console.log(product);
+                console.log("Product: " + product);
               </script>
-              <img
-                src= {{product.link}}
-              />
-              <div  class="info-box">
-                <p class="cart-product-title">{{ product.name }}</p>
-                <small class="cart-product-price"> {{ product.price }}$</small>
+              <img src="{{ cart.product.link }}" />
+              <div class="info-box">
+                <p class="cart-product-title">{{ cart.product.name }}</p>
+                <small class="cart-product-price">
+                  {{ cart.product.price }}$</small
+                >
                 <br />
-                <a class="fas fa-trash" (click) = "onDelete(product.product_id)"></a>
+                <a
+                  class="fas fa-trash"
+                  (click)="onDelete(cart.product.product_id)"
+                ></a>
               </div>
             </div>
           </td>
 
-            <div class="detail-box">
-                <td><input type="number" value="1" min="1" class="cart-quantity"></td>
-                <td class="cart-price">$</td>
-            </div>
+          <div class="detail-box">
+            <td>
+              <input type="number" value="1" min="1" class="cart-quantity" />
+            </td>
+            <td class="cart-price">$</td>
+          </div>
         </tr>
       </table>
 
@@ -72,12 +77,9 @@
         </table>
       </div>
     </div>
-<!-- cart ends -->
-<script>
-
-//Update total price
-
-
-</script>
-</body>
+    <!-- cart ends -->
+    <script>
+      //Update total price
+    </script>
+  </body>
 </html>
