@@ -11,6 +11,7 @@ export const product_schema = yup.object().shape({
     link: yup
         .string()
         .default("turboapp/apps/web/src/assets/images/banana.jpeg"),
+    category: yup.string(),
 });
 
 export const filter_schema = yup.object().shape({
