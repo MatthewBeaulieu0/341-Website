@@ -82,6 +82,11 @@ export async function filter_products(filter: Filter) {
     sql = sql + " price <= ? "
     params.push(filter.price);
   }
+  if ('category' in filter) {
+    sql = sql + "category LIKE ?";
+    params.push(filter.category);
+    filter_cnt++;
+  }
 
   sql = sql + "LIMIT ?, ?"
   params.push(filter.skip, filter.limit)
