@@ -26,6 +26,21 @@ export async function get_orderline_by_order_id_and_product_id(order_id: number,
     return orderlines;
 }
 
+export async function increment_quantity(order_id: number, product_id: number, quantity: number){
+    var sql =   `
+                    UPDATE fake_amazon.orderline
+                    SET quantity=quantity + ?
+                    WHERE order_id = ? AND product_id = ?;
+                `
+    try {
+        var result: any = await query(sql, [quantity, order_id, product_id]);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+    return result;
+}
+
 export async function add_order_to_orderline(order_id: number, product_id: number, quantity: number){
     var sql = `INSERT INTO fake_amazon.orderline (order_id, product_id, quantity) VALUES (?, ?, ?);`;
     try {

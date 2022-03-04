@@ -1,6 +1,6 @@
 import { ErrorResponse } from "../models/errors";
 import { User, user_schema } from "../models/users";
-import { add_order_to_orderline, get_orderline_by_order_id } from "../services/orderline_services";
+import { add_order_to_orderline, get_orderline_by_order_id, get_orderline_by_order_id_and_product_id, increment_quantity } from "../services/orderline_services";
 import { get_order } from "../services/order_services";
 import { batch_find_products_by_ids } from "../services/product_services";
 import { find_user_by_id, create_user } from "../services/user_services";
@@ -57,7 +57,16 @@ export async function add_product_to_cart(user_id: number, product_id: number, q
 
   let order_id: number = order[0].order_id;
 
-  let result = await add_order_to_orderline(order_id, product_id, quantity);
+  let existing_order: any = await get_orderline_by_order_id_and_product_id(order_id, product_id);
+
+  console.log("EXISTING ORDER:   ", existing_order);
+  
+  if(existing_order[0]){
+    var result = await increment_quantity(order_id, product_id, quantity);
+
+  } else {
+    var result = await add_order_to_orderline(order_id, product_id, quantity);
+  }
   console.log(result)
 
   if (result) {
