@@ -83,7 +83,8 @@ export async function filter_products(filter: Filter) {
     params.push(filter.price);
   }
   if ('category' in filter) {
-    sql = sql + "category LIKE ?";
+    if (filter_cnt>0) {sql = sql + ' AND '}
+    sql = sql + "category LIKE ?  ";
     params.push(filter.category);
     filter_cnt++;
   }
