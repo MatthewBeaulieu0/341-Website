@@ -4,7 +4,7 @@ import { Filter } from "../models/products";
 // import { Product } from "../models/products";
 
 export async function find_product_by_id(product_id: number) {
-    var sql = `SELECT * FROM products WHERE product_id = ?`;
+    var sql = `SELECT * FROM product WHERE product_id = ?`;
     try {
         var product = await query(sql, [product_id]);
     } catch (error) {
@@ -16,7 +16,7 @@ export async function find_product_by_id(product_id: number) {
 }
 
 export async function delete_product_by_id(product_id: number) {
-    var sql = `DELETE FROM products WHERE product_id = ?`;
+    var sql = `DELETE FROM product WHERE product_id = ?`;
     try {
         var result = await query(sql, [product_id]);
     } catch (error) {
@@ -28,7 +28,7 @@ export async function delete_product_by_id(product_id: number) {
 }
 
 export async function batch_find_products_by_ids(product_ids: Array<string>) {
-    var sql = `SELECT * FROM products WHERE product_id IN (?) ORDER BY name`;
+    var sql = `SELECT * FROM product WHERE product_id IN (?) ORDER BY name`;
     try {
         var products = await query(sql, [product_ids]);
         console.log(products)
@@ -41,7 +41,7 @@ export async function batch_find_products_by_ids(product_ids: Array<string>) {
 }
 
 export async function create_product(product: any) {
-    var sql = "INSERT INTO products (??) VALUES (?)";
+    var sql = "INSERT INTO product (??) VALUES (?)";
     var params = [];
     var keys = [];
     
@@ -66,7 +66,7 @@ export async function create_product(product: any) {
 }
 
 export async function filter_products(filter: Filter) {
-  var sql = `SELECT * FROM products WHERE `;
+  var sql = `SELECT * FROM product WHERE `;
   var params = [];
   var filter_cnt = 0;
 
