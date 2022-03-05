@@ -1,10 +1,5 @@
 import { ErrorResponse } from "../models/errors";
-import {
-    Filter,
-    filter_schema,
-    Product,
-    product_schema,
-} from "../models/products";
+import { Filter, filter_schema, product_schema } from "../models/products";
 import {
     create_product,
     filter_products,
