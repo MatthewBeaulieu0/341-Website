@@ -10,23 +10,22 @@ import { get_order } from "../services/order_services";
 import { batch_find_products_by_ids } from "../services/product_services";
 import { find_user_by_id, create_user } from "../services/user_services";
 import { delete_product_by_id } from "../services/product_services";
-export function get_user_by_id(user_id: string) {
-    let user = find_user_by_id(user_id);
+export async function get_user_by_id(user_id: number) {
+    let user = await find_user_by_id(user_id);
     if (user) {
-        let updated_user = user_schema.cast(user);
-        return [200, updated_user];
+        return [200, user];
     } else {
         return [404, { msg: "User not found" }];
     }
 }
 
-export function create_new_user(user: User) {
+export async function create_new_user(user: any) {
     let [err, error_data] = validate_user_data(user);
     if (err) {
         return [400, error_data];
     } else {
         let casted_user = user_schema.cast(user, { stripUnknown: true });
-        let new_user = create_user(casted_user);
+        let new_user = await create_user(casted_user);
         return [200, new_user];
     }
 }

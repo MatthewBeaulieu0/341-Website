@@ -27,11 +27,11 @@ user.put("/", (req: Request, res: Response) => {
     }
 });
 
-user.get("/id/:user_id", (req: Request, res: Response) => {
-    let user_id = req.params.user_id;
+user.get("/id/:user_id", async (req: Request, res: Response) => {
+    let user_id = parseInt(req.params.user_id);
     try {
         let status,
-            data = get_user_by_id(user_id);
+            data = await get_user_by_id(user_id);
         res.json({ data });
         if (status == 200) {
             res.sendStatus(200);
