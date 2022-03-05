@@ -1,5 +1,10 @@
 import { ErrorResponse } from "../models/errors";
-import { Filter, filter_schema, product_schema } from "../models/products";
+import {
+    Filter,
+    filter_schema,
+    Product,
+    product_schema,
+} from "../models/products";
 import {
     create_product,
     filter_products,
@@ -29,7 +34,7 @@ export async function create_new_product(product: any) {
     }
 }
 
-export async function get_filtered_products(filter: Filter){
+export async function get_filtered_products(filter: Filter) {
     let stripped_filer = filter_schema.cast(filter, {
         stripUnknown: true,
     });
@@ -38,8 +43,12 @@ export async function get_filtered_products(filter: Filter){
     if (err) {
         return [400, error_data];
     } else {
-        let products = await filter_products(stripped_filer);
-        return [200, products];
+        var products: any = await filter_products(stripped_filer);
+        var data: any = [];
+        products.forEach((product: any) => {
+            data.push({ any: product });
+        });
+        return [200, data];
     }
 }
 
