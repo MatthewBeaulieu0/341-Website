@@ -38,12 +38,8 @@ export async function get_filtered_products(filter: Filter) {
     if (err) {
         return [400, error_data];
     } else {
-        var products: any = await filter_products(stripped_filer);
-        var data: any = [];
-        products.forEach((product: any) => {
-            data.push({ any: product });
-        });
-        return [200, data];
+        let products = await filter_products(stripped_filer);
+        return [200, products];
     }
 }
 
