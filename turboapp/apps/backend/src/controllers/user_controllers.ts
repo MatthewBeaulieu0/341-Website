@@ -1,6 +1,11 @@
 import { ErrorResponse } from "../models/errors";
 import { User, user_schema } from "../models/users";
-import { add_order_to_orderline, get_orderline_by_order_id, get_orderline_by_order_id_and_product_id, increment_quantity } from "../services/orderline_services";
+import {
+    add_order_to_orderline,
+    get_orderline_by_order_id,
+    get_orderline_by_order_id_and_product_id,
+    increment_quantity,
+} from "../services/orderline_services";
 import { get_order } from "../services/order_services";
 import { batch_find_products_by_ids } from "../services/product_services";
 import { find_user_by_id, create_user } from "../services/user_services";
@@ -45,37 +50,47 @@ export async function get_user_cart(user_id: number) {
     var products: any = await batch_find_products_by_ids(product_ids);
     var data: any = [];
     products.forEach((product: any, index: any) => {
-        data.push({ product: product, quantity: orderlines[index].Quantity });
+        data.push({ product: product, quantity: orderlines[index].quantity });
     });
 
     //console.log(data[0].product.product_id); // Someone wanted this iunno
     return [200, data];
 }
 
-export async function add_product_to_cart(user_id: number, product_id: number, quantity: number) {
+export async function add_product_to_cart(
+    user_id: number,
+    product_id: number,
+    quantity: number
+) {
     let order: any = await get_order(user_id);
     if (!order[0]) {
         return [404, { msg: "User not found" }];
     }
     let order_id: number = order[0].order_id;
 
-    let existing_order: any = await get_orderline_by_order_id_and_product_id(order_id, product_id);
+    let existing_order: any = await get_orderline_by_order_id_and_product_id(
+        order_id,
+        product_id
+    );
 
-  // console.log("EXISTING ORDER:   ", existing_order);
-  
-  if(existing_order[0]){
-    var result = await increment_quantity(order_id, product_id, quantity);
+    // console.log("EXISTING ORDER:   ", existing_order);
 
-  } else {
-    var result = await add_order_to_orderline(order_id, product_id, quantity);
-  }
-  console.log(result)
+    if (existing_order[0]) {
+        var result = await increment_quantity(order_id, product_id, quantity);
+    } else {
+        var result = await add_order_to_orderline(
+            order_id,
+            product_id,
+            quantity
+        );
+    }
+    console.log(result);
 
-  if (result) {
-    return [200, {"msg": "Product added to cart!"}];
-  } else {
-    return [404, { 'msg': "User or Product not found" }];
-  }
+    if (result) {
+        return [200, { msg: "Product added to cart!" }];
+    } else {
+        return [404, { msg: "User or Product not found" }];
+    }
 }
 
 export async function delete_product_from_cart(
