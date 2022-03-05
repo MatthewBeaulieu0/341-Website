@@ -75,6 +75,19 @@ export class ShoppingcartComponent implements OnInit {
     );
   }
 
+  updateCart(event, id:number){
+    const newqty = event.target.value;
+    for(let i = 0; i < this.cart.length; i++){
+      if(this.cart[i].product.product_id == id){
+        this.cart[i].quantity = newqty;
+        this.subtotalProduct(this.cart[i]);
+      }
+    }
+    this.calculateSubtotal();
+    this.calculateTax();
+    this.calculateTotal();
+  }
+
   ngOnInit(): void {
     this.getCart();
   }

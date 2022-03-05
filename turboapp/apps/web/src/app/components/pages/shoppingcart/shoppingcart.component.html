@@ -53,7 +53,7 @@
               <script>
                 console.log(i);
               </script>
-              <input type="number" [(ngModel)]= "cart.quantity" min="1" class="cart-quantity" />
+              <input type="number" [(ngModel)]= "cart.quantity" (keyup)="updateCart($event, cart.product.product_id)" min="1" class="cart-quantity" />
             </td>
             <td class="cart-price"> {{subtotalProduct(cart)}} $</td>
           </div>
