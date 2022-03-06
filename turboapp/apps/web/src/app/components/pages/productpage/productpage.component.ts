@@ -1,29 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-productpage',
   templateUrl: './productpage.component.html',
-  styleUrls: ['./productpage.component.css']
+  styleUrls: ['./productpage.component.css'],
 })
 export class ProductpageComponent implements OnInit {
-  price=5.99;
-  items="Fake Airpods";
+  price = 5.99;
+  items = 'Fake Airpods';
 
-  constructor(
-    private router: Router
-    ) { }
+  // add section that gets information from database (get http request)
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  routeToMainPage(){
+  routeToMainPage() {
     this.router.navigate(['/mainpage']);
   }
 
-  routeToShoppingCart(){
+  routeToShoppingCart() {
     this.router.navigate(['/shoppingcart']);
   }
-
 }

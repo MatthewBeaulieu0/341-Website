@@ -1,31 +1,35 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { HttpClient } from '@angular/common/http';
+import { MainpageComponent } from '../pages/mainpage/mainpage.component';
 
 @Component({
   selector: 'app-featured-items',
   templateUrl: './featured-items.component.html',
-  styleUrls: ['./featured-items.component.css']
+  styleUrls: ['./featured-items.component.css'],
 })
-export class FeaturedItemsComponent implements OnInit {
+export class FeaturedItemsComponent
+  extends MainpageComponent
+  implements OnInit
+{
+  override products = this.getProductArray();
 
-  images = ["https://images-na.ssl-images-amazon.com/images/G/15/DVD/04_-_NEW_FamilyStripe_AirPods_3rd._CB653734269_.png","https://images-na.ssl-images-amazon.com/images/G/15/DVD/04_-_NEW_FamilyStripe_AirPods_3rd._CB653734269_.png", "https://images-na.ssl-images-amazon.com/images/G/15/DVD/04_-_NEW_FamilyStripe_AirPods_3rd._CB653734269_.png", "https://images-na.ssl-images-amazon.com/images/G/15/DVD/04_-_NEW_FamilyStripe_AirPods_3rd._CB653734269_.png"];
-
-  price = 5.99;
-  item = "airpods";
-
-  products: Product[];
-
-
-  constructor(
-    private route: ActivatedRoute,
-    private cartService: CartService,
-    private httpClient: HttpClient
-  ) { }
-
-  ngOnInit(): void {
+  productPageRoute() {
+    this.router.navigate(['/productpage']);
   }
 
+  constructor(
+    // private route: ActivatedRoute,
+    // private cartService: CartService,
+    // private httpClient: HttpClient
+    protected override router: Router,
+    protected override activatedRoute: ActivatedRoute,
+    protected override httpClient: HttpClient
+  ) {
+    super(router, activatedRoute, httpClient);
+  }
+
+  override ngOnInit(): void {}
 }
