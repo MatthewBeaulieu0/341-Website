@@ -49,7 +49,7 @@ This website will be an e-commerce website which will try to replicate the exper
 # Technologies
 
 Frontend: Angular <br />
-StyleSheet Software : ...<br />
+StyleSheet Software : CSS<br />
 Backend : Express.js <br />
 Project Base : Node.js <br />
 Database : MySQL <br />
@@ -63,8 +63,8 @@ Typescript <br />
 
 | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 | :------: | :------: | :------: | :------: |
-| Clear Goal For the Website         |          |          |          |
-| Task Breakdown         |          |          |          |
-| Issues        |          |          |          |
-| Work Assigned to Members         |          |          |          |
+| Clear Goal For the Website         | Shopping Cart Developed         |          |          |
+| Task Breakdown         | Browsing for Items (in Progress)         |          |          |
+| Issues        | CI Test Infrastructure         |          |          |
+| Work Assigned to Members         | Issues Risk and Priority Assessment         |          |          |
 |          |          |          |          |
