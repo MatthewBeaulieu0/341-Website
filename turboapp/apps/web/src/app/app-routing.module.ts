@@ -8,17 +8,17 @@ import { WelcomepageComponent } from './components/pages/welcomepage/welcomepage
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: "welcomepage", pathMatch: "full"},
-  {path: "mainpage", component: MainpageComponent},
-  {path: "welcomepage", component: WelcomepageComponent},
-  {path: "productpage", component: ProductpageComponent},
-  {path: "shoppingcart", component: ShoppingcartComponent},
-  {path: "aislepage", component: ProductaisleComponent},
-  {path: "signup", component: SignuppageComponent}
+  { path: '', redirectTo: 'welcomepage', pathMatch: 'full' },
+  { path: 'mainpage', component: MainpageComponent },
+  { path: 'welcomepage', component: WelcomepageComponent },
+  { path: 'productpage', component: ProductpageComponent },
+  { path: 'shoppingcart', component: ShoppingcartComponent },
+  { path: 'aislepage', component: ProductaisleComponent },
+  { path: 'signup', component: SignuppageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

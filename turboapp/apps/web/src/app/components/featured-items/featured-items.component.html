@@ -1,16 +1,24 @@
-         
-<div class="featured-slider">   
-    <div class="wrapper"> 
-        <div class="box" *ngFor="let image of images">
-            <div class="image">
-                <img [src]="image" alt="">
-            </div>
-            <div class="content">
-                <h3>Featured item</h3>
-                <div>{{item}}</div>
-                <div class="price"><span >{{price}}</span></div>
-                <a href="#" class="btn" >Add to cart</a>
-            </div>
+<div class="featured-slider">
+  <div class="wrapper">
+    <script>
+      console.log(this.products);
+    </script>
+    <div
+      class="box"
+      *ngFor="let product of products"
+      (click)="productPageRoute()"
+    >
+      <div class="image">
+        <img src="{{ product.link }}" alt="" />
+      </div>
+      <div class="content">
+        <h3>Featured item</h3>
+        <div>{{ product.name }}</div>
+        <div class="price">
+          <span>{{ product.price }}</span>
         </div>
+        <a href="#" class="btn">Add to cart</a>
+      </div>
     </div>
+  </div>
 </div>
