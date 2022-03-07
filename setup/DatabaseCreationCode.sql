@@ -79,3 +79,5 @@ REFERENCES `Product` (`product_id`);
 CREATE INDEX `idx_User_name`
 ON `User` (`name`);
 
+ALTER TABLE `fake_amazon`.`product` 
+ADD COLUMN `featured` BOOLEAN NOT NULL DEFAULT(FALSE);
