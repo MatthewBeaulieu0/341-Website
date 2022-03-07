@@ -7,7 +7,7 @@ export class Product {
   public seller: string;
   public stock: number;
   public link: string;
-
+  public featured: boolean;
   constructor(clone: Product = null) {
     this.product_id = 0;
     this.name = '';
@@ -17,7 +17,7 @@ export class Product {
     this.seller = '';
     this.stock = 0;
     this.link = '';
-
+    this.featured = false;
     if (!!clone) {
       this.product_id = clone.product_id;
       this.name = clone.name;
@@ -27,6 +27,7 @@ export class Product {
       this.seller = clone.seller;
       this.stock = clone.stock;
       this.link = clone.link;
+      this.featured = clone.featured;
     }
   }
 }
