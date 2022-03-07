@@ -80,4 +80,4 @@ CREATE INDEX `idx_User_name`
 ON `User` (`name`);
 
 ALTER TABLE `fake_amazon`.`product` 
-ADD COLUMN `featured` BIT(1) NOT NULL DEFAULT(0);
+ADD COLUMN `featured` BOOLEAN NOT NULL DEFAULT(FALSE);
