@@ -13,10 +13,8 @@ export class ShoppingcartComponent implements OnInit {
   id: number;
   cart: Cart[] = [];
   totalProduct: number;
-  
-  
-  deliveryFees = 10.00;
 
+  deliveryFees = 10.0;
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
@@ -26,30 +24,37 @@ export class ShoppingcartComponent implements OnInit {
       .subscribe((response) => {
         this.cart = response.data[1];
         console.log('This cart' + JSON.stringify(this.cart[0].quantity));
-        console.log('This cart' + JSON.stringify(this.cart[0].product.name));
+        console.log(
+          'This cart' + JSON.stringify(this.cart[0].product.featured)
+        );
       });
   }
 
-  subtotalProduct(cart: Cart){
+  subtotalProduct(cart: Cart) {
     return parseFloat((cart.quantity * cart.product.price).toFixed(2));
   }
 
-  calculateSubtotal(){
+  calculateSubtotal() {
     let subtotal = 0;
-    for(let i = 0; i < this.cart.length; i++){
+    for (let i = 0; i < this.cart.length; i++) {
       subtotal += this.subtotalProduct(this.cart[i]);
-      
     }
     console.log(subtotal);
     return parseFloat(subtotal.toFixed(2));
   }
 
-  calculateTax(){
-    return parseFloat(((this.calculateSubtotal() * 1.15) - this.calculateSubtotal()).toFixed(2));
+  calculateTax() {
+    return parseFloat(
+      (this.calculateSubtotal() * 1.15 - this.calculateSubtotal()).toFixed(2)
+    );
   }
 
-  calculateTotal(){
-    return (this.calculateSubtotal() + this.calculateTax() + this.deliveryFees).toFixed(2);
+  calculateTotal() {
+    return (
+      this.calculateSubtotal() +
+      this.calculateTax() +
+      this.deliveryFees
+    ).toFixed(2);
   }
 
   onDelete(product_id: number) {
@@ -72,11 +77,21 @@ export class ShoppingcartComponent implements OnInit {
     );
   }
 
-
+  updateCart(event, id: number) {
+    const newqty = event.target.value;
+    for (let i = 0; i < this.cart.length; i++) {
+      if (this.cart[i].product.product_id == id) {
+        this.cart[i].quantity = newqty;
+        this.subtotalProduct(this.cart[i]);
+      }
+    }
+    this.calculateSubtotal();
+    this.calculateTax();
+    this.calculateTotal();
+  }
 
   ngOnInit(): void {
     this.getCart();
-    this.onDelete(this.id);
   }
 
   //   updateTotal(){

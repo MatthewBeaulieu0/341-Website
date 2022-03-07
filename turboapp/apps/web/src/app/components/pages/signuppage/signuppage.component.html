@@ -54,7 +54,7 @@
 
             </div>
           <div class="col-6 sign-up-form">
-              <form>                
+              <form #usersignup = "ngForm" (ngSubmit)="onClickSubmit(usersignup.value)">                
                 <h1>
                     Sign up
                 </h1>
@@ -80,11 +80,8 @@
                 <br>
                 <p> Already have an account? <a href=""> Log in</a></p>
                 <br>
-                <button type="button" class="btn btn-light"> Sign up </button>
-
-
-
-            </form>
+                <input type="submit" value = "Sign Up">
+              </form>
           </div>
           <div class="col-3">
 
