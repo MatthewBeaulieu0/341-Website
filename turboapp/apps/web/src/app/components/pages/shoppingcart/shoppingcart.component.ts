@@ -24,7 +24,9 @@ export class ShoppingcartComponent implements OnInit {
       .subscribe((response) => {
         this.cart = response.data[1];
         console.log('This cart' + JSON.stringify(this.cart[0].quantity));
-        console.log('This cart' + JSON.stringify(this.cart[0].product.name));
+        console.log(
+          'This cart' + JSON.stringify(this.cart[0].product.featured)
+        );
       });
   }
 
@@ -75,10 +77,10 @@ export class ShoppingcartComponent implements OnInit {
     );
   }
 
-  updateCart(event, id:number){
+  updateCart(event, id: number) {
     const newqty = event.target.value;
-    for(let i = 0; i < this.cart.length; i++){
-      if(this.cart[i].product.product_id == id){
+    for (let i = 0; i < this.cart.length; i++) {
+      if (this.cart[i].product.product_id == id) {
         this.cart[i].quantity = newqty;
         this.subtotalProduct(this.cart[i]);
       }
