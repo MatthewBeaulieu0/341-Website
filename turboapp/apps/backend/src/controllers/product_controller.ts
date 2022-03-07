@@ -29,7 +29,7 @@ export async function create_new_product(product: any) {
     }
 }
 
-export async function get_filtered_products(filter: Filter){
+export async function get_filtered_products(filter: Filter) {
     let stripped_filer = filter_schema.cast(filter, {
         stripUnknown: true,
     });

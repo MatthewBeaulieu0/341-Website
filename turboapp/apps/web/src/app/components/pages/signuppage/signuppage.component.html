@@ -54,33 +54,30 @@
 
             </div>
           <div class="col-6 sign-up-form">
-              <form>                
+              <form #usersignup = "ngForm" (ngSubmit)="onClickSubmit(usersignup.value)">                
                 <h1>
                     Sign up
                 </h1>
                 <br>
                 <h5> Enter Your First Name</h5>
-                <input type="firstName" class="input-first-name" placeholder="First Name">
+                <input type="firstName" class="input-first-name" placeholder="First Name" name = "firstname" ngModel>
                 
                 <br>
                 <h6> Enter Your Last Name</h6>
-                <input type="lastName" class="input-last-name" placeholder="Last Name">
+                <input type="lastName" class="input-last-name" placeholder="Last Name" name = "lastname" ngModel>
                 <br>
                 <h6> Enter Your Email </h6>
-                <input type="email" class="input-email" placeholder="Email">
+                <input type="email" class="input-email" placeholder="Email" name = "email" ngModel>
                 <br>
                 <h6> Enter Your Phone Number</h6>
-                <input type="tel" class="input-number" placeholder="Number">
+                <input type="tel" class="input-number" placeholder="Number" name = "number" ngModel>
                 <br>
                 <h6> Enter a Password</h6>
-                <input type="password" class="input-password" placeholder="Password">
+                <input type="password" class="input-password" placeholder="Password" name = "password" ngModel>
                 <p> Already have an account? <a href=""> Log in</a></p>
                 <br>
-                <button type="button" class="btn btn-light"> Sign up </button>
-
-
-
-            </form>
+                <input type="submit" value = "Sign Up">
+              </form>
           </div>
           <div class="col-3">
 
