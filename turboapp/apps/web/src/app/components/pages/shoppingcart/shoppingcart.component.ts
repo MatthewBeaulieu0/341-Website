@@ -3,6 +3,7 @@ import { Product } from 'src/app/models/product';
 import { Cart } from 'src/app/models/cart';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -16,19 +17,7 @@ export class ShoppingcartComponent implements OnInit {
 
   deliveryFees = 10.0;
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
-
-  getCart() {
-    this.httpClient
-      .get<any>('http://localhost:3001/user/id/1/shopping_cart')
-      .subscribe((response) => {
-        this.cart = response.data[1];
-        console.log('This cart' + JSON.stringify(this.cart[0].quantity));
-        console.log(
-          'This cart' + JSON.stringify(this.cart[0].product.featured)
-        );
-      });
-  }
+  constructor(private httpClient: HttpClient, private router: Router, private _cartService = CartService) {}
 
   subtotalProduct(cart: Cart) {
     return parseFloat((cart.quantity * cart.product.price).toFixed(2));
@@ -91,7 +80,6 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCart();
   }
 
   //   updateTotal(){
