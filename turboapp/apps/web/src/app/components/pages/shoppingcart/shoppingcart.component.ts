@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product';
 import { Cart } from 'src/app/models/cart';
-import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -9,6 +7,7 @@ import { CartService } from 'src/app/services/cart.service';
   selector: 'app-shoppingcart',
   templateUrl: './shoppingcart.component.html',
   styleUrls: ['./shoppingcart.component.css'],
+  providers: [CartService]
 })
 export class ShoppingcartComponent implements OnInit {
   id: number;
@@ -17,7 +16,11 @@ export class ShoppingcartComponent implements OnInit {
 
   deliveryFees = 10.0;
 
-  constructor(private httpClient: HttpClient, private router: Router, private _cartService = CartService) {}
+  constructor(
+    private httpClient: HttpClient, 
+    private _cartService = CartService) {
+      //this.cart = this._cartService.getCart();
+    }
 
   subtotalProduct(cart: Cart) {
     return parseFloat((cart.quantity * cart.product.price).toFixed(2));

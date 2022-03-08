@@ -16,6 +16,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Product } from 'src/app/models/product';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -28,26 +29,19 @@ export class MainpageComponent implements OnInit {
   constructor(
     protected router: Router,
     protected activatedRoute: ActivatedRoute,
-    protected httpClient: HttpClient
-  ) {}
-
-  getProducts() {
-    this.httpClient
-      .get<any>('http://localhost:3001/product/filter/products?name=')
-      .subscribe((response) => {
-        console.log(response[1]);
-        this.products = response[1];
-        console.log('This product' + JSON.stringify(this.products[0].name));
-        console.log('This product' + JSON.stringify(this.products[0].price));
-      });
+    protected httpClient: HttpClient,
+    private _productsService: ProductsService
+  ) {
+    this.products = _productsService.getAllProducts();
   }
+
+  
 
   getProductArray() {
     return this.products;
   }
 
   ngOnInit(): void {
-    this.getProducts();
   }
 
   routeToShoppingCart() {
