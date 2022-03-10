@@ -8,6 +8,7 @@
     <div
       class="box"
       *ngFor="let item of featuredItems"
+      (click)="sendProductID(item.product_id)"
     >
       <div class="image">
         <img src="{{ item.link }}" alt="" />

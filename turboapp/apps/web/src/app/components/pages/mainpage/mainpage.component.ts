@@ -32,17 +32,14 @@ export class MainpageComponent implements OnInit {
     protected httpClient: HttpClient,
     private _productsService: ProductsService
   ) {
-    this.products = _productsService.getAllProducts();
+    //this.products = _productsService.getAllProducts();
   }
-
-  
 
   getProductArray() {
     return this.products;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   routeToShoppingCart() {
     this.router.navigate(['/shoppingcart']);

@@ -25,11 +25,19 @@
       rel="stylesheet"
       href="/turboapp/apps/web/src/app/components/productpage/productpage.component.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -50,7 +58,7 @@
       <div class="row back-to-menu">
         <div class="col-2 back-menu"></div>
         <div class="col-2 back-menu">
-          <a [routerLink]='["/mainpage"]' (click)="routeToMainPage()">
+          <a [routerLink]="['/mainpage']" (click)="routeToMainPage()">
             - Go back
           </a>
         </div>
@@ -62,17 +70,13 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-6 item-image">
-          <img
-            src="../../../../assets/images/airpods.jpeg"
-            alt="airpods"
-            width="300vh"
-          />
+          <img src="{{ product.link }}" alt="airpods" width="300vh" />
         </div>
 
         <div class="col-3 item-description">
-          <h2>{{items}}</h2>
-          <h5>{{price}}</h5>
-          <br>
+          <h2>{{ product.name }}</h2>
+          <h5>{{ product.price }}</h5>
+          <br />
           <h6>Description</h6>
           <br />
           <div class="form">
@@ -88,8 +92,8 @@
           </div>
 
           <br />
-          <a [routerLink]='["/shoppingcart"]' (click)="routeToShoppingCart()">
-          <button type="button" class="btn btn-block">Add To Cart</button>
+          <a [routerLink]="['/shoppingcart']" (click)="routeToShoppingCart()">
+            <button type="button" class="btn btn-block">Add To Cart</button>
           </a>
         </div>
         <div class="col-3"></div>
