@@ -1,5 +1,5 @@
 body{
-    background-image: url('https://blitzen.com/blog/wp-content/uploads/new-tech.jpg');
+    background-image: url('https://kinneygroup.com/wp-content/uploads/2019/10/fw-bg-gradient.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -43,6 +43,7 @@ font-family:initial;
 
 .btn-light{
     font-family: cursive;
+    margin-bottom: 100px;
 }
 
 .btn-light:hover{
