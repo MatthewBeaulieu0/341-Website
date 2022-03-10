@@ -9,9 +9,10 @@ import { delete_product_from_cart } from "../controllers/user_controllers";
 const user = express.Router();
 user.use(express.json());
 
-user.put("/", (req: Request, res: Response) => {
+user.post("/", (req: Request, res: Response) => {
     try {
-        let user = req.body;
+        let user = req.body.body.user;
+        console.log(user);
         let status,
             data = create_new_user(user);
         res.json({ data });

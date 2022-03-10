@@ -1,12 +1,22 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-signuppage',
   templateUrl: './signuppage.component.html',
   styleUrls: ['./signuppage.component.css'],
 })
 export class SignuppageComponent implements OnInit {
-  constructor() {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
+  user: User = {
+    name: '',
+    password: '',
+    seller: false,
+    age: 0,
+    email: '',
+    address: '',
+  };
   checkboxes = [
     { checked: false, value: 'Yes' },
     { checked: false, value: 'No' },
@@ -22,7 +32,10 @@ export class SignuppageComponent implements OnInit {
 
   onClickSubmit(data) {
     //verifying first name
-    if (/^[a-z ,.'-]+$/i.test(data.firstname)) {
+    if (
+      /^[a-z ,.'-]+$/i.test(data.firstname) &&
+      /^[a-z ,.'-]+$/i.test(data.lastname)
+    ) {
       // add to db
       console.log(data.firstname);
     } else {
@@ -47,14 +60,6 @@ export class SignuppageComponent implements OnInit {
     } else {
       console.log('invalid email address');
     }
-
-    // if(/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/.test(data.number)){
-    //   // add to db
-    //   console.log(data.number);
-    // } else {
-    //   console.log("invalid number");
-    // }
-
     if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data.password)) {
       //add to db
       console.log(data.password);
@@ -64,21 +69,96 @@ export class SignuppageComponent implements OnInit {
       );
     }
     if (/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/i.test(data.age)) {
-      // add to db
-      console.log(data.age);
+      var myArr = data.age.split('/');
+      if (myArr[0] > 31) console.log('invalid day');
+      if (myArr[1] > 13) console.log('invalid month');
+      if (myArr[2] < 1900 || myArr[2] > 2022) console.log('invalid year');
+      console.log(myArr);
     } else {
       console.log('invalid last name');
     }
 
-    if (this.checkboxes[0].checked) {
+    if (!this.checkboxes[0].checked) {
       console.log(this.checkboxes[0].value);
     }
-    if (this.checkboxes[1].checked) {
+    if (!this.checkboxes[1].checked) {
       console.log(this.checkboxes[1].value);
     }
-    console.log(this.checkboxes);
-    console.log(data.address);
+    if (
+      /^[a-z ,.'-]+$/i.test(data.firstname) &&
+      /^[a-z ,.'-]+$/i.test(data.lastname) &&
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        data.email
+      ) &&
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data.password) &&
+      /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/i.test(data.age)
+    ) {
+      //testing all the conditions before sending backend
+      let firstname: String = data.firstname;
+      let lastname: String = data.lastname;
+      let email: String = data.email;
+      let password: String = data.password;
+      let seller = false;
+      let address = data.address;
+      if (!this.checkboxes[0].checked) {
+        seller = true;
+      } else {
+        seller = false;
+      }
+      //Assigning all the new user information to a user model
+      let age = this.getAge(myArr);
+      this.user.name = firstname + ' ' + lastname;
+      this.user.email = email;
+      this.user.password = password;
+      this.user.seller = seller;
+      this.user.age = age;
+      this.user.address = address;
+      console.log(this.user);
+      //HTTP header
+      const options = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+        body: {
+          user: this.user,
+        },
+      };
+      this.httpClient
+        .post('http://localhost:3001/user/', options)
+        .subscribe((s) => {
+          console.log(s);
+        });
+    }
   }
 
+  getAge(age: any) {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth() + 1;
+    var todayDate = today.getDate();
+    console.log(todayYear + '-' + todayMonth + '-' + todayDate);
+    if (age[1] < todayMonth) {
+      var currAge = todayYear - age[2];
+      console.log('Age:' + currAge);
+      return currAge;
+    } else if (age[1] == todayMonth) {
+      if (todayDate >= age[0]) {
+        currAge = todayYear - age[2];
+        console.log('Age:' + currAge);
+        return currAge;
+      } else {
+        currAge = todayYear - age[2] - 1;
+        console.log('Age:' + currAge);
+        return currAge;
+      }
+    } else if (age[1] > todayMonth) {
+      currAge = todayYear - age[2] - 1;
+      console.log('Age:' + currAge);
+      return currAge;
+    } else {
+      console.log('error');
+      return null;
+    }
+  }
   ngOnInit(): void {}
 }

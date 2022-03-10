@@ -20,6 +20,7 @@ export async function get_user_by_id(user_id: number) {
 }
 
 export async function create_new_user(user: any) {
+    console.log("Create User:" + JSON.stringify(user));
     let [err, error_data] = validate_user_data(user);
     if (err) {
         return [400, error_data];
