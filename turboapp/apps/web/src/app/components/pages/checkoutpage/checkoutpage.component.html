@@ -47,7 +47,13 @@
       }
     </style>
     <app-header></app-header>
+
     <div class="container">
+      <div class="row back-to-cart">
+        <a [routerLink]='["/shoppingcart"]' (click)="routeToShoppingCart()">
+          <- Go back
+        </a>
+      </div>
         <div class="row">
             <div class="col-2">
 
