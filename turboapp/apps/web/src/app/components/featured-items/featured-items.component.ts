@@ -19,11 +19,22 @@ export class FeaturedItemsComponent
   constructor(
     private _featuredItemsService: FeaturedItemsService
   ) {
-    this.featuredItems = this._featuredItemsService.getFeaturedItems();
   }
 
-  
 
   ngOnInit(): void {
+    this._featuredItemsService.getFeaturedItems()
+    .subscribe((response) => {
+      console.log(response[1]);
+      console.log(response[1].length);
+      for(let i = 0; i < response[1].length; i++){
+        if(response[1][i].featured == 1){
+        this.featuredItems.push(response[1][i]);
+        }
+        console.log(this.featuredItems);
+      }
+      console.log('This product' + JSON.stringify(this.featuredItems[0].name));
+      console.log('This product' + JSON.stringify(this.featuredItems[0].price));
+    });
   }
 }

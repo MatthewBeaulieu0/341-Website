@@ -18,9 +18,17 @@ export class ShoppingcartComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient, 
-    private _cartService = CartService) {
-      //this.cart = this._cartService.getCart();
+    private _cartService : CartService
+    ) {
+     
     }
+
+  // getCart(){
+  //   this._cartService.getCart()
+  //     .subscribe(
+
+  //     )
+  // }
 
   subtotalProduct(cart: Cart) {
     return parseFloat((cart.quantity * cart.product.price).toFixed(2));
@@ -42,6 +50,7 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   calculateTotal() {
+    console.log(this.cart);
     return (
       this.calculateSubtotal() +
       this.calculateTax() +
@@ -83,6 +92,13 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._cartService.getCart().subscribe((response) => {
+      this.cart = response.data[1];
+      console.log('This cart' + JSON.stringify(this.cart[0].quantity));
+      console.log(
+        'This cart' + JSON.stringify(this.cart[0].product.name)
+      );
+    });
   }
 
   //   updateTotal(){
