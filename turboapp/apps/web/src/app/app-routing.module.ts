@@ -6,6 +6,8 @@ import { ProductpageComponent } from './components/pages/productpage/productpage
 import { ShoppingcartComponent } from './components/pages/shoppingcart/shoppingcart.component';
 import { WelcomepageComponent } from './components/pages/welcomepage/welcomepage.component';
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
+import { LoginpageComponent } from './components/pages/loginpage/loginpage.component';
+import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "welcomepage", pathMatch: "full"},
@@ -14,7 +16,9 @@ const routes: Routes = [
   {path: "productpage", component: ProductpageComponent},
   {path: "shoppingcart", component: ShoppingcartComponent},
   {path: "aislepage", component: ProductaisleComponent},
-  {path: "signup", component: SignuppageComponent}
+  {path: "signup", component: SignuppageComponent},
+  {path: "login", component: LoginpageComponent},
+  {path: "checkoutpage", component: CheckoutpageComponent}
 ];
 
 @NgModule({
