@@ -41,6 +41,14 @@ font-family:initial;
     color:red;
 }
 
+.sign-up-form .input-seller{
+    margin: 10px;
+}
+
+.sign-up-form .input-buyer{
+    margin: 10px;
+}
+
 .btn-light{
     font-family: cursive;
 }

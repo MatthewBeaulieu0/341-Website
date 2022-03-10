@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-signuppage',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignuppageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+    ) { }
 
   onClickSubmit(data){
 
@@ -50,6 +54,9 @@ export class SignuppageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  routeToLogInPage(){
+    this.router.navigate(['/login']);
   }
 
 }
