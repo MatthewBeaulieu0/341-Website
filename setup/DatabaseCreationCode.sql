@@ -1,7 +1,7 @@
 USE fake_amazon;
 CREATE TABLE `User` (
     `user_id` int  NOT NULL AUTO_INCREMENT ,
-    `name` varchar(45)  NOT NULL ,
+    `Name` varchar(45)  NOT NULL ,
     -- Not Null
     `password` varchar(45)  NOT NULL ,
     -- t or f for seller
@@ -31,7 +31,7 @@ CREATE TABLE `OrderLine` (
     `order_line_id` int  NOT NULL AUTO_INCREMENT,
     `order_id` int  NOT NULL ,
     `product_id` int  NOT NULL ,
-    `quantity` int  NOT NULL ,
+    `Quantity` int  NOT NULL ,
     PRIMARY KEY (
         `order_line_id`
     )
@@ -39,19 +39,18 @@ CREATE TABLE `OrderLine` (
 
 CREATE TABLE `Product` (
     `product_id` int  NOT NULL AUTO_INCREMENT ,
-    `name` varchar(45)  NOT NULL ,
+    `Name` varchar(45)  NOT NULL ,
     `description` longtext  NOT NULL ,
-    `price` int  NOT NULL ,
+    `Price` int  NOT NULL ,
     `brand` varchar(45)  NOT NULL ,
     `seller` varchar(45)  NOT NULL ,
     `stock` int  NOT NULL ,
     `link` varchar(180)  NOT NULL ,
-    `category` varchar(45) NOT NULL , 
     PRIMARY KEY (
         `product_id`
     ),
-    CONSTRAINT `uc_Product_name` UNIQUE (
-        `name`
+    CONSTRAINT `uc_Product_Name` UNIQUE (
+        `Name`
     )
 );
 
@@ -76,8 +75,5 @@ REFERENCES `Order` (`order_id`);
 ALTER TABLE `OrderLine` ADD CONSTRAINT `fk_OrderLine_product_id` FOREIGN KEY(`product_id`)
 REFERENCES `Product` (`product_id`);
 
-CREATE INDEX `idx_User_name`
-ON `User` (`name`);
-
-ALTER TABLE `fake_amazon`.`product` 
-ADD COLUMN `featured` BOOLEAN NOT NULL DEFAULT(FALSE);
+CREATE INDEX `idx_User_Name`
+ON `User` (`Name`);
