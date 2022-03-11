@@ -78,12 +78,15 @@
             <td>Total</td>
             <td class="total-price"> {{this.calculateTotal()}} $</td>
           </tr>
+          <tr>
+            <a [routerLink]='["/checkoutpage"]' (click)="routeToCheckOutPage()">
+              <button type="button" class="btn btn-dark">Check Out</button>
+            </a>
+          </tr>
         </table>
       </div>
     </div>
-    <a [routerLink]='["/checkoutpage"]' (click)="routeToCheckOutPage()">
-      <button type="button" class="btn btn-dark">Check Out</button>
-    </a>
+  
     <!-- cart ends -->
     <script>
       //Update total price

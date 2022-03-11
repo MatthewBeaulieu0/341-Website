@@ -150,9 +150,16 @@ td img {
   margin-top: 50px;
 }
 
+.total-price button{
+  margin-top: 20px;
+  width: 160%;
+  height: 40px;
+}
+
 td:last-child {
   text-align: right;
 }
 th:last-child {
   text-align: right;
 }
+
