@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
 
 
@@ -50,10 +51,17 @@
       }
     </style>
     <app-header></app-header>
+
     <div class="container-2">
-      <div class="row"></div>
+
+    <div class="row"></div>
     <div class="row checkout-header">
       <h1>Checkout</h1>
+    </div>
+    <div class="row back-to-cart">
+      <a [routerLink]='["/shoppingcart"]' (click)="routeToShoppingCart()">
+        <i class="fa fa-arrow-left"> Go back</i>
+      </a>
     </div>
 
     <div class="container">
