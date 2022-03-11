@@ -174,3 +174,13 @@
       margin:0;
   }
 
+  .back-to-cart{
+      margin-left: 50px;
+      margin-bottom: 35px;
+      font-weight: bold;
+  }
+
+  .back-to-cart i{
+    font-weight: bold;
+    font-size: 20px;
+  }
