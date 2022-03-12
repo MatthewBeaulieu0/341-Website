@@ -38,12 +38,14 @@ export class ProductpageComponent implements OnInit {
     //     product_id: product_id
     //   },
     // };
-    var tempLink = 'http://localhost:3001/product/id/';
-    var link = tempLink.concat(product_id.toString());
-    this.httpClient.get<any>(link).subscribe((response) => {
-      this.product = response.data;
-      console.log('This product' + JSON.stringify(this.product.name));
-    });
+    //var tempLink = 'http://localhost:3001/product/id/1';
+    //var link = tempLink.concat(product_id.toString());
+    this.httpClient
+      .get<any>('http://localhost:3001/product/id/1')
+      .subscribe((response) => {
+        this.product = response.data[1];
+        console.log('This product ' + this.product.name);
+      });
   }
 
   routeToMainPage() {
