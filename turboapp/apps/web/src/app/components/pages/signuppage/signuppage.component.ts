@@ -109,6 +109,7 @@ export class SignuppageComponent implements OnInit {
       this.user.address = address;
       console.log(this.user);
       //HTTP header
+      console.log(this.user);
       const options = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
