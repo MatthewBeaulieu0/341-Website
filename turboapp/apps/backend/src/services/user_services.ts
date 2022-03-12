@@ -45,6 +45,7 @@ export async function create_user(user: any) {
         ]);
     } catch (err: any) {
         console.log(err.message);
+
         return null;
     }
     return result;

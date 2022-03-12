@@ -32,11 +32,10 @@ export class SignuppageComponent implements OnInit {
 
   onClickSubmit(data) {
     //verifying first name
-    if (
-      /^[a-z ,.'-]+$/i.test(data.firstname) &&
-      /^[a-z ,.'-]+$/i.test(data.lastname)
-    ) {
+    if (/^[a-z ,.'-]+$/i.test(data.firstname)) {
+   
       // add to db
+
       console.log(data.firstname);
     } else {
       console.log('invalid first name');
@@ -68,14 +67,14 @@ export class SignuppageComponent implements OnInit {
         'Password must have at least 8 characters, at least 1 letter and 1 number'
       );
     }
-    if (/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/i.test(data.age)) {
-      var myArr = data.age.split('/');
-      if (myArr[0] > 31) console.log('invalid day');
-      if (myArr[1] > 13) console.log('invalid month');
-      if (myArr[2] < 1900 || myArr[2] > 2022) console.log('invalid year');
+
+    console.log(data.date);
+    if (/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/i.test(data.date)) {
+      var myArr = data.date.split('-');
       console.log(myArr);
     } else {
-      console.log('invalid last name');
+      console.log('invalid Date');
+
     }
 
     if (!this.checkboxes[0].checked) {
@@ -91,7 +90,9 @@ export class SignuppageComponent implements OnInit {
         data.email
       ) &&
       /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data.password) &&
-      /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/i.test(data.age)
+
+      /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/i.test(data.date)
+
     ) {
       //testing all the conditions before sending backend
       let firstname: String = data.firstname;
@@ -115,6 +116,7 @@ export class SignuppageComponent implements OnInit {
       this.user.address = address;
       console.log(this.user);
       //HTTP header
+
       const options = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -138,21 +140,25 @@ export class SignuppageComponent implements OnInit {
     var todayDate = today.getDate();
     console.log(todayYear + '-' + todayMonth + '-' + todayDate);
     if (age[1] < todayMonth) {
-      var currAge = todayYear - age[2];
+
+      var currAge = todayYear - age[0];
       console.log('Age:' + currAge);
       return currAge;
     } else if (age[1] == todayMonth) {
-      if (todayDate >= age[0]) {
-        currAge = todayYear - age[2];
+      if (todayDate >= age[2]) {
+        currAge = todayYear - age[0];
         console.log('Age:' + currAge);
         return currAge;
       } else {
-        currAge = todayYear - age[2] - 1;
+        currAge = todayYear - age[0] - 1;
+
         console.log('Age:' + currAge);
         return currAge;
       }
     } else if (age[1] > todayMonth) {
-      currAge = todayYear - age[2] - 1;
+
+      currAge = todayYear - age[0] - 1;
+
       console.log('Age:' + currAge);
       return currAge;
     } else {

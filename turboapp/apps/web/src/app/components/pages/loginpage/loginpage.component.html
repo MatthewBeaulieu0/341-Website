@@ -59,21 +59,15 @@
                     Log In
                 </h1>
                 <br>
-                <h5> Enter Your Full Name</h5>
-                <input type="fullName" class="input-full-name" placeholder="Full Name">
-                
-                <br>
                 <h5> Enter Your Email </h5>
                 <input type="email" class="input-email" placeholder="Email">
                 <br>
-                <h5> Enter Your Home Address</h5>
-                <input type="text" class="input-number" placeholder="Number">
-                <br>
-                <h5> Enter a Password</h5>
+                
+                <h5> Enter Your Password</h5>
                 <input type="password" class="input-password" placeholder="Password">
-                <p> Already have an account? <a href=""> Log in</a></p>
+                <p> Don't have an account? <a [routerLink]='["/login"]' (click)="routeToSignUpPage()">Sign up</a></p>
                 <br>
-                <button type="button" class="btn btn-light"> Sign up </button>
+                <button type="button" class="btn btn-light"> Log In </button>
 
 
 
