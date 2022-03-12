@@ -22,8 +22,8 @@ export class FeaturedItemsComponent implements OnInit {
   ) {}
 
   sendProductID(id: number) {
-    this._productsService.changeMessage(String(id));
     this.router.navigate(['/productpage']);
+    this._productsService.changeMessage(String(id));
   }
 
   ngOnInit(): void {

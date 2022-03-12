@@ -70,14 +70,15 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-6 item-image">
-          <img src="{{ product.link }}" alt="airpods" width="300vh" />
+          <img src="{{ product[0].link }}" alt="airpods" width="300vh" />
         </div>
 
         <div class="col-3 item-description">
-          <h2>{{ product.name }}</h2>
-          <h5>{{ product.price }}</h5>
+          <h2>{{ product[0].name }}</h2>
+          <h5>{{ product[0].price }}</h5>
           <br />
-          <h6>Description</h6>
+          <h6>{{ product[0].description }}</h6>
+          <h3>{{ productID || "null" }}</h3>
           <br />
           <div class="form">
             <label for="quantity">Quantity selected:</label>

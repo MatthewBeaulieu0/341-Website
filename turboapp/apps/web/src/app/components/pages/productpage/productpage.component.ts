@@ -18,33 +18,26 @@ export class ProductpageComponent implements OnInit {
     private httpClient: HttpClient
   ) {}
 
-  productID: any;
+  productID: string;
 
   ngOnInit(): void {
     this._productsService.currentMessage.subscribe(
-      (id) => (this.productID = id)
+      message => this.productID = message
     ); //<= Always get current value!
     this.getProduct(this.productID);
   }
 
-  product: Product;
+  product: Product[] = [];
 
   getProduct(product_id: any) {
-    // const options = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //   }),
-    //   body: {
-    //     product_id: product_id
-    //   },
-    // };
-    //var tempLink = 'http://localhost:3001/product/id/1';
-    //var link = tempLink.concat(product_id.toString());
+    var tempLink = 'http://localhost:3001/product/id/';
+    var link = tempLink.concat(product_id.toString());
     this.httpClient
-      .get<any>('http://localhost:3001/product/id/1')
+      .get<any>(link)
       .subscribe((response) => {
-        this.product = response.data[1];
-        console.log('This product ' + this.product.name);
+        this.product = response[1];
+        console.log('This product ' + JSON.stringify(this.product[0].name));
+        console.log(this.productID);
       });
   }
 

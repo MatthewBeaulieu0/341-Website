@@ -12,12 +12,14 @@ export class ProductsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public productID: any = [];
-  public subject = new Subject<any>();
+  public productID: string = "1";
+  //public subject = new Subject<any>();
   private IDSource = new BehaviorSubject(this.productID);
   currentMessage = this.IDSource.asObservable();
-  changeMessage(ID: string) {
-    this.IDSource.next(ID);
+
+  changeMessage(productID: string) {
+    this.IDSource.next(productID);
+    console.log(productID);
   }
 
   getAllProducts() {
