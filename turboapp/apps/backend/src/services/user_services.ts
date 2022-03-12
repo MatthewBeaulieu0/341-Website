@@ -44,7 +44,8 @@ export async function create_user(user: any) {
             user.address,
         ]);
     } catch (err: any) {
-        console.log(err);
+        console.log(err.message);
+
         return null;
     }
     return result;
