@@ -46,7 +46,7 @@
         background-color: transparent;
       }
     </style>
-    <app-navbar1></app-navbar1>
+    <app-signup-navbar></app-signup-navbar>
 
     <div class="container">
       <div class="row">
@@ -112,6 +112,7 @@
             <h5>Are you a seller?</h5>
             <span *ngFor="let chk of checkboxes">
               <input
+                class="checkbox"
                 type="checkbox"
                 [disabled]="chk.checked"
                 (click)="disableOther(chk)"
@@ -120,7 +121,7 @@
               {{ chk.value }}
             </span>
             <br />
-            <p>Already have an account? <a href=""> Log in</a></p>
+            <p>Already have an account? <a [routerLink]='["/login"]' (click)="routeToLogInPage()">Log In</a></p>
             <br />
             <input type="submit" value="Sign Up" />
           </form>
