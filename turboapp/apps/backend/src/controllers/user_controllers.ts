@@ -8,8 +8,15 @@ import {
 } from "../services/orderline_services";
 import { get_order } from "../services/order_services";
 import { batch_find_products_by_ids } from "../services/product_services";
-import { find_user_by_id, create_user } from "../services/user_services";
+import {
+    find_user_by_id,
+    create_user,
+    find_user_by_email,
+} from "../services/user_services";
 import { delete_product_by_id } from "../services/product_services";
+
+const bcrypt = require("bcrypt");
+const saltRounds = 4;
 export async function get_user_by_id(user_id: number) {
     let user = await find_user_by_id(user_id);
     if (user) {
@@ -18,7 +25,16 @@ export async function get_user_by_id(user_id: number) {
         return [404, { msg: "User not found" }];
     }
 }
-
+export async function get_user_by_email(email: string) {
+    console.log(email);
+    let user = find_user_by_email(email);
+    let casted_user = user_schema.cast(user, { stripUnknown: true });
+    if (casted_user) {
+        return [200, casted_user];
+    } else {
+        return [404, false];
+    }
+}
 export async function create_new_user(user: any) {
     console.log("Create User:" + JSON.stringify(user));
     let [err, error_data] = validate_user_data(user);
@@ -26,6 +42,10 @@ export async function create_new_user(user: any) {
         return [400, error_data];
     } else {
         let casted_user = user_schema.cast(user, { stripUnknown: true });
+        casted_user.password = await bcrypt.hash(
+            casted_user.password,
+            saltRounds
+        );
         let new_user = await create_user(casted_user);
         return [200, new_user];
     }

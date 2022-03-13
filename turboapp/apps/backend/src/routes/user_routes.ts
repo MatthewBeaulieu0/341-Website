@@ -4,12 +4,16 @@ import {
     create_new_user,
     get_user_cart,
     add_product_to_cart,
+    get_user_by_email,
+    delete_product_from_cart,
 } from "../controllers/user_controllers";
-import { delete_product_from_cart } from "../controllers/user_controllers";
+import { User } from "../models/users";
 const user = express.Router();
 user.use(express.json());
-
-user.post("/", (req: Request, res: Response) => {
+//Bcrypt variables for encryption
+const bcrypt = require("bcrypt");
+const saltRounds = 4;
+user.post("/api/signup", (req: Request, res: Response) => {
     try {
         let user = req.body.body.user;
         console.log(user);
@@ -21,6 +25,32 @@ user.post("/", (req: Request, res: Response) => {
         }
         if (status == 400) {
             res.sendStatus(400);
+        }
+    } catch (err: any) {
+        res.status(400);
+        res.json({ errType: err.name, errMsg: err.message });
+    }
+});
+user.post("/api/login", async (req: Request, res: Response) => {
+    try {
+        let email = req.body.email;
+        let password = req.body.password;
+        let status,
+            user: User = await get_user_by_email(email);
+        if (!user || status == 400) {
+            res.sendStatus(401).json("Email not found");
+        } else {
+            const match = await bcrypt.compare(
+                password,
+                saltRounds,
+                user.password
+            );
+            if (match) {
+                console.log("ITS A MATCH");
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(400);
+            }
         }
     } catch (err: any) {
         res.status(400);
@@ -109,5 +139,3 @@ user.get("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
         res.json({ errType: err.name, errMsg: err.message });
     }
 });
-
-module.exports = user;

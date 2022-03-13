@@ -5,7 +5,7 @@ import cors from "cors";
 import mysql from "mysql2";
 
 const app: Application = express();
-
+const router = express.Router();
 const port: number = 3001; // Backend port
 app.use(express.json());
 
@@ -32,7 +32,6 @@ const product = require("./routes/product_routes");
 app.use("/product", product);
 
 ///////////// Heartbeat Route /////////////
-//For post please just add encryption
 app.get("/api/hi", (_: Request, res: Response) => {
     res.send("Hello WORLD!");
 });
@@ -42,3 +41,4 @@ app.listen(port, () => {
 });
 
 //part of the web
+module.exports = router;
