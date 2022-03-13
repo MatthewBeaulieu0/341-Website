@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,6 +16,26 @@ export class LoginpageComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
   onClickLogin(data) {
-    console.log(data.email);
+    if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        data.email
+      )
+    ) {
+      console.log('Not an email');
+    }
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        email: data.email,
+        password: data.password,
+      },
+    };
+    this.httpClient
+      .post('http://localhost:3001/user/api/login', options)
+      .subscribe((s) => {
+        console.log(s);
+      });
   }
 }

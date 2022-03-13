@@ -46,6 +46,7 @@ export async function create_new_user(user: any) {
             casted_user.password,
             saltRounds
         );
+        console.log(casted_user.password);
         let new_user = await create_user(casted_user);
         return [200, new_user];
     }

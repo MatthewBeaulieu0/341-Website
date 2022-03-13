@@ -35,6 +35,7 @@ user.post("/api/login", async (req: Request, res: Response) => {
     try {
         let email = req.body.email;
         let password = req.body.password;
+        console.log(email, password);
         let status,
             user: User = await get_user_by_email(email);
         if (!user || status == 400) {
@@ -139,3 +140,4 @@ user.get("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
         res.json({ errType: err.name, errMsg: err.message });
     }
 });
+module.exports = user;

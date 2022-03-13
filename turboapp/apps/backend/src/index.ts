@@ -5,7 +5,7 @@ import cors from "cors";
 import mysql from "mysql2";
 
 const app: Application = express();
-const router = express.Router();
+
 const port: number = 3001; // Backend port
 app.use(express.json());
 
@@ -41,4 +41,3 @@ app.listen(port, () => {
 });
 
 //part of the web
-module.exports = router;
