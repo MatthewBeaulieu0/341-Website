@@ -12,7 +12,7 @@ const user = express.Router();
 user.use(express.json());
 //Bcrypt variables for encryption
 const bcrypt = require("bcrypt");
-const saltRounds = 4;
+//const saltRounds = 4;
 user.post("/api/signup", (req: Request, res: Response) => {
     try {
         let user = req.body.body.user;
@@ -35,17 +35,15 @@ user.post("/api/login", async (req: Request, res: Response) => {
     try {
         let email = req.body.email;
         let password = req.body.password;
-        console.log(email, password);
         let status,
             user: User = await get_user_by_email(email);
+        status = user[0];
+        user = user[1]; // Remove thes status from the user
         if (!user || status == 400) {
             res.sendStatus(401).json("Email not found");
         } else {
-            const match = await bcrypt.compare(
-                password,
-                saltRounds,
-                user.password
-            );
+            console.log(password, user.password);
+            const match = await bcrypt.compare(password, user.password);
             if (match) {
                 console.log("ITS A MATCH");
                 res.sendStatus(200);

@@ -26,10 +26,9 @@ export async function get_user_by_id(user_id: number) {
     }
 }
 export async function get_user_by_email(email: string) {
-    console.log(email);
-    let user = find_user_by_email(email);
-    let casted_user = user_schema.cast(user, { stripUnknown: true });
-    if (casted_user) {
+    let user = await find_user_by_email(email);
+    let casted_user = user_schema.cast(user, { stripUnknown: false });
+    if (user) {
         return [200, casted_user];
     } else {
         return [404, false];
