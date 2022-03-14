@@ -23,6 +23,12 @@ font-family:initial;
 
 .sign-up-form input{
     margin-bottom: 20px;
+    width: 50%;
+}
+
+.sign-up-form .checkbox{
+    margin-bottom: 20px;
+    width: 5%;
 }
 
 .sign-up-form form{
@@ -39,6 +45,17 @@ font-family:initial;
 
 .sign-up-form a:hover{
     color:red;
+}
+
+.sign-up-form .input-seller{
+    margin: 10px;
+    width: 5%;
+}
+
+.sign-up-form .input-buyer{
+    margin: 10px;
+    width: 5%;
+
 }
 
 .btn-light{

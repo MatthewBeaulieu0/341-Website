@@ -94,6 +94,10 @@ export class ShoppingcartComponent implements OnInit {
     this.getCart();
   }
 
+  routeToCheckOutPage(){
+    this.router.navigate(['/checkoutpage']);
+  }
+
   //   updateTotal(){
   //     var cartItems = document.getElementsByClassName('cart-price');
   //     var total = 0;

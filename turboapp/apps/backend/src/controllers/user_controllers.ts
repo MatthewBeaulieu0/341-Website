@@ -20,6 +20,7 @@ export async function get_user_by_id(user_id: number) {
 }
 
 export async function create_new_user(user: any) {
+    console.log("Create User:" + JSON.stringify(user));
     let [err, error_data] = validate_user_data(user);
     if (err) {
         return [400, error_data];
@@ -108,7 +109,6 @@ export async function delete_product_from_cart(
         return [404, { msg: "User or Product not found" }];
     }
 }
-
 function validate_user_data(user: User) {
     let error_data: ErrorResponse = { errMsg: "", errType: "" };
     try {
@@ -116,7 +116,9 @@ function validate_user_data(user: User) {
     } catch (err: any) {
         error_data.errType = err.name;
         error_data.errMsg = err.errors;
+        console.log(error_data);
         return [true, error_data];
     }
+
     return [false, {}];
 }
