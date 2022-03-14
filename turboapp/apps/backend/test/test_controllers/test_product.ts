@@ -1,7 +1,7 @@
 
 import * as chai from "chai";
 import * as mocha from "mocha";
-import { get_product_by_id } from "../../src/controllers/product_controller" 
+import { create_new_product, get_product_by_id } from "../../src/controllers/product_controller" 
 
 const expect = chai.expect;
 const describe = mocha.describe;
@@ -20,9 +20,9 @@ let test_product: any = {
 }
 
 describe('Product Controllers', function(){
-    describe('get_product_by_id', function(){
+    describe('# get_product_by_id', function(){
 
-        it('should return a product with all the fields in the product schame', async function(){
+        it('return a product with all the fields in the product schema', async function(){
             let data: any = await get_product_by_id(1);
             let product: any = data[1][0]
             Object.entries(test_product).forEach(
@@ -31,13 +31,45 @@ describe('Product Controllers', function(){
                     expect(product[field]).to.be.a(typeof(value));
                 })
         });
-        it('should return a 200 response code if succesful', async function(){
+        it('return a 200 response code if succesful', async function(){
             let data: any = await get_product_by_id(1);
             expect(data[0]).to.equal(200);
         });
-        it('should return 404 responce code if no product found', async function(){
+        it('return 404 responce code if no product found', async function(){
             let data: any = await get_product_by_id(80);
             expect(data[0]).to.equal(404);
+        });
+    });
+    describe('# create_new_product', function(){
+        let invalid_product: any = {
+            name: 1,
+            description: "string",
+            brand: "string",
+            seller: "string",
+            stock: 1,
+            link: "string",
+            category: "string",
+        }
+        let valid_product = {
+            name: "string",
+            description: "string",
+            price: 1,
+            brand: "string",
+            seller: "string",
+            stock: 1,
+            link: "string",
+            category: "string",
+        }
+        it('return 400 bad request if passed invalid field.', async function(){
+            let data = await create_new_product(invalid_product);
+            let status = data[0]
+            expect(status).to.equal(400);
+        });
+        it('return 200 if passed valid product', async function(){
+            let data: any = await create_new_product(valid_product);
+            let status = data[0]
+            console.log(data);
+            expect(status).to.equal(200);
         });
     });
 });
