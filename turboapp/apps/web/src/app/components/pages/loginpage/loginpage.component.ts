@@ -23,17 +23,16 @@ export class LoginpageComponent implements OnInit {
     ) {
       console.log('Not an email');
     }
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-      body: {
-        email: data.email,
-        password: data.password,
-      },
+    const body = {
+      email: data.email,
+      password: data.password,
     };
+
     this.httpClient
-      .post('http://localhost:3001/user/api/login', options)
+      .post('http://localhost:3001/user/api/login', body, {
+        responseType: 'text',
+        headers: { 'content-type': 'application/json' },
+      })
       .subscribe((s) => {
         console.log(s);
       });

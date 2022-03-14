@@ -15,7 +15,7 @@ import {
 } from "../services/user_services";
 import { delete_product_by_id } from "../services/product_services";
 
-const bcrypt = require("bcrypt");
+import { hash } from "bcrypt";
 const saltRounds = 4;
 export async function get_user_by_id(user_id: number) {
     let user = await find_user_by_id(user_id);
@@ -41,11 +41,7 @@ export async function create_new_user(user: any) {
         return [400, error_data];
     } else {
         let casted_user = user_schema.cast(user, { stripUnknown: true });
-        casted_user.password = await bcrypt.hash(
-            casted_user.password,
-            saltRounds
-        );
-        console.log(casted_user.password);
+        casted_user.password = await hash(casted_user.password, saltRounds);
         let new_user = await create_user(casted_user);
         return [200, new_user];
     }

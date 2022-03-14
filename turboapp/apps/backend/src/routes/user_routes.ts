@@ -1,3 +1,4 @@
+import { error } from "console";
 import express, { Request, Response } from "express";
 import {
     get_user_by_id,
@@ -11,11 +12,11 @@ import { User } from "../models/users";
 const user = express.Router();
 user.use(express.json());
 //Bcrypt variables for encryption
-const bcrypt = require("bcrypt");
+import { compare } from "bcrypt";
 //const saltRounds = 4;
 user.post("/api/signup", (req: Request, res: Response) => {
     try {
-        let user = req.body.body.user;
+        let user = req.body.user;
         console.log(user);
         let status,
             data = create_new_user(user);
@@ -32,21 +33,21 @@ user.post("/api/signup", (req: Request, res: Response) => {
     }
 });
 user.post("/api/login", async (req: Request, res: Response) => {
+    let user;
     try {
         let email = req.body.email;
-        let password = req.body.password;
-        let status,
-            user: User = await get_user_by_email(email);
-        status = user[0];
-        user = user[1]; // Remove thes status from the user
-        if (!user || status == 400) {
-            res.sendStatus(401).json("Email not found");
+        let pwd = req.body.password;
+        const userArr: User = await get_user_by_email(email);
+        const status = userArr[0];
+        const { password, ...user } = userArr[1]; // Remove thes status from the user
+        if (status == 404) {
+            throw error;
         } else {
-            console.log(password, user.password);
-            const match = await bcrypt.compare(password, user.password);
+            let match = await compare(pwd, password);
             if (match) {
-                console.log("ITS A MATCH");
-                res.sendStatus(200);
+                console.log("MATCH");
+
+                res.status(200).json(user);
             } else {
                 res.sendStatus(400);
             }
@@ -55,6 +56,7 @@ user.post("/api/login", async (req: Request, res: Response) => {
         res.status(400);
         res.json({ errType: err.name, errMsg: err.message });
     }
+    return user;
 });
 
 user.get("/id/:user_id", async (req: Request, res: Response) => {

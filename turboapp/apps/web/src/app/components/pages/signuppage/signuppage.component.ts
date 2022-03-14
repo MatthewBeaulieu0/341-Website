@@ -117,16 +117,14 @@ export class SignuppageComponent implements OnInit {
       console.log(this.user);
       //HTTP header
 
-      const options = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-        }),
-        body: {
-          user: this.user,
-        },
+      const body = {
+        user: this.user,
       };
       this.httpClient
-        .post('http://localhost:3001/user/api/signup', options)
+        .post('http://localhost:3001/user/api/signup', body, {
+          responseType: 'text',
+          headers: { 'content-type': 'application/json' },
+        })
         .subscribe((s) => {
           console.log(s);
         });
