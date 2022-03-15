@@ -9,11 +9,13 @@ import {
     delete_product_from_cart,
 } from "../controllers/user_controllers";
 import { User } from "../models/users";
+//import { sign, verify } from "jsonwebtoken";
 const user = express.Router();
 user.use(express.json());
 //Bcrypt variables for encryption
 import { compare } from "bcrypt";
 //const saltRounds = 4;
+
 user.post("/api/signup", (req: Request, res: Response) => {
     try {
         let user = req.body.user;
@@ -39,17 +41,22 @@ user.post("/api/login", async (req: Request, res: Response) => {
         let pwd = req.body.password;
         const userArr: User = await get_user_by_email(email);
         const status = userArr[0];
-        const { password, ...user } = userArr[1]; // Remove thes status from the user
+        const { password, ...user } = userArr[1]; // Remove the status from the user
         if (status == 404) {
             throw error;
         } else {
             let match = await compare(pwd, password);
             if (match) {
                 console.log("MATCH");
-
+                console.log(require("crypto").randomBytes(64).toString("hex"));
                 res.status(200).json(user);
+                // res.cookie("name", "tobi", {
+                //     expires: new Date(Date.now() + 8 * 3600000),
+                //     path: "/",
+                //     httpOnly: true,
+                // });
             } else {
-                res.sendStatus(400);
+                res.status(400);
             }
         }
     } catch (err: any) {
