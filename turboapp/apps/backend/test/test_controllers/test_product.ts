@@ -1,7 +1,7 @@
 
 import * as chai from "chai";
 import * as mocha from "mocha";
-import { create_new_product, get_product_by_id } from "../../src/controllers/product_controller" 
+import { create_new_product, get_filtered_products, get_product_by_id } from "../../src/controllers/product_controller" 
 
 const expect = chai.expect;
 const describe = mocha.describe;
@@ -71,5 +71,59 @@ describe('Product Controllers', function(){
             console.log(data);
             expect(status).to.equal(200);
         });
+    });
+    describe('# get_filtered_products', function(){
+        it('should only return products with substring of name in it.', async function(){
+            let filter: any = {
+                "name": "e",
+                "limit": 100,
+                "skip": 0
+            }
+            let result = await get_filtered_products(filter);
+
+            let products: any = result[1];
+            
+            for(const product of products) expect(product.name).to.contain(filter.name);
+        });
+
+        it('should only return products with a price less than or equal to filter.', async function(){
+            let filter: any = {
+                "price": 50,
+                "limit": 100,
+                "skip": 0
+            }
+            let result = await get_filtered_products(filter);
+
+            let products: any = result[1];
+            
+            for(const product of products) expect(product.price).to.be.lessThanOrEqual(filter.price);
+        });
+
+        it('should only return products with listed category.', async function(){
+            let filter: any = {
+                "category": "food",
+                "limit": 100,
+                "skip": 0
+            }
+            let result = await get_filtered_products(filter);
+
+            let products: any = result[1];
+            
+            for(const product of products) expect(product.category.toUpperCase()).to.equal(filter.category.toUpperCase());
+        });
+
+        it('should only return limited number products when limited.', async function(){
+            let filter: any = {
+                "name": "",
+                "limit": 1,
+                "skip": 0
+            }
+            let result = await get_filtered_products(filter);
+
+            let products: any = result[1];
+            
+            expect(products.length).to.be.equal(1);
+        });
+
     });
 });
