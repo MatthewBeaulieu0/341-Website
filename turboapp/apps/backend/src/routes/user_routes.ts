@@ -15,7 +15,11 @@ user.use(express.json());
 //Bcrypt variables for encryption
 import { compare } from "bcrypt";
 //const saltRounds = 4;
-
+import { randomBytes } from "node:crypto";
+import dotenv from "dotenv";
+dotenv.config();
+import jwt from "jsonwebtoken";
+const { sign } = jwt;
 user.post("/api/signup", (req: Request, res: Response) => {
     try {
         let user = req.body.user;
@@ -48,13 +52,14 @@ user.post("/api/login", async (req: Request, res: Response) => {
             let match = await compare(pwd, password);
             if (match) {
                 console.log("MATCH");
-                console.log(require("crypto").randomBytes(64).toString("hex"));
+                console.log("TOKEN_SECRET=" + randomBytes(64).toString("hex"));
+                const token = generateAccessToken(user);
+                res.cookie("FrontendUser", token, {
+                    expires: new Date(Date.now() + 28800000),
+                    path: "/",
+                    httpOnly: true,
+                });
                 res.status(200).json(user);
-                // res.cookie("name", "tobi", {
-                //     expires: new Date(Date.now() + 8 * 3600000),
-                //     path: "/",
-                //     httpOnly: true,
-                // });
             } else {
                 res.status(400);
             }
@@ -147,4 +152,9 @@ user.get("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
         res.json({ errType: err.name, errMsg: err.message });
     }
 });
+// Function to sign the jwts
+export function generateAccessToken(username: any) {
+    //console.log(process.env.TOKEN_SECRET!);
+    return sign(username, process.env.TOKEN_SECRET!, { expiresIn: "28800000" });
+}
 module.exports = user;

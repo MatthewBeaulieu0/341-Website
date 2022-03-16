@@ -16,7 +16,11 @@ import {
 import { delete_product_by_id } from "../services/product_services";
 
 import { hash } from "bcrypt";
+
+import dotenv from "dotenv";
 const saltRounds = 4;
+dotenv.config();
+
 export async function get_user_by_id(user_id: number) {
     let user = await find_user_by_id(user_id);
     if (user) {
