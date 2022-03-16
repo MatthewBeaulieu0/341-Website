@@ -81,3 +81,6 @@ ON `User` (`name`);
 
 ALTER TABLE `fake_amazon`.`product` 
 ADD COLUMN `featured` BOOLEAN NOT NULL DEFAULT(FALSE);
+
+ALTER TABLE `fake_amazon`.`user` 
+CHANGE COLUMN `password` `password` CHAR(60) NOT NULL ;

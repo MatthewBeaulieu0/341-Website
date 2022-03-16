@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
@@ -8,11 +8,10 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./signuppage.component.css'],
 })
 export class SignuppageComponent implements OnInit {
-
-  routeToLogInPage(){
+  routeToLogInPage() {
     this.router.navigate(['/login']);
   }
-  
+
   constructor(private httpClient: HttpClient, private router: Router) {}
   user: User = {
     name: '',
@@ -38,7 +37,6 @@ export class SignuppageComponent implements OnInit {
   onClickSubmit(data) {
     //verifying first name
     if (/^[a-z ,.'-]+$/i.test(data.firstname)) {
-   
       // add to db
 
       console.log(data.firstname);
@@ -79,7 +77,6 @@ export class SignuppageComponent implements OnInit {
       console.log(myArr);
     } else {
       console.log('invalid Date');
-
     }
 
     if (!this.checkboxes[0].checked) {
@@ -95,9 +92,7 @@ export class SignuppageComponent implements OnInit {
         data.email
       ) &&
       /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data.password) &&
-
       /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/i.test(data.date)
-
     ) {
       //testing all the conditions before sending backend
       let firstname: String = data.firstname;
@@ -122,16 +117,14 @@ export class SignuppageComponent implements OnInit {
       console.log(this.user);
       //HTTP header
 
-      const options = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-        }),
-        body: {
-          user: this.user,
-        },
+      const body = {
+        user: this.user,
       };
       this.httpClient
-        .post('http://localhost:3001/user/', options)
+        .post('http://localhost:3001/user/api/signup', body, {
+          responseType: 'text',
+          headers: { 'content-type': 'application/json' },
+        })
         .subscribe((s) => {
           console.log(s);
         });
@@ -145,7 +138,6 @@ export class SignuppageComponent implements OnInit {
     var todayDate = today.getDate();
     console.log(todayYear + '-' + todayMonth + '-' + todayDate);
     if (age[1] < todayMonth) {
-
       var currAge = todayYear - age[0];
       console.log('Age:' + currAge);
       return currAge;
@@ -161,7 +153,6 @@ export class SignuppageComponent implements OnInit {
         return currAge;
       }
     } else if (age[1] > todayMonth) {
-
       currAge = todayYear - age[0] - 1;
 
       console.log('Age:' + currAge);

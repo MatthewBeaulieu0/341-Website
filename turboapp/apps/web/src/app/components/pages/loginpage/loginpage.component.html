@@ -50,32 +50,40 @@
 
     <div class="container">
       <div class="row">
-         <div class="col-3">
+        <div class="col-3"></div>
+        <div class="col-6 sign-up-form">
+          <form #userlogin="ngForm" (ngSubmit)="onClickLogin(userlogin.value)">
+            <h1>Log In</h1>
+            <br />
+            <h5>Enter Your Email</h5>
+            <input
+              type="email"
+              class="input-email"
+              placeholder="Email"
+              name="email"
+              ngModel
+            />
+            <br />
 
-            </div>
-          <div class="col-6 sign-up-form">
-              <form>                
-                <h1>
-                    Log In
-                </h1>
-                <br>
-                <h5> Enter Your Email </h5>
-                <input type="email" class="input-email" placeholder="Email">
-                <br>
-                
-                <h5> Enter Your Password</h5>
-                <input type="password" class="input-password" placeholder="Password">
-                <p> Don't have an account? <a [routerLink]='["/login"]' (click)="routeToSignUpPage()">Sign up</a></p>
-                <br>
-                <button type="button" class="btn btn-light"> Log In </button>
-
-
-
-            </form>
-          </div>
-          <div class="col-3">
-
+            <h5>Enter Your Password</h5>
+            <input
+              type="password"
+              class="input-password"
+              placeholder="Password"
+              name="password"
+              ngModel
+            />
+            <p>
+              Don't have an account?
+              <a [routerLink]="['/login']" (click)="routeToSignUpPage()"
+                >Sign up</a
+              >
+            </p>
+            <br />
+            <input type="submit" value="Log In" class="btn btn-light" />
+          </form>
         </div>
+        <div class="col-3"></div>
       </div>
     </div>
 

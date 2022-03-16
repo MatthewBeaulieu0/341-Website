@@ -3,6 +3,8 @@ import express, { Application, Request, Response } from "express";
 //import { hash, compare } from "bcrypt";
 import cors from "cors";
 import mysql from "mysql2";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app: Application = express();
 
@@ -14,7 +16,6 @@ app.use(
         origin: ["http://localhost:4200"], // Origin frontend to change later when deployed
     })
 );
-
 ///////////// db /////////////
 export const conn = mysql.createPool({
     connectionLimit: 10,
@@ -32,7 +33,6 @@ const product = require("./routes/product_routes");
 app.use("/product", product);
 
 ///////////// Heartbeat Route /////////////
-//For post please just add encryption
 app.get("/api/hi", (_: Request, res: Response) => {
     res.send("Hello WORLD!");
 });

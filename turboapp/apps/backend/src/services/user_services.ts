@@ -31,6 +31,18 @@ export async function find_user_by_id(user_id: number) {
     return user;
 }
 
+export async function find_user_by_email(email: string) {
+    var sql = "SELECT * FROM fake_amazon.user WHERE email=?;";
+    try {
+        var user: any = await query(sql, [email]);
+        //console.log(user[0]);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+    return user[0];
+}
+
 export async function create_user(user: any) {
     var sql =
         "INSERT INTO fake_amazon.user (name,password,seller,age,email,address) VALUES (?,?,?,?,?,?);";
