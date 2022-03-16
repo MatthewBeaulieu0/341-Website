@@ -30,6 +30,18 @@ export async function delete_product_by_id(
     return result;
 }
 
+export async function empty_shopping_cart(order_id: number) {
+    var sql = `DELETE FROM fake_amazon.orderline WHERE order_id=?`;
+    try {
+        var result = await query(sql, [order_id]);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+
+    return result;
+}
+
 export async function batch_find_products_by_ids(product_ids: Array<string>) {
     var sql = `SELECT * FROM product WHERE product_id IN (?)`;
     try {

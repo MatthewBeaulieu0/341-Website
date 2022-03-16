@@ -7,6 +7,7 @@ import {
     add_product_to_cart,
     get_user_by_email,
     delete_product_from_cart,
+    checkout_order,
 } from "../controllers/user_controllers";
 import { User } from "../models/users";
 //import { sign, verify } from "jsonwebtoken";
@@ -152,6 +153,21 @@ user.get("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
         res.json({ errType: err.name, errMsg: err.message });
     }
 });
+
+user.put("/id/:user_id/checkout/", async (req: Request, res: Response) => {
+    try {
+        let user_id = parseInt(req.params.user_id);
+        let data = await checkout_order(user_id);
+        let status: any = data[0];
+        res.json({ data }).status(status);
+        
+
+    } catch (err: any) {
+        res.status(400);
+        res.json({ errType: err.name, errMsg: err.message });
+    }
+});
+
 // Function to sign the jwts
 export function generateAccessToken(username: any) {
     //console.log(process.env.TOKEN_SECRET!);
