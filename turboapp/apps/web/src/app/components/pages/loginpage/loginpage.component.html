@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Sign up page</title>
+    <title>Log in page</title>
     <base href="/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,36 +46,14 @@
         background-color: transparent;
       }
     </style>
-    <app-signup-navbar></app-signup-navbar>
+    <app-navbar1></app-navbar1>
 
     <div class="container">
       <div class="row">
         <div class="col-3"></div>
         <div class="col-6 sign-up-form">
-          <form
-            #usersignup="ngForm"
-            (ngSubmit)="onClickSubmit(usersignup.value)"
-          >
-            <h1>Sign up</h1>
-            <br />
-            <h5>Enter Your Full Name</h5>
-            <input
-              type="firstName"
-              class="input-first-name"
-              placeholder="First Name"
-              name="firstname"
-              ngModel
-            />
-            <br />
-            <h6>Enter Your Last Name</h6>
-            <input
-              type="lastName"
-              class="input-last-name"
-              placeholder="Last Name"
-              name="lastname"
-              ngModel
-            />
-
+          <form #userlogin="ngForm" (ngSubmit)="onClickLogin(userlogin.value)">
+            <h1>Log In</h1>
             <br />
             <h5>Enter Your Email</h5>
             <input
@@ -86,16 +64,8 @@
               ngModel
             />
             <br />
-            <h5>Enter Your Home Address</h5>
-            <input
-              type="text"
-              class="input-address"
-              placeholder="Address"
-              name="address"
-              ngModel
-            />
-            <br />
-            <h5>Enter a Password</h5>
+
+            <h5>Enter Your Password</h5>
             <input
               type="password"
               class="input-password"
@@ -103,27 +73,14 @@
               name="password"
               ngModel
             />
+            <p>
+              Don't have an account?
+              <a [routerLink]="['/login']" (click)="routeToSignUpPage()"
+                >Sign up</a
+              >
+            </p>
             <br />
-
-            <h5>Enter Your Date of Birth</h5>
-            <input type="date" name="date" class="input-birth-date" ngModel />
-
-            <br />
-            <h5>Are you a seller?</h5>
-            <span *ngFor="let chk of checkboxes">
-              <input
-                class="checkbox"
-                type="checkbox"
-                [disabled]="chk.checked"
-                (click)="disableOther(chk)"
-                ng-model="check.selected"
-              />
-              {{ chk.value }}
-            </span>
-            <br />
-            <p>Already have an account? <a [routerLink]='["/login"]' (click)="routeToLogInPage()">Log In</a></p>
-            <br />
-            <input type="submit" value="Sign Up" />
+            <input type="submit" value="Log In" class="btn btn-light" />
           </form>
         </div>
         <div class="col-3"></div>

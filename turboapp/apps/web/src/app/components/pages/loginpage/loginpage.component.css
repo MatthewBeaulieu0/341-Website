@@ -1,5 +1,5 @@
 body{
-    background-image: url('https://blitzen.com/blog/wp-content/uploads/new-tech.jpg');
+    background-image: url('https://kinneygroup.com/wp-content/uploads/2019/10/fw-bg-gradient.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -23,12 +23,6 @@ font-family:initial;
 
 .sign-up-form input{
     margin-bottom: 20px;
-    width: 50%;
-}
-
-.sign-up-form .checkbox{
-    margin-bottom: 20px;
-    width: 5%;
 }
 
 .sign-up-form form{
@@ -40,26 +34,16 @@ font-family:initial;
 
 .sign-up-form a{
     text-decoration: none;
-    color:#f89c3c;
+    color: yellow;
 }
 
 .sign-up-form a:hover{
     color:red;
 }
 
-.sign-up-form .input-seller{
-    margin: 10px;
-    width: 5%;
-}
-
-.sign-up-form .input-buyer{
-    margin: 10px;
-    width: 5%;
-
-}
-
 .btn-light{
     font-family: cursive;
+    margin-bottom: 100px;
 }
 
 .btn-light:hover{

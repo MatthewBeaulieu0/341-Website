@@ -7,8 +7,9 @@ import {
 } from "../services/product_services";
 
 export async function get_product_by_id(product_id: number) {
-    let product = await find_product_by_id(product_id);
-    if (product) {
+    let product: any = await find_product_by_id(product_id);
+    console.log(product)
+    if (product.length > 0) {
         // let updated_product = product_schema.cast(product);
         return [200, product];
     } else {

@@ -12,7 +12,7 @@ export class ProductsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public productID: string = "1";
+  public productID: string = '1';
   //public subject = new Subject<any>();
   private IDSource = new BehaviorSubject(this.productID);
   currentMessage = this.IDSource.asObservable();

@@ -21,6 +21,9 @@ import { ProductaisleComponent } from './components/pages/productaisle/productai
 
 import { CartService } from './services/cart.service';
 import { ProductsService } from './services/products.service';
+import { SignupNavbarComponent } from './components/signup-navbar/signup-navbar.component';
+import { LoginpageComponent } from './components/pages/loginpage/loginpage.component';
+import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { ProductsService } from './services/products.service';
     SignuppageComponent,
     HeaderComponent,
     ProductaisleComponent,
+    SignupNavbarComponent,
+    LoginpageComponent,
+    CheckoutpageComponent
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule, HttpClientModule],
   providers: [CartService, ProductsService],

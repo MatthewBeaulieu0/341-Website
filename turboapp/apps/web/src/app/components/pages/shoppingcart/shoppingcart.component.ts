@@ -2,12 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Cart } from 'src/app/models/cart';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shoppingcart',
   templateUrl: './shoppingcart.component.html',
   styleUrls: ['./shoppingcart.component.css'],
-  providers: [CartService]
+  providers: [CartService],
 })
 export class ShoppingcartComponent implements OnInit {
   id: number;
@@ -17,11 +18,10 @@ export class ShoppingcartComponent implements OnInit {
   deliveryFees = 10.0;
 
   constructor(
-    private httpClient: HttpClient, 
-    private _cartService : CartService
-    ) {
-     
-    }
+    private httpClient: HttpClient,
+    private _cartService: CartService,
+    private router: Router
+  ) {}
 
   // getCart(){
   //   this._cartService.getCart()
@@ -95,10 +95,12 @@ export class ShoppingcartComponent implements OnInit {
     this._cartService.getCart().subscribe((response) => {
       this.cart = response.data[1];
       console.log('This cart' + JSON.stringify(this.cart[0].quantity));
-      console.log(
-        'This cart' + JSON.stringify(this.cart[0].product.name)
-      );
+      console.log('This cart' + JSON.stringify(this.cart[0].product.name));
     });
+  }
+
+  routeToCheckOutPage() {
+    this.router.navigate(['/checkoutpage']);
   }
 
   //   updateTotal(){

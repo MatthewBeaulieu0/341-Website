@@ -8,8 +8,19 @@ import {
 } from "../services/orderline_services";
 import { get_order } from "../services/order_services";
 import { batch_find_products_by_ids } from "../services/product_services";
-import { find_user_by_id, create_user } from "../services/user_services";
+import {
+    find_user_by_id,
+    create_user,
+    find_user_by_email,
+} from "../services/user_services";
 import { delete_product_by_id } from "../services/product_services";
+
+import { hash } from "bcrypt";
+
+import dotenv from "dotenv";
+const saltRounds = 4;
+dotenv.config();
+
 export async function get_user_by_id(user_id: number) {
     let user = await find_user_by_id(user_id);
     if (user) {
@@ -18,13 +29,23 @@ export async function get_user_by_id(user_id: number) {
         return [404, { msg: "User not found" }];
     }
 }
-
+export async function get_user_by_email(email: string) {
+    let user = await find_user_by_email(email);
+    let casted_user = user_schema.cast(user, { stripUnknown: false });
+    if (user) {
+        return [200, casted_user];
+    } else {
+        return [404, false];
+    }
+}
 export async function create_new_user(user: any) {
+    console.log("Create User:" + JSON.stringify(user));
     let [err, error_data] = validate_user_data(user);
     if (err) {
         return [400, error_data];
     } else {
         let casted_user = user_schema.cast(user, { stripUnknown: true });
+        casted_user.password = await hash(casted_user.password, saltRounds);
         let new_user = await create_user(casted_user);
         return [200, new_user];
     }
@@ -108,7 +129,6 @@ export async function delete_product_from_cart(
         return [404, { msg: "User or Product not found" }];
     }
 }
-
 function validate_user_data(user: User) {
     let error_data: ErrorResponse = { errMsg: "", errType: "" };
     try {
@@ -116,7 +136,9 @@ function validate_user_data(user: User) {
     } catch (err: any) {
         error_data.errType = err.name;
         error_data.errMsg = err.errors;
+        console.log(error_data);
         return [true, error_data];
     }
+
     return [false, {}];
 }
