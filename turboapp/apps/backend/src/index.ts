@@ -4,16 +4,19 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import mysql from "mysql2";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+
 dotenv.config();
 
 const app: Application = express();
 
 const port: number = 3001; // Backend port
 app.use(express.json());
-
+app.use(cookieParser());
 app.use(
     cors({
         origin: ["http://localhost:4200"], // Origin frontend to change later when deployed
+        credentials: true,
     })
 );
 ///////////// db /////////////

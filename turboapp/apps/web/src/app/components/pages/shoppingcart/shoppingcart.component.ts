@@ -23,12 +23,26 @@ export class ShoppingcartComponent implements OnInit {
     private router: Router
   ) {}
 
+  getCart() {
+    this.httpClient
+      .get<any>('http://localhost:3001/user/id/1/shopping_cart')
+      .subscribe((response) => {
+        console.log(response);
+        this.cart = response.data[1];
+        console.log('This cart' + JSON.stringify(this.cart[0].quantity));
+        console.log(
+          'This cart' + JSON.stringify(this.cart[0].product.featured)
+        );
+      });
+  }
+
   // getCart(){
   //   this._cartService.getCart()
   //     .subscribe(
 
   //     )
   // }
+
 
   subtotalProduct(cart: Cart) {
     return parseFloat((cart.quantity * cart.product.price).toFixed(2));

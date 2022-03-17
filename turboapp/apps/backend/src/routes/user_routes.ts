@@ -1,5 +1,5 @@
 import { error } from "console";
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import {
     get_user_by_id,
     create_new_user,
@@ -24,7 +24,7 @@ const { sign } = jwt;
 user.post("/api/signup", (req: Request, res: Response) => {
     try {
         let user = req.body.user;
-        console.log(user);
+        //console.log(user);
         let status,
             data = create_new_user(user);
         res.json({ data });
@@ -46,19 +46,21 @@ user.post("/api/login", async (req: Request, res: Response) => {
         let pwd = req.body.password;
         const userArr: User = await get_user_by_email(email);
         const status = userArr[0];
-        const { password, ...user } = userArr[1]; // Remove the status from the user
+        const { password, ...user } = await userArr[1]; // Remove the status from the user
         if (status == 404) {
             throw error;
         } else {
             let match = await compare(pwd, password);
             if (match) {
-                console.log("MATCH");
+                //console.log("MATCH");
                 console.log("TOKEN_SECRET=" + randomBytes(64).toString("hex"));
                 const token = generateAccessToken(user);
                 res.cookie("FrontendUser", token, {
-                    expires: new Date(Date.now() + 28800000),
+                    maxAge: 28800000,
                     path: "/",
                     httpOnly: true,
+                    sameSite: "none",
+                    secure: true,
                 });
                 res.status(200).json(user);
             } else {
@@ -71,7 +73,22 @@ user.post("/api/login", async (req: Request, res: Response) => {
     }
     return user;
 });
-
+user.post("/api/session", [verifyJWT], async (req: Request, res: Response) => {
+    try {
+        console.log(req.user);
+        return res.status(200).json(req.user);
+    } catch (err: any) {
+        return res.status(400).json({ errType: err.name, errMsg: err.message });
+    }
+});
+user.post("api/logout", async (_req: Request, res: Response) => {
+    res.cookie("FrontendUser", "", {
+        expires: new Date(Date.now()),
+        path: "/",
+        httpOnly: true,
+    });
+    return res.status(200).json(true);
+});
 user.get("/id/:user_id", async (req: Request, res: Response) => {
     let user_id = parseInt(req.params.user_id);
     try {
@@ -117,7 +134,7 @@ user.delete(
     "/id/:user_id/shopping_cart/",
     async (req: Request, res: Response) => {
         try {
-            console.log(req.body);
+            //console.log(req.body);
             let product_id = parseInt(req.body.product_id);
             let user_id = parseInt(req.params.user_id);
             let status,
@@ -172,5 +189,19 @@ user.put("/id/:user_id/checkout/", async (req: Request, res: Response) => {
 export function generateAccessToken(username: any) {
     //console.log(process.env.TOKEN_SECRET!);
     return sign(username, process.env.TOKEN_SECRET!, { expiresIn: "28800000" });
+}
+export function verifyJWT(req: Request, res: Response, next: NextFunction) {
+    console.log(req.cookies);
+    const { FrontendUser } = req.cookies;
+    try {
+        const { iat, exp, ...payload } = jwt.verify(
+            FrontendUser,
+            process.env.TOKEN_SECRET!
+        ) as User;
+        req.user = payload;
+        next();
+    } catch (err: any) {
+        res.status(401).json("Invalid Session");
+    }
 }
 module.exports = user;
