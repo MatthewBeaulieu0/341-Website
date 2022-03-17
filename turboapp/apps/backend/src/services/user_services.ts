@@ -46,6 +46,8 @@ export async function find_user_by_email(email: string) {
 export async function create_user(user: any) {
     var sql =
         "INSERT INTO fake_amazon.user (name,password,seller,age,email,address) VALUES (?,?,?,?,?,?);";
+    
+    var sql_get = "SELECT * FROM fake_amazon.user ORDER BY user_id DESC LIMIT 1"
     try {
         var result: any = await query(sql, [
             user.name,
@@ -55,12 +57,16 @@ export async function create_user(user: any) {
             user.email,
             user.address,
         ]);
+        console.debug(result);
+
+        var new_user: any = await query(sql_get, [])
+
     } catch (err: any) {
         console.log(err.message);
 
         return null;
     }
-    return result;
+    return new_user;
 }
 
 export async function add_to_user_cart(user_id: number, product_id: number) {
