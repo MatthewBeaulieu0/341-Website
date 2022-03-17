@@ -14,11 +14,14 @@ const routes: Routes = [
   { path: 'mainpage', component: MainpageComponent },
   { path: 'welcomepage', component: WelcomepageComponent },
   { path: 'productpage', component: ProductpageComponent },
+
   {
     path: 'shoppingcart',
     component: ShoppingcartComponent,
     canActivate: [AuthGuard],
   },
+
+
   { path: 'aislepage', component: ProductaisleComponent },
   { path: 'signup', component: SignuppageComponent },
   { path: 'login', component: LoginpageComponent },
