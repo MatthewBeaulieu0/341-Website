@@ -15,7 +15,7 @@ user.use(express.json());
 //Bcrypt variables for encryption
 import { compare } from "bcrypt";
 //const saltRounds = 4;
-import { randomBytes } from "node:crypto";
+import { randomBytes } from "crypto";
 import dotenv from "dotenv";
 dotenv.config();
 import jwt from "jsonwebtoken";

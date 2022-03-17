@@ -19,26 +19,55 @@ export class ProductpageComponent implements OnInit {
   ) {}
 
   productID: string;
+  product: Product[]=[];
+  mainLink: string;
+  subLink1: string;
+  subLink2: string;
+  subLink3: string;
+  subLink4: string;
+  quantity: number = 1;
 
-  ngOnInit(): void {
-    this._productsService.currentMessage.subscribe(
-      message => this.productID = message
-    ); //<= Always get current value!
-    this.getProduct(this.productID);
+
+  addToCart(){
+    console.log(this.product);
+    console.log(this.quantity);
+    const body = {
+      product_id: this.productID,
+      quantity: this.quantity
+    };
+    this.httpClient
+      .put('http://localhost:3001/user/id/1/shopping_cart', body, {
+        responseType: 'text',
+        headers: { 'content-type': 'application/json' },
+      })
+      .subscribe((s) => {
+        console.log(s);
+      });
   }
 
-  product: Product[] = [];
-
-  getProduct(product_id: any) {
-    var tempLink = 'http://localhost:3001/product/id/';
-    var link = tempLink.concat(product_id.toString());
-    this.httpClient
-      .get<any>(link)
-      .subscribe((response) => {
-        this.product = response[1];
-        console.log('This product ' + JSON.stringify(this.product[0].name));
-        console.log(this.productID);
-      });
+  selectPicture(source: string, i: number){
+    let tempLink = this.mainLink;
+    this.mainLink = source;
+    // switch(i){
+    //   case 1:{
+    //     this.subLink1 = tempLink;
+    //     console.log("case1");
+    //     break;
+    //   }
+    //   case 2:{
+    //     this.subLink2 = tempLink;
+    //     console.log("case2");
+    //     break;
+    //   }
+    //   case 3: {
+    //     this.subLink3 = tempLink;
+    //     break;
+    //   }
+    //   case 4: {
+    //     this.subLink4 = tempLink;
+    //     break;
+    //   }
+    // }
   }
 
   routeToMainPage() {
@@ -47,5 +76,22 @@ export class ProductpageComponent implements OnInit {
 
   routeToShoppingCart() {
     this.router.navigate(['/shoppingcart']);
+  }
+
+  ngOnInit(): void {
+    this._productsService.currentID.subscribe(
+      message => {
+        this.productID = message;
+        console.log("id in product page: " + message);
+      
+    }); //<= Always get current value!
+  
+    this._productsService.getProduct(this.productID).subscribe((response) => {
+      this.product = response[1];
+      this.mainLink = this.product[0].link;
+      this.subLink1 = this.mainLink;
+      //console.log('This product ' );
+      console.log(JSON.stringify(this.product[0].name));
+    });
   }
 }

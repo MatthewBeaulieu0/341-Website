@@ -94,8 +94,8 @@ export class ShoppingcartComponent implements OnInit {
   ngOnInit(): void {
     this._cartService.getCart().subscribe((response) => {
       this.cart = response.data[1];
-      console.log('This cart' + JSON.stringify(this.cart[0].quantity));
-      console.log('This cart' + JSON.stringify(this.cart[0].product.name));
+      //console.log('This cart' + JSON.stringify(this.cart[0].quantity));
+      //console.log('This cart' + JSON.stringify(this.cart[0].product.name));
     });
   }
 

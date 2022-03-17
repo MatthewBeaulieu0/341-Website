@@ -70,7 +70,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-6 item-image">
-          <img src="{{ product[0].link }}" alt="airpods" width="300vh" />
+          <img src="{{ mainLink }}" alt="airpods" width="300vh" />
         </div>
 
         <div class="col-3 item-description">
@@ -80,36 +80,37 @@
           <h6>{{ product[0].description }}</h6>
           <h3>{{ productID || "null" }}</h3>
           <br />
-          <div class="form">
-            <label for="quantity">Quantity selected:</label>
-            <select name="quantity">
-              <option value="1">1</option>
+          <form (submit)="addToCart()">
+            <label for="quantity">Quantity selected:&nbsp;</label>
+            <select [(ngModel)]="quantity" name="quantity">
+              <option selected disabled hidden value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-          </div>
-
-          <br />
-          <a [routerLink]="['/shoppingcart']" (click)="routeToShoppingCart()">
-            <button type="button" class="btn btn-block">Add To Cart</button>
-          </a>
+          
+            <br/>
+            <br />
+            <a>
+              <button type="submit" class="btn btn-block">Add To Cart</button>
+            </a>
+          </form>
         </div>
         <div class="col-3"></div>
       </div>
       <div class="row product-pictures-row">
         <div class="col-2"></div>
-        <div class="col-2">
+        <div (click)="selectPicture(subLink1, 1)" class="col-2">
           <img
-            src="../../../../assets/images/airpods.jpeg
+            src="{{ subLink1 }}
             "
             alt="originalairpods"
             width="100vh"
           />
         </div>
-        <div class="col-2">
+        <div (click)="selectPicture('../../../../assets/images/airpods1.jpeg', 2)" class="col-2">
           <img
             src="../../../../assets/images/airpods1.jpeg
             "
@@ -117,7 +118,7 @@
             width="100vh"
           />
         </div>
-        <div class="col-2">
+        <div (click)="selectPicture('../../../../assets/images/airpods2.jpeg', 3)" class="col-2">
           <img
             src="../../../../assets/images/airpods2.jpeg
             "
@@ -125,7 +126,7 @@
             width="100vh"
           />
         </div>
-        <div class="col-2">
+        <div (click)="selectPicture('../../../../assets/images/airpods3.jpeg', 4)" class="col-2">
           <img
             src="../../../../assets/images/airpods3.jpeg
             "

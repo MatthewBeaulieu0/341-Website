@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
   selector: 'app-featured-items',
   templateUrl: './featured-items.component.html',
   styleUrls: ['./featured-items.component.css'],
-  providers: [FeaturedItemsService, ProductsService],
+  providers: [FeaturedItemsService],
 })
 export class FeaturedItemsComponent implements OnInit {
   featuredItems: Product[] = [];

@@ -15,11 +15,18 @@ export class ProductsService {
   public productID: string = '1';
   //public subject = new Subject<any>();
   private IDSource = new BehaviorSubject(this.productID);
-  currentMessage = this.IDSource.asObservable();
+  currentID = this.IDSource.asObservable();
 
-  changeMessage(productID: string) {
+  changeMessage(productID: string) {    
     this.IDSource.next(productID);
-    console.log(productID);
+    console.log("id in service: " + productID);
+  }
+
+  getProduct(productID: string) {
+    var tempLink = 'http://localhost:3001/product/id/';
+    var link = tempLink.concat(productID.toString());
+    return this.httpClient
+      .get<any>(link)
   }
 
   getAllProducts() {
