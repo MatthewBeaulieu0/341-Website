@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { frontendUser } from 'src/app/models/frontendUser';
 
 @Component({
   selector: 'app-loginpage',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./loginpage.component.css'],
 })
 export class LoginpageComponent implements OnInit {
+  newUser: frontendUser;
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   ngOnInit(): void {}
@@ -27,14 +29,19 @@ export class LoginpageComponent implements OnInit {
       email: data.email,
       password: data.password,
     };
-
     this.httpClient
-      .post('http://localhost:3001/user/api/login', body, {
-        responseType: 'text',
-        headers: { 'content-type': 'application/json' },
-      })
-      .subscribe((s) => {
-        console.log(s);
+      .post<frontendUser>('http://localhost:3001/user/api/login', body)
+      .subscribe((response) => {
+        this.newUser = response;
       });
   }
+  // requestAnnoyingThing() {
+  //   this.httpClient
+  //     .post('http://localhost:3001/user/api/verify', {
+  //       withCredentials: true,
+  //     })
+  //     .subscribe((s) => {
+  //       console.log(s);
+  //     });
+  // }
 }

@@ -22,6 +22,7 @@ export class ShoppingcartComponent implements OnInit {
     this.httpClient
       .get<any>('http://localhost:3001/user/id/1/shopping_cart')
       .subscribe((response) => {
+        console.log(response);
         this.cart = response.data[1];
         console.log('This cart' + JSON.stringify(this.cart[0].quantity));
         console.log(
@@ -94,7 +95,7 @@ export class ShoppingcartComponent implements OnInit {
     this.getCart();
   }
 
-  routeToCheckOutPage(){
+  routeToCheckOutPage() {
     this.router.navigate(['/checkoutpage']);
   }
 
