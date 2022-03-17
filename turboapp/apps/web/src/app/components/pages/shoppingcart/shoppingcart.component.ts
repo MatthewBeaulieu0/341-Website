@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product';
 import { Cart } from 'src/app/models/cart';
-import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shoppingcart',
   templateUrl: './shoppingcart.component.html',
   styleUrls: ['./shoppingcart.component.css'],
+  providers: [CartService],
 })
 export class ShoppingcartComponent implements OnInit {
   id: number;
@@ -16,19 +17,18 @@ export class ShoppingcartComponent implements OnInit {
 
   deliveryFees = 10.0;
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(
+    private httpClient: HttpClient,
+    private _cartService: CartService,
+    private router: Router
+  ) {}
 
-  getCart() {
-    this.httpClient
-      .get<any>('http://localhost:3001/user/id/1/shopping_cart')
-      .subscribe((response) => {
-        this.cart = response.data[1];
-        console.log('This cart' + JSON.stringify(this.cart[0].quantity));
-        console.log(
-          'This cart' + JSON.stringify(this.cart[0].product.featured)
-        );
-      });
-  }
+  // getCart(){
+  //   this._cartService.getCart()
+  //     .subscribe(
+
+  //     )
+  // }
 
   subtotalProduct(cart: Cart) {
     return parseFloat((cart.quantity * cart.product.price).toFixed(2));
@@ -50,6 +50,7 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   calculateTotal() {
+    console.log(this.cart);
     return (
       this.calculateSubtotal() +
       this.calculateTax() +
@@ -91,10 +92,14 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCart();
+    this._cartService.getCart().subscribe((response) => {
+      this.cart = response.data[1];
+      //console.log('This cart' + JSON.stringify(this.cart[0].quantity));
+      //console.log('This cart' + JSON.stringify(this.cart[0].product.name));
+    });
   }
 
-  routeToCheckOutPage(){
+  routeToCheckOutPage() {
     this.router.navigate(['/checkoutpage']);
   }
 
