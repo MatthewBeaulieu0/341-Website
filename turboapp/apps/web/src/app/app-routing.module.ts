@@ -10,19 +10,19 @@ import { LoginpageComponent } from './components/pages/loginpage/loginpage.compo
 import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: "welcomepage", pathMatch: "full"},
-  {path: "mainpage", component: MainpageComponent},
-  {path: "welcomepage", component: WelcomepageComponent},
-  {path: "productpage", component: ProductpageComponent},
-  {path: "shoppingcart", component: ShoppingcartComponent},
-  {path: "aislepage", component: ProductaisleComponent},
-  {path: "signup", component: SignuppageComponent},
-  {path: "login", component: LoginpageComponent},
-  {path: "checkoutpage", component: CheckoutpageComponent}
+  { path: '', redirectTo: 'welcomepage', pathMatch: 'full' },
+  { path: 'mainpage', component: MainpageComponent },
+  { path: 'welcomepage', component: WelcomepageComponent },
+  { path: 'productpage', component: ProductpageComponent },
+  { path: 'shoppingcart', component: ShoppingcartComponent },
+  { path: 'aislepage', component: ProductaisleComponent },
+  { path: 'signup', component: SignuppageComponent },
+  { path: 'login', component: LoginpageComponent },
+  { path: 'checkoutpage', component: CheckoutpageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
