@@ -1,13 +1,18 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+
 @Component({
   selector: 'app-signuppage',
   templateUrl: './signuppage.component.html',
   styleUrls: ['./signuppage.component.css'],
 })
 export class SignuppageComponent implements OnInit {
+
+  exform: FormGroup;
+
   constructor(private httpClient: HttpClient, private router: Router) {}
   user: User = {
     name: '',
@@ -166,5 +171,24 @@ export class SignuppageComponent implements OnInit {
       return null;
     }
   }
-  ngOnInit(): void {}
+
+  ngOnInit() :void{
+
+    this.exform = new FormGroup({
+    firstname : new FormControl(null, [Validators.required, Validators.pattern("^[a-z ,.'-]+$")]),
+    lastname : new FormControl(null, [Validators.required, Validators.pattern("^[a-z ,.'-]+$")]),
+    email: new FormControl( null, [Validators.required, Validators.email]),
+    address: new FormControl(null, Validators.required),
+    password: new FormControl( null, [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$")]),
+    age: new FormControl( null, Validators.required),
+    date: new FormControl(null, Validators.required)
+
+
+    });
+  }
+
+  routeToLoginPage(){
+    this.router.navigate(['/login']);
+  }
+
 }

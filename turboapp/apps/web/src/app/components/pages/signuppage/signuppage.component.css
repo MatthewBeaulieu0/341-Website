@@ -21,9 +21,20 @@ margin-bottom: 15px;
 font-family:initial;
 }
 
-.sign-up-form input{
-    margin-bottom: 20px;
+
+.form-group input{
     width: 50%;
+    margin-left: 25%;
+}
+
+.form-group .button{
+    margin-right: 50%;
+}
+
+.text-danger{
+    margin-left: -15px !important;
+    text-align: left !important;
+
 }
 
 .sign-up-form form{
