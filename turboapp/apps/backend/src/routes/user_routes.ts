@@ -72,9 +72,9 @@ user.post("/api/login", async (req: Request, res: Response) => {
     }
     return user;
 });
-user.post("/api/verify", [verifyJWT], async (req: Request, res: Response) => {
+user.post("/api/session", [verifyJWT], async (req: Request, res: Response) => {
     try {
-        //console.log("VERIFY");
+        console.log(req.user);
         return res.status(200).json(req.user);
     } catch (err: any) {
         return res.status(400).json({ errType: err.name, errMsg: err.message });

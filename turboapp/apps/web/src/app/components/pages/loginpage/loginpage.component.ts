@@ -30,7 +30,9 @@ export class LoginpageComponent implements OnInit {
       password: data.password,
     };
     this.httpClient
-      .post<frontendUser>('http://localhost:3001/user/api/login', body)
+      .post<frontendUser>('http://localhost:3001/user/api/login', body, {
+        withCredentials: true,
+      })
       .subscribe((response) => {
         this.newUser = response;
       });

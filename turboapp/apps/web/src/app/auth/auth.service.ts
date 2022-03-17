@@ -13,7 +13,7 @@ export class AuthService {
       'Content-Type': 'application/json',
     });
     this.httpClient
-      .post<any>('http://localhost:3001/user/api/verify', null, {
+      .post<any>('http://localhost:3001/user/api/session', null, {
         withCredentials: true,
         headers,
       })
