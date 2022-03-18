@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { frontendUser } from 'src/app/models/frontendUser';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-loginpage',
@@ -11,8 +12,19 @@ import { frontendUser } from 'src/app/models/frontendUser';
 export class LoginpageComponent implements OnInit {
   newUser: frontendUser;
   constructor(private httpClient: HttpClient, private router: Router) {}
+  
+  exform: FormGroup;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.exform = new FormGroup({ 
+    email: new FormControl( null, [Validators.required, Validators.email]),
+    password: new FormControl( null, [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$")])
+    })
+  }
+
+  routeToMainPage(){
+    this.router.navigate(['/mainpage']);
+  }
 
   routeToSignUpPage() {
     this.router.navigate(['/signup']);
