@@ -46,9 +46,6 @@
         background-color: transparent;
       }
     </style>
-
-    <app-signup-navbar></app-signup-navbar>
-
     <header class="header">
       <div class="navbar">
         <h1 class="colorofAmazonlogo">
@@ -64,64 +61,9 @@
       </div>
     </header>
 
-
     <div class="container">
       <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6 sign-up-form">
-          <form
-            #usersignup="ngForm"
-            (ngSubmit)="onClickSubmit(usersignup.value)"
-          >
-            <h1>Sign up</h1>
-            <br />
-            <h5>Enter Your Full Name</h5>
-            <input
-              type="firstName"
-              class="input-first-name"
-              placeholder="First Name"
-              name="firstname"
-              ngModel
-            />
-            <br />
-            <h6>Enter Your Last Name</h6>
-            <input
-              type="lastName"
-              class="input-last-name"
-              placeholder="Last Name"
-              name="lastname"
-              ngModel
-            />
-
-
-            <br />
-            <h5>Enter Your Email</h5>
-            <input
-              type="email"
-              class="input-email"
-              placeholder="Email"
-              name="email"
-              ngModel
-            />
-            <br />
-            <h5>Enter Your Home Address</h5>
-            <input
-              type="text"
-              class="input-address"
-              placeholder="Address"
-              name="address"
-              ngModel
-            />
-            <br />
-            <h5>Enter a Password</h5>
-            <input
-              type="password"
-              class="input-password"
-              placeholder="Password"
-              name="password"
-              ngModel
-            />
-            <br />
+         <div class="col-3">
 
             </div>
           <div class="col-6 sign-up-form">
@@ -150,28 +92,12 @@
                 <button type="button"> Sign up </button>
 
 
-            <h5>Enter Your Date of Birth</h5>
-            <input type="date" name="date" class="input-birth-date" ngModel />
 
-            <br />
-            <h5>Are you a seller?</h5>
-            <span *ngFor="let chk of checkboxes">
-              <input
-                class="checkbox"
-                type="checkbox"
-                [disabled]="chk.checked"
-                (click)="disableOther(chk)"
-                ng-model="check.selected"
-              />
-              {{ chk.value }}
-            </span>
-            <br />
-            <p>Already have an account? <a [routerLink]='["/login"]' (click)="routeToLogInPage()">Log In</a></p>
-            <br />
-            <input type="submit" value="Sign Up" />
-          </form>
+            </form>
+          </div>
+          <div class="col-3">
+
         </div>
-        <div class="col-3"></div>
       </div>
     </div>
 

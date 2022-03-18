@@ -6,7 +6,7 @@
         "lib": ["es2015"],
 
         "rootDir": "src",
-        "outDir": "dist",
+        "outDir": "dist", 
         "esModuleInterop": true,
         "strict": true,
         "alwaysStrict": true,
@@ -27,8 +27,7 @@
         "downlevelIteration": true,
         "declaration": true,
 
-        "pretty": true,
-        "typeRoots": ["@types", "./node_modules/@types"]
+        "pretty": true
     },
-    "include": ["typings/**/*", "src/**/*", "../../index.ts"]
+    "include": ["typings/**/*", "src/**/*"]
 }

@@ -23,8 +23,4 @@ export class WelcomepageComponent implements OnInit {
     this.router.navigate(['/shoppingcart']);
   }
 
-  routeToLogInPage(){
-    this.router.navigate(['/login']);
-  }
-
 }

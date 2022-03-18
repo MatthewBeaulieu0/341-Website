@@ -1,43 +1,31 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { HttpClient } from '@angular/common/http';
-import { FeaturedItemsService } from 'src/app/services/featured-items.service';
-import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-featured-items',
   templateUrl: './featured-items.component.html',
-  styleUrls: ['./featured-items.component.css'],
-  providers: [FeaturedItemsService],
+  styleUrls: ['./featured-items.component.css']
 })
 export class FeaturedItemsComponent implements OnInit {
-  featuredItems: Product[] = [];
+
+  images = ["https://images-na.ssl-images-amazon.com/images/G/15/DVD/04_-_NEW_FamilyStripe_AirPods_3rd._CB653734269_.png","https://images-na.ssl-images-amazon.com/images/G/15/DVD/04_-_NEW_FamilyStripe_AirPods_3rd._CB653734269_.png", "https://images-na.ssl-images-amazon.com/images/G/15/DVD/04_-_NEW_FamilyStripe_AirPods_3rd._CB653734269_.png", "https://images-na.ssl-images-amazon.com/images/G/15/DVD/04_-_NEW_FamilyStripe_AirPods_3rd._CB653734269_.png"];
+
+  price = 5.99;
+  item = "airpods";
+
+  products: Product[];
+
 
   constructor(
-    private _featuredItemsService: FeaturedItemsService,
-    private _productsService: ProductsService,
-    private router: Router
-  ) {}
-
-  sendProductID(id: number) {
-    this.router.navigate(['/productpage']);
-    this._productsService.changeMessage(String(id));
-  }
+    private route: ActivatedRoute,
+    private cartService: CartService,
+    private httpClient: HttpClient
+  ) { }
 
   ngOnInit(): void {
-    this._featuredItemsService.getFeaturedItems().subscribe((response) => {
-      console.log(response[1]);
-      console.log(response[1].length);
-      for (let i = 0; i < response[1].length; i++) {
-        if (response[1][i].featured == 1) {
-          this.featuredItems.push(response[1][i]);
-        }
-        console.log(this.featuredItems);
-      }
-      console.log('This product' + JSON.stringify(this.featuredItems[0].name));
-      console.log('This product' + JSON.stringify(this.featuredItems[0].price));
-    });
   }
+
 }

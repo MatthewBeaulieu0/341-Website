@@ -1,26 +1,16 @@
-<h1>HELLO</h1>
-
-<div class="featured-slider">
-  <div class="wrapper">
-    <script>
-      console.log(this.featuredItems);
-    </script>
-    <div
-      class="box"
-      *ngFor="let item of featuredItems"
-      (click)="sendProductID(item.product_id)"
-    >
-      <div class="image">
-        <img src="{{ item.link }}" alt="" />
-      </div>
-      <div class="content">
-        <h3>Featured item</h3>
-        <div>{{ item.name }}</div>
-        <div class="price">
-          <span>{{ item.price }}</span>
+         
+<div class="featured-slider">   
+    <div class="wrapper"> 
+        <div class="box" *ngFor="let image of images">
+            <div class="image">
+                <img [src]="image" alt="">
+            </div>
+            <div class="content">
+                <h3>Featured item</h3>
+                <div>{{item}}</div>
+                <div class="price"><span >{{price}}</span></div>
+                <a href="#" class="btn" >Add to cart</a>
+            </div>
         </div>
-        <a href="#" class="btn">Add to cart</a>
-      </div>
     </div>
-  </div>
 </div>

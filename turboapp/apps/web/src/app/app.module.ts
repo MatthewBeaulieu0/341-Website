@@ -21,11 +21,7 @@ import { ProductaisleComponent } from './components/pages/productaisle/productai
 
 import { CartService } from './services/cart.service';
 import { ProductsService } from './services/products.service';
-import { SignupNavbarComponent } from './components/signup-navbar/signup-navbar.component';
-import { LoginpageComponent } from './components/pages/loginpage/loginpage.component';
-import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
-import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
-import { AuthService } from './auth/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,18 +37,9 @@ import { AuthService } from './auth/auth.service';
     SignuppageComponent,
     HeaderComponent,
     ProductaisleComponent,
-    SignupNavbarComponent,
-    LoginpageComponent,
-    CheckoutpageComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FormsModule,
-    HttpClientModule,
-  ],
-  providers: [CartService, ProductsService, AuthGuard, AuthService],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule, HttpClientModule],
+  providers: [CartService, ProductsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
