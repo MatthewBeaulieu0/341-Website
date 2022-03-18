@@ -45,7 +45,7 @@ jobs:
            echo Performing Tests
            cd turboapp
            npm i
-           cd app
+           cd apps
            cd backend
            npm i
            cd ..
