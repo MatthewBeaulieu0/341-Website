@@ -171,8 +171,8 @@ export class SignuppageComponent implements OnInit {
   ngOnInit() :void{
 
     this.exform = new FormGroup({
-    firstname : new FormControl(null, [Validators.required, Validators.pattern("^[a-z ,.'-]+$")]),
-    lastname : new FormControl(null, [Validators.required, Validators.pattern("^[a-z ,.'-]+$")]),
+    firstname : new FormControl(null, [Validators.required, Validators.pattern("^[A-Za-z ,.'-]+$")]),
+    lastname : new FormControl(null, [Validators.required, Validators.pattern("^[A-Za-z ,.'-]+$")]),
     email: new FormControl( null, [Validators.required, Validators.email]),
     address: new FormControl(null, Validators.required),
     password: new FormControl( null, [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$")]),

@@ -59,7 +59,7 @@
           >
             <h1>Sign up</h1>
             <br />
-            <h5>Enter Your Full Name</h5>
+            <h5>Enter Your First Name</h5>
             <div class="form-group">
             <input
               formControlName="firstname"
@@ -123,19 +123,6 @@
             <h5>Enter Your Date of Birth</h5>
             <input type="date" name="date" class="form-control" formControlName="date" />
             </div>
-            <h5>Enter Your Age</h5>
-            <div class="form-group">
-            <input
-              formControlName="age"
-              type="age"
-              class="form-control"
-              placeholder="0"
-              name="age"
-              
-            />
-            <small class="text-danger" *ngIf="exform.get('age').invalid && exform.get('age').touched">Date of birth is required</small>
-            </div>
-
             <br />
             <h5>Are you a seller?</h5>
             <span *ngFor="let chk of checkboxes">
