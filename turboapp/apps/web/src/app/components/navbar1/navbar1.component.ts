@@ -24,8 +24,4 @@ export class Navbar1Component implements OnInit {
     this.router.navigate(['/shoppingcart']);
   }
 
-  routeToSignUpPage(){
-    this.router.navigate(['/signup']);
-  }
-
 }
