@@ -46,24 +46,7 @@
         background-color: transparent;
       }
     </style>
-
     <app-signup-navbar></app-signup-navbar>
-
-    <header class="header">
-      <div class="navbar">
-        <h1 class="colorofAmazonlogo">
-          <span style="color: rgb(230, 8, 8)" class="fakeFont">Fake</span>Amazon
-        </h1>
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Shopping Cart</a></li>
-            <li><a href="#">Login</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
 
     <div class="container">
       <div class="row">
@@ -93,7 +76,6 @@
               ngModel
             />
 
-
             <br />
             <h5>Enter Your Email</h5>
             <input
@@ -122,33 +104,6 @@
               ngModel
             />
             <br />
-
-            </div>
-          <div class="col-6 sign-up-form">
-              <form>
-                <h2>
-                    Sign up
-                </h2>
-                <br>
-                <h6> Enter Your First Name</h6>
-                <input type="firstName" class="input-first-name" placeholder="First Name">
-                
-                <br>
-                <h6> Enter Your Last Name</h6>
-                <input type="lastName" class="input-last-name" placeholder="Last Name">
-                <br>
-                <h6> Enter Your Email </h6>
-                <input type="email" class="input-email" placeholder="Email">
-                <br>
-                <h6> Enter Your Number</h6>
-                <input type="tel" class="input-number" placeholder="Number">
-                <br>
-                <h6> Enter a Password</h6>
-                <input type="password" class="input-password" placeholder="Password">
-                <p> Already have an account? <a href=""> Log in</a></p>
-                <br>
-                <button type="button"> Sign up </button>
-
 
             <h5>Enter Your Date of Birth</h5>
             <input type="date" name="date" class="input-birth-date" ngModel />
@@ -180,34 +135,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <div class="container-fluid">
-      <div class="row footer-row">
-        <footer class="col-12 footer">
-          <h4>Fake Amazon Inc.</h4>
-          <p>
-            Thank you for using our website.
-            <br />
-            We are a small group of entrepreneurs trying to become the next Jeff
-            Bezos.
-          </p>
-          <div class="medialogo">
-            <a href="#" class="fa fa-facebook"></a>
-
-            <a href="#" class="fa fa-twitter"></a>
-
-            <a href="#" class="fa fa-instagram"></a>
-
-            <a href="#" class="fa fa-reddit"></a>
-          </div>
-
-          <p>
-            Don't forget to follow us on social media for a chance to win 1 year
-            worth of free socks!
-          </p>
-          <br />
-          Copyright &copy; FakeAmazon All rights reserved.
-        </footer>
-      </div>
-    </div>
+    <app-footer></app-footer>
   </body>
 </html>

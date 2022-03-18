@@ -12,6 +12,7 @@ export class SignuppageComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  //Fixing stuff :)
   constructor(private httpClient: HttpClient, private router: Router) {}
   user: User = {
     name: '',
