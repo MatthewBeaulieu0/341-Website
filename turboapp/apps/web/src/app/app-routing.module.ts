@@ -5,7 +5,6 @@ import { ProductaisleComponent } from './components/pages/productaisle/productai
 import { ProductpageComponent } from './components/pages/productpage/productpage.component';
 import { ShoppingcartComponent } from './components/pages/shoppingcart/shoppingcart.component';
 import { WelcomepageComponent } from './components/pages/welcomepage/welcomepage.component';
-
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 import { LoginpageComponent } from './components/pages/loginpage/loginpage.component';
 import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
@@ -27,7 +26,6 @@ const routes: Routes = [
   { path: 'signup', component: SignuppageComponent },
   { path: 'login', component: LoginpageComponent },
   { path: 'checkoutpage', component: CheckoutpageComponent },
-
 ];
 
 @NgModule({
