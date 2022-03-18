@@ -1,0 +1,58 @@
+body{
+    background-image: url('https://kinneygroup.com/wp-content/uploads/2019/10/fw-bg-gradient.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.sign-up-form h1{
+    font-family: 'Dancing Script', cursive;
+    font-size: 60px;
+    color:red;
+
+}
+
+.sign-up-form ::placeholder{
+    font-family: cursive;
+}
+
+.sign-up-form h5{
+margin-bottom: 15px;
+font-family:initial;
+}
+
+.sign-up-form input{
+    margin-bottom: 20px;
+}
+
+.sign-up-form form{
+    text-align: center;
+    margin-top: 80px;
+    color: white;
+    
+}
+
+.sign-up-form a{
+    text-decoration: none;
+    color: yellow;
+}
+
+.sign-up-form a:hover{
+    color:red;
+}
+
+.btn-light{
+    font-family: cursive;
+    margin-bottom: 100px;
+}
+
+.btn-light:hover{
+    background-color:#f89c3c;
+    color: black;
+    cursor: pointer;
+  }
+
+  .btn-light span::after{
+    cursor: pointer;
+    transition: 0.4;
+  }

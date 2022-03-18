@@ -6,17 +6,32 @@ import { ProductpageComponent } from './components/pages/productpage/productpage
 import { ShoppingcartComponent } from './components/pages/shoppingcart/shoppingcart.component';
 import { WelcomepageComponent } from './components/pages/welcomepage/welcomepage.component';
 
+import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
+import { LoginpageComponent } from './components/pages/loginpage/loginpage.component';
+import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
+import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 const routes: Routes = [
-  {path: "", redirectTo: "welcomepage", pathMatch: "full"},
-  {path: "mainpage", component: MainpageComponent},
-  {path: "welcomepage", component: WelcomepageComponent},
-  {path: "productpage", component: ProductpageComponent},
-  {path: "shoppingcart", component: ShoppingcartComponent},
-  {path: "aislepage", component: ProductaisleComponent}
+  { path: '', redirectTo: 'welcomepage', pathMatch: 'full' },
+  { path: 'mainpage', component: MainpageComponent },
+  { path: 'welcomepage', component: WelcomepageComponent },
+  { path: 'productpage', component: ProductpageComponent },
+
+  {
+    path: 'shoppingcart',
+    component: ShoppingcartComponent,
+    canActivate: [AuthGuard],
+  },
+
+
+  { path: 'aislepage', component: ProductaisleComponent },
+  { path: 'signup', component: SignuppageComponent },
+  { path: 'login', component: LoginpageComponent },
+  { path: 'checkoutpage', component: CheckoutpageComponent },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

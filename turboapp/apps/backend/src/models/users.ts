@@ -1,13 +1,16 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
-export const user_schema = yup.object().shape({
-    name: yup.string().required(),
-    password: yup.string().required(),
-    type: yup.string().oneOf(['buyer', 'seller']),
-    age: yup.number().required().positive().integer(),
-    email: yup.string().email(),
-    address: yup.string(),
-    shopping_cart: yup.array().of(yup.string()).default([])
-});
+export const user_schema = yup
+    .object()
+    .shape({
+        user_id: yup.number(),
+        name: yup.string().required(),
+        password: yup.string().required(),
+        seller: yup.boolean(),
+        age: yup.number().required().positive().integer(),
+        email: yup.string().email(),
+        address: yup.string().required(),
+    })
+    .required();
 
 export type User = yup.InferType<typeof user_schema>;

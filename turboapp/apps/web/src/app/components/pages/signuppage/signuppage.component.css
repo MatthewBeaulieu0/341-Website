@@ -3,5 +3,55 @@ margin-bottom: 10px;
 }
 
 .sign-up-form input{
-    margin-bottom: 10px;
+
+    margin-bottom: 20px;
+    width: 50%;
 }
+
+.sign-up-form .checkbox{
+    margin-bottom: 20px;
+    width: 5%;
+}
+
+.sign-up-form form{
+    text-align: center;
+    margin-top: 80px;
+    color: white;
+    
+}
+
+.sign-up-form a{
+    text-decoration: none;
+    color:#f89c3c;
+}
+
+.sign-up-form a:hover{
+    color:red;
+}
+
+.sign-up-form .input-seller{
+    margin: 10px;
+    width: 5%;
+}
+
+.sign-up-form .input-buyer{
+    margin: 10px;
+    width: 5%;
+
+}
+
+.btn-light{
+    font-family: cursive;
+}
+
+.btn-light:hover{
+    background-color:#f89c3c;
+    color: black;
+    cursor: pointer;
+  }
+
+  .btn-light span::after{
+    cursor: pointer;
+    transition: 0.4;
+  }
+

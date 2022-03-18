@@ -1,34 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
     <title>FakeAmazon</title>
-    <link rel="stylesheet" href="mainpage.component.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="mainpage.component.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
 
-<app-header></app-header>
+    <app-header></app-header>
 
-<app-image-slider></app-image-slider>
+    <app-image-slider></app-image-slider>
 
+    <!-- featured section starts -->
 
-<!-- featured section starts -->
+    <section class="featured" id="featured">
+      <h1 class="heading"><span>Featured items</span></h1>
 
-<section class="featured" id="featured">
-    <h1 class="heading"><span>Featured items</span></h1>
-           
-            <app-featured-items></app-featured-items>
+      <app-featured-items></app-featured-items>
+    </section>
 
-</section>
+    <!-- featured section ends -->
 
+    <div class="container-fluid">
+      <div class="row footer-row">
+        <footer class="col-12 footer">
+          <h4>Fake Amazon Inc.</h4>
+          <p>
+            Thank you for using our website.
+            <br />
+            We are a small group of entrepreneurs trying to become the next Jeff
+            Bezos.
+          </p>
+          <div class="medialogo">
+            <a href="#" class="fa fa-facebook"></a>
 
+            <a href="#" class="fa fa-twitter"></a>
 
-<!-- featured section ends -->
+            <a href="#" class="fa fa-instagram"></a>
 
-</body>
+            <a href="#" class="fa fa-reddit"></a>
+          </div>
+
+          <p>
+            Don't forget to follow us on social media for a chance to win 1 year
+            worth of free socks!
+          </p>
+          <br />
+          Copyright &copy; FakeAmazon All rights reserved.
+        </footer>
+      </div>
+    </div>
+  </body>
 </html>
-
