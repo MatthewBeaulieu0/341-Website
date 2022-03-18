@@ -30,8 +30,5 @@ export class HeaderComponent implements OnInit {
   routeToMainPage(){
     this.router.navigate(['/mainpage']);
   }
-  routeToSignUpPage(){
-    this.router.navigate(['/signup']);
-  }
 
 }

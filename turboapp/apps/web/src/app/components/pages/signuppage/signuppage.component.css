@@ -1,27 +1,9 @@
-body{
-    background-image: url('https://blitzen.com/blog/wp-content/uploads/new-tech.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.sign-up-form h1{
-    font-family: 'Dancing Script', cursive;
-    font-size: 60px;
-    color:red;
-
-}
-
-.sign-up-form ::placeholder{
-    font-family: cursive;
-}
-
-.sign-up-form h5{
-margin-bottom: 15px;
-font-family:initial;
+.sign-up-form h6{
+margin-bottom: 10px;
 }
 
 .sign-up-form input{
+
     margin-bottom: 20px;
     width: 50%;
 }
@@ -72,3 +54,4 @@ font-family:initial;
     cursor: pointer;
     transition: 0.4;
   }
+
