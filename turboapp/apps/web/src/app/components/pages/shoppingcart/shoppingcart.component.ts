@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
 import { frontendUser } from 'src/app/models/frontendUser';
-import { reject } from 'lodash';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -140,7 +139,6 @@ export class ShoppingcartComponent implements OnInit {
   cartInit() {
     console.log(this.user.user_id + 'IDDDD');
     this._cartService.getCart(this.user.user_id).subscribe((response) => {
-      console.log(this.cart);
       this.cart = response.data[1];
     });
   }

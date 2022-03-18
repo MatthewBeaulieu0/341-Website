@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { frontendUser } from '../models/frontendUser';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(private httpClient: HttpClient, private router: Router) {}
   newUser: frontendUser;
