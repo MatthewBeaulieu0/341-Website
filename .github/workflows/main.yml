@@ -43,6 +43,7 @@ jobs:
            echo Is Node installed?
            node -v
            echo Performing Tests
+           cd turborepo
            npm test
           
         
