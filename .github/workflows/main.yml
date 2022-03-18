@@ -44,6 +44,15 @@ jobs:
            node -v
            echo Performing Tests
            cd turboapp
+           npm i
+           cd app
+           cd backend
+           npm i
+           cd ..
+           cd web
+           npm i
+           cd ..
+           cd ..
            npm test
           
         
