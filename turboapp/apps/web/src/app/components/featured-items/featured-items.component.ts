@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
@@ -13,6 +13,11 @@ import { ProductsService } from 'src/app/services/products.service';
   providers: [FeaturedItemsService],
 })
 export class FeaturedItemsComponent implements OnInit {
+
+
+  data:any = {test: "1"};
+
+  
   featuredItems: Product[] = [];
 
   constructor(
@@ -22,8 +27,10 @@ export class FeaturedItemsComponent implements OnInit {
   ) {}
 
   sendProductID(id: number) {
-    this.router.navigate(['/productpage']);
-    this._productsService.changeMessage(String(id));
+    console.log('featured items id sent: ' + id);
+    this.data = String(id);
+    this._productsService.setData(this.data);
+    this.router.navigate(['/productpage']);    
   }
 
   ngOnInit(): void {

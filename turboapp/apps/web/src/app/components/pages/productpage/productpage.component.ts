@@ -11,6 +11,8 @@ import { ProductsService } from 'src/app/services/products.service';
   providers: [ProductsService],
 })
 export class ProductpageComponent implements OnInit {
+  data:any;
+
   // add section that gets information from database (get http request)
   constructor(
     private router: Router,
@@ -79,13 +81,9 @@ export class ProductpageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._productsService.currentID.subscribe(
-      message => {
-        this.productID = message;
-        console.log("id in product page: " + message);
-      
-    }); //<= Always get current value!
-  
+    this.data = this._productsService.getData();
+    console.log('ngOnInit: ' + this.data);
+    this.productID = this.data;
     this._productsService.getProduct(this.productID).subscribe((response) => {
       this.product = response[1];
       this.mainLink = this.product[0].link;
