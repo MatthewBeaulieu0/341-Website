@@ -53,13 +53,11 @@ jobs:
            cd ..
            cd ..
            npm i
-           npm run dev
-           if [ $? -eq 0 ]
-           then
-             echo "SUCCESS"
-           else
-             echo "FAIL"
-           fi
-          
+           npm run dev --if-present
+           npm start & npx wait-on http://localhost:4200
+        env:
+          CI: true
+           
+
         
       
