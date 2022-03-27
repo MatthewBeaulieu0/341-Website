@@ -54,12 +54,16 @@ jobs:
 
       - name: Build and Compile Backend
         run: |
-           cd .\turboapp\apps\backend\
+           cd turboapp
+           cd apps
+           cd backend
            npm run build
 
       - name: Build and Compile Frontend
         run: |
-           cd .\turboapp\apps\web\
+           cd turboapp
+           cd apps
+           cd web
            npm run build
            
 
