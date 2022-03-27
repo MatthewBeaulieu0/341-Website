@@ -35,7 +35,7 @@
             <ul>
               <li><a (click)="routeToMainPage()">Home</a></li>
               <li> <a [routerLink]='["/shoppingcart"]' (click)="routeToShoppingCart()">Shopping Cart</a></li>
-              <li><a [routerLink]='["/login"]' (click)="routeToLogInPage()">Log In</a></li>
+              <li><a [hidden] = 'this.status'[routerLink]='["/login"]' (click)="routeToLogInPage()">Log In</a></li>
             </ul>
           </nav>
         </div>
