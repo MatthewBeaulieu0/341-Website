@@ -43,7 +43,7 @@ jobs:
            echo Is Node installed?
            node -v
            echo Does the website Compile?
-           cd turbapp
+           cd turboapp
            cd apps
            cd backend
            npm i
