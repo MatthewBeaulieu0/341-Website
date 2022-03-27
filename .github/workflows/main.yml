@@ -53,7 +53,13 @@ jobs:
            cd ..
            cd ..
            npm i
-           npm run dev --if-present
+           npm run dev
+           if [ $? -eq 0 ]
+           then
+             echo "SUCCESS"
+           else
+             echo "FAIL"
+           fi
           
         
       
