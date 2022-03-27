@@ -13,10 +13,10 @@ import { LoginStatusService } from 'src/app/services/login-status.service';
 export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
-    private status1: LoginStatusService
+    private statusService: LoginStatusService
     
     ) { }
-  status :boolean = this.status1.getLoginStatus();
+  status :boolean = this.statusService.getLoginStatus();
   ngOnInit(): void {
 
   }
