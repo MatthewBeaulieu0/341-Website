@@ -7,8 +7,7 @@ import { ProductsService } from 'src/app/services/products.service';
 @Component({
   selector: 'app-productpage',
   templateUrl: './productpage.component.html',
-  styleUrls: ['./productpage.component.css'],
-  providers: [ProductsService],
+  styleUrls: ['./productpage.component.css']
 })
 export class ProductpageComponent implements OnInit {
   data:any;
@@ -80,7 +79,7 @@ export class ProductpageComponent implements OnInit {
     this.router.navigate(['/shoppingcart']);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.data = this._productsService.getData();
     console.log('ngOnInit: ' + this.data);
     this.productID = this.data;

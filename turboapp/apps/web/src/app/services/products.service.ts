@@ -16,7 +16,7 @@ export class ProductsService {
 
   setData(data:String){
     this.data = data;
-    console.log('setData: ' + data);
+    console.log('setData: ' + this.data);
   }
 
   getData():String{

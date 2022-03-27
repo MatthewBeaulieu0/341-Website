@@ -9,13 +9,12 @@ import { ProductsService } from 'src/app/services/products.service';
 @Component({
   selector: 'app-featured-items',
   templateUrl: './featured-items.component.html',
-  styleUrls: ['./featured-items.component.css'],
-  providers: [FeaturedItemsService],
+  styleUrls: ['./featured-items.component.css']
 })
 export class FeaturedItemsComponent implements OnInit {
 
 
-  data:any = {test: "1"};
+  data:any = {text: "1"};
 
   
   featuredItems: Product[] = [];
