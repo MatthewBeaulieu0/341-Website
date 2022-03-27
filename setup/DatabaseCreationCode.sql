@@ -45,7 +45,7 @@ CREATE TABLE `Product` (
     `brand` varchar(45)  NOT NULL ,
     `seller` varchar(45)  NOT NULL ,
     `stock` int  NOT NULL ,
-    `link` varchar(180)  NOT NULL ,
+    `link` JSON,
     `category` varchar(45) NOT NULL , 
     PRIMARY KEY (
         `product_id`
@@ -84,3 +84,6 @@ ADD COLUMN `featured` BOOLEAN NOT NULL DEFAULT(FALSE);
 
 ALTER TABLE `fake_amazon`.`user` 
 CHANGE COLUMN `password` `password` CHAR(60) NOT NULL ;
+
+ALTER TABLE `fake_amazon`.`product` 
+CHANGE COLUMN `links` `links` JSON ;
