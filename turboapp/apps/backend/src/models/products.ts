@@ -9,8 +9,9 @@ export const product_schema = yup.object().shape({
     other: yup.object(),
     stock: yup.number().required().integer(),
     link: yup
-        .string()
-        .default("turboapp/apps/web/src/assets/images/banana.jpeg"),
+        .array()
+        .of(yup.string())
+        .default(["turboapp/apps/web/src/assets/images/banana.jpeg"]),
     category: yup.string(),
 });
 
