@@ -1,6 +1,6 @@
 INSERT INTO `product` (`Name`,`Description`,`Price`,`Brand`,`Seller`,`Stock`, `Link`,`Category`)
 VALUES
-  ("Banana","yellow fruit",0.99,"Fake Amazon", "Fake Amazon",5, "/assets/images/banana.jpeg","Food"),
+  ("Banana","yellow fruit",0.99,"Fake Amazon", "Fake Amazon",5, "/assets/images/banana.jpeg, /assets/images/banana1.jpeg","Food"),
   ("Calculator","math tools",39.99,"CASIO", "Fake Amazon",20, "/assets/images/calculator.jpeg" ,"Electronic"),
   ("Chocolate","tasty chocolate",3.98,"Kit Kat", "Fake Amazon",30, "/assets/images/chocalate.jpeg","Food"),
   ("Strawberry","red fruit", 4.99,"Fake Amazon", "South American Business ",6272, "/assets/images/strawberry.jpeg","Food" ),
