@@ -53,80 +53,59 @@
         <div class="col-3"></div>
         <div class="col-6 sign-up-form">
           <form
-            [formGroup]="exform"
             #usersignup="ngForm"
-            (ngSubmit)="onClickSubmit(usersignup.value)"
+            (ngSubmit)="onClickSubmit(usersignup.value); routeToLoginPage()"
           >
             <h1>Sign up</h1>
             <br />
-            <h5>Enter Your First Name</h5>
-            <div class="form-group">
-            <input
-              formControlName="firstname"
-              type="firstName"
-              class="form-control"
-              name="firstname"
-              placeholder="First Name"
-            />
-            <small *ngIf="exform.get('firstname').invalid && exform.get('firstname').touched" class="text-danger">Name is required</small>
+            <div id="form-group">
+              <label for="firstName">First Name</label>
+              <br>
+              <input type="text" ngModel required name="firstname" #firstName="ngModel" (change)="log(firstName)" pattern="^[a-zA-Z ,.'-]+$">
+              <div class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">First name is invalid</div>
             </div>
-            <h5>Enter Your Last Name</h5>
-            <div class="form-group">
-            <input
-              formControlName="lastname"
-              type="lastName"
-              class="form-control"
-              placeholder="Last Name"
-              name="lastname"
-              
-            />
-            <small class="text-danger" *ngIf="exform.get('lastname').invalid && exform.get('lastname').touched">Last name is required</small>
-            </div>   
-            <h5>Enter Your Email</h5>
-            <div class="form-group">
-            <input
-              formControlName="email"
-              type="email"
-              class="form-control"
-              placeholder="Email"
-              name="email"
-              
-            />
-            <small class="text-danger" *ngIf="exform.get('email').invalid && exform.get('email').touched">Email is required</small>
+            <br />
+            <div id="form-group">
+              <label for="lastName">Last Name</label>
+              <br>
+              <input type="text" ngModel required name="lastname" #lastName="ngModel" (change)="log(lastName)" pattern="^[a-zA-Z ,.'-]+$">
+              <div class="alert alert-danger" *ngIf="!lastName.valid && lastName.touched">Last name is invalid</div>
             </div>
-            <h5>Enter Your Home Address</h5>
-            <div class="form-group">
-            <input
-              formControlName="address"
-              type="text"
-              class="form-control"
-              placeholder="Address"
-              name="address"
-              
-            />
-            <small class="text-danger" *ngIf="exform.get('address').invalid && exform.get('address').touched">Home address is required</small>
 
+            <br />
+            <div id="form-group">
+              <label for="email">Email</label>
+              <br>
+              <input type="text" ngModel required name="email" #email="ngModel" (change)="log(email)" pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'>
+              <div class="alert alert-danger" *ngIf="!email.valid && email.touched">Email is invalid</div>
             </div>
-            <h5>Enter a Password</h5>
-            <div class="form-group">
-            <input
-              formControlName="password"
-              type="password"
-              class="form-control"
-              placeholder="Password"
-              name="password"
-              
-            />
-            <small class="text-danger" *ngIf="exform.get('password').invalid && exform.get('password').touched">Password is required</small>
+            <br />
+            <div id="form-group">
+              <label for="address">Address</label>
+              <br>
+              <input type="text" ngModel required name="address" #address="ngModel" (change)="log(address)">
+              <div class="alert alert-danger" *ngIf="!address.valid && address.touched">Address is required</div>
             </div>
-            <div class="form-group">
+            <br />
+            <div id="form-group">
+              <label for="password">Password</label>
+              <br>
+              <input type="password" ngModel required name="password" #password="ngModel" (change)="log(password)" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+              <div class="alert alert-danger" *ngIf="!password.valid && password.touched">Password is invalid</div>
+            </div>
+
+           
+
+            <br />
+
             <h5>Enter Your Date of Birth</h5>
-            <input type="date" name="date" class="form-control" formControlName="date" />
-            </div>
+            <input type="date" name="date" class="input-birth-date" ngModel />
+            <br />
             <br />
             <h5>Are you a seller?</h5>
             <span *ngFor="let chk of checkboxes">
               <input
+                class="checkbox"
                 type="checkbox"
                 [disabled]="chk.checked"
                 (click)="disableOther(chk)"
@@ -134,12 +113,11 @@
               />
               {{ chk.value }}
             </span>
-
-            <p>Already have an account? <a (click)="routeToLoginPage()"> Log in</a></p>
             <br />
-            <div class="form-group">
-            <input type="submit" [disabled]="exform.invalid" (click)="routeToLoginPage()" value="Sign Up"  class="button" />
-            </div>
+            <br />
+            <p>Already have an account? <a [routerLink]='["/login"]' (click)="routeToLoginPage()">Log In</a></p>
+            <br />
+            <input type="submit" [disabled]="!usersignup.valid" value="Sign Up" />
           </form>
         </div>
         <div class="col-3"></div>

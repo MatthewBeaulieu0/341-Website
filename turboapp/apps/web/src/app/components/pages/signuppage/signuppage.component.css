@@ -21,11 +21,20 @@ margin-bottom: 15px;
 font-family:initial;
 }
 
-
-.form-group input{
+input[type=text] {
     width: 50%;
+}
+
+input[type=password] {
+    width: 50%;
+}
+
+
+.form-group .test{
+    width: 120%;
     margin-left: 25%;
 }
+
 
 .form-group .button{
     margin-right: 50%;
@@ -77,4 +86,10 @@ font-family:initial;
   .btn-light span::after{
     cursor: pointer;
     transition: 0.4;
+  }
+
+  .alert{
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: -3%;
   }
