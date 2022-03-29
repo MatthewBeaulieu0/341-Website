@@ -3,6 +3,7 @@ import { Cart } from 'src/app/models/cart';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
+import { frontendUser } from 'src/app/models/frontendUser';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
   providers: [CartService],
 })
 export class ShoppingcartComponent implements OnInit {
+  user: frontendUser;
   id: number;
   cart: Cart[] = [];
   totalProduct: number;
@@ -25,7 +27,9 @@ export class ShoppingcartComponent implements OnInit {
 
   getCart() {
     this.httpClient
-      .get<any>('http://localhost:3001/user/id/1/shopping_cart')
+      .get<any>(
+        'http://localhost:3001/user/id/' + this.user.user_id + '/shopping_cart'
+      )
       .subscribe((response) => {
         console.log(response);
         this.cart = response.data[1];
@@ -42,7 +46,6 @@ export class ShoppingcartComponent implements OnInit {
 
   //     )
   // }
-
 
   subtotalProduct(cart: Cart) {
     return parseFloat((cart.quantity * cart.product.price).toFixed(2));
@@ -81,9 +84,11 @@ export class ShoppingcartComponent implements OnInit {
         product_id: product_id,
       },
     };
-    const params = new HttpParams().set('user_id', 1); //user_id will have to eventually change to whoever is logged on
     this.httpClient
-      .delete('http://localhost:3001/user/id/1/shopping_cart', options)
+      .delete(
+        'http://localhost:3001/user/id/' + this.user.user_id + '/shopping_cart',
+        options
+      )
       .subscribe((s) => {
         console.log(s);
       });
@@ -104,13 +109,41 @@ export class ShoppingcartComponent implements OnInit {
     this.calculateTax();
     this.calculateTotal();
   }
-
-  ngOnInit(): void {
-    this._cartService.getCart().subscribe((response) => {
-      this.cart = response.data[1];
-      //console.log('This cart' + JSON.stringify(this.cart[0].quantity));
-      //console.log('This cart' + JSON.stringify(this.cart[0].product.name));
+  userInit() {
+    return new Promise<void>((resolve, reject) => {
+      let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+      this.httpClient
+        .post<any>('http://localhost:3001/user/api/session', null, {
+          withCredentials: true,
+          headers,
+        })
+        .subscribe(
+          (s) => {
+            this.user = s;
+            console.log(this.user.user_id);
+            resolve();
+          },
+          (error) => {
+            return false;
+          }
+        );
+      if (!this.user) {
+        return false;
+      } else {
+        return true;
+      }
     });
+  }
+  cartInit() {
+    console.log(this.user.user_id + 'IDDDD');
+    this._cartService.getCart(this.user.user_id).subscribe((response) => {
+      this.cart = response.data[1];
+    });
+  }
+  ngOnInit(): void {
+    this.userInit().then((res) => this.cartInit());
   }
 
   routeToCheckOutPage() {

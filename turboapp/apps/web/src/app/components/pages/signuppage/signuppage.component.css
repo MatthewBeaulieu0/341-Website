@@ -40,10 +40,9 @@ input[type=password] {
     margin-right: 50%;
 }
 
-.text-danger{
-    margin-left: -15px !important;
-    text-align: left !important;
-
+.sign-up-form .checkbox{
+    margin-bottom: 20px;
+    width: 5%;
 }
 
 .sign-up-form form{

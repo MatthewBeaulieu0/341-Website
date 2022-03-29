@@ -47,8 +47,8 @@ export async function batch_find_products_by_ids(product_ids: Array<string>) {
     try {
         var products = await query(sql, [product_ids]);
         console.log(products);
-    } catch (error) {
-        console.log(error);
+    } catch (error: any) {
+        console.log(error.message);
         throw error;
     }
 

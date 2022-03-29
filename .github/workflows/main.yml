@@ -6,9 +6,11 @@ name: Starter CI implementation
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: 
+      - '*'
   pull_request:
-    branches: [ main ]
+    branches: 
+      - '*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -30,16 +32,40 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: NPM Install Dependencies 
         run: |
-           echo What is in this Directory?
-           ls -a
            echo Is npm installed?
            npm -v
            echo Is git installed?
            git --version
            echo Is Node installed?
            node -v
-          
+           echo Install Dependencies
+           cd turboapp
+           cd apps
+           cd backend
+           npm i
+           cd ..
+           cd web
+           npm i
+           cd ..
+           cd ..
+           npm i
+
+      - name: Build and Compile Backend
+        run: |
+           cd turboapp
+           cd apps
+           cd backend
+           npm run build
+
+      - name: Build and Compile Frontend
+        run: |
+           cd turboapp
+           cd apps
+           cd web
+           npm run build
+           
+
         
       

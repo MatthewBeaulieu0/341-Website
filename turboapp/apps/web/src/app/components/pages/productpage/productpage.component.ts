@@ -7,10 +7,11 @@ import { ProductsService } from 'src/app/services/products.service';
 @Component({
   selector: 'app-productpage',
   templateUrl: './productpage.component.html',
-  styleUrls: ['./productpage.component.css'],
-  providers: [ProductsService],
+  styleUrls: ['./productpage.component.css']
 })
 export class ProductpageComponent implements OnInit {
+  data:any;
+
   // add section that gets information from database (get http request)
   constructor(
     private router: Router,
@@ -78,14 +79,10 @@ export class ProductpageComponent implements OnInit {
     this.router.navigate(['/shoppingcart']);
   }
 
-  ngOnInit(): void {
-    this._productsService.currentID.subscribe(
-      message => {
-        this.productID = message;
-        console.log("id in product page: " + message);
-      
-    }); //<= Always get current value!
-  
+  ngOnInit() {
+    this.data = this._productsService.getData();
+    console.log('ngOnInit: ' + this.data);
+    this.productID = this.data;
     this._productsService.getProduct(this.productID).subscribe((response) => {
       this.product = response[1];
       this.mainLink = this.product[0].link;

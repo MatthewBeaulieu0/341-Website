@@ -91,6 +91,7 @@ user.post("api/logout", async (_req: Request, res: Response) => {
 });
 user.get("/id/:user_id", async (req: Request, res: Response) => {
     let user_id = parseInt(req.params.user_id);
+    console.log(user_id);
     try {
         let status,
             data = await get_user_by_id(user_id);
@@ -177,8 +178,6 @@ user.put("/id/:user_id/checkout/", async (req: Request, res: Response) => {
         let data = await checkout_order(user_id);
         let status: any = data[0];
         res.json({ data }).status(status);
-        
-
     } catch (err: any) {
         res.status(400);
         res.json({ errType: err.name, errMsg: err.message });
