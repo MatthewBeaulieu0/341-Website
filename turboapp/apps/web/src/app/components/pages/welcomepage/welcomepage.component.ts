@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginStatusService } from 'src/app/services/login-status.service';
 
 @Component({
   selector: 'app-welcomepage',
@@ -10,11 +9,9 @@ import { LoginStatusService } from 'src/app/services/login-status.service';
 export class WelcomepageComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    //private statusService: LoginStatusService
+    private router: Router
     ) { }
-  
-  //status :boolean = this.statusService.getLoginStatus();
+
   ngOnInit(): void {
   }
 

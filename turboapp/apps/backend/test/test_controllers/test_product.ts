@@ -2,7 +2,6 @@
 import * as chai from "chai";
 import * as mocha from "mocha";
 import { create_new_product, get_filtered_products, get_product_by_id } from "../../src/controllers/product_controller" 
-import { query } from "../../src/helpers/query_helper";
 
 const expect = chai.expect;
 const describe = mocha.describe;
@@ -16,6 +15,7 @@ let test_product: any = {
     brand: "string",
     seller: "string",
     stock: 1,
+    link: "string",
     category: "string",
 }
 
@@ -51,7 +51,7 @@ describe('Product Controllers', function(){
             category: "string",
         }
         let valid_product = {
-            name: "string2",
+            name: "string",
             description: "string",
             price: 1,
             brand: "string",
@@ -61,7 +61,6 @@ describe('Product Controllers', function(){
             category: "string",
         }
         it('return 400 bad request if passed invalid field.', async function(){
-            await query("DELETE FROM product WHERE name like 'string%';", []);
             let data = await create_new_product(invalid_product);
             let status = data[0]
             expect(status).to.equal(400);
@@ -71,7 +70,6 @@ describe('Product Controllers', function(){
             let status = data[0]
             console.log(data);
             expect(status).to.equal(200);
-            await query("DELETE FROM product WHERE name like 'string%';", []);
         });
     });
     describe('# get_filtered_products', function(){

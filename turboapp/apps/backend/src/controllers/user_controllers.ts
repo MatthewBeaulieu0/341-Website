@@ -22,7 +22,6 @@ import { hash } from "bcrypt";
 
 import dotenv from "dotenv";
 import { create_order_status } from "../services/orderstatus_services";
-import { parse_links } from "../helpers/links_helper";
 const saltRounds = 4;
 dotenv.config();
 
@@ -46,30 +45,22 @@ export async function get_user_by_email(email: string) {
 export async function create_new_user(user: any) {
     console.log("Create User:" + JSON.stringify(user));
     let [err, error_data] = validate_user_data(user);
-    if (err) return [400, error_data];
+    if (err) {
+        return [400, error_data];
+    } else {
+        let casted_user = user_schema.cast(user, { stripUnknown: true });
+        casted_user.password = await hash(casted_user.password, saltRounds);
+        let new_user: any = await create_user(casted_user);
+        let new_order_status: any = await create_order_status();
 
-    let casted_user = user_schema.cast(user, { stripUnknown: true });
-    casted_user.password = await hash(casted_user.password, saltRounds);
+        let user_id = new_user[0].user_id;
+        let order_status_id = new_order_status[0].order_status_id;
 
-    console.log(casted_user.email);
+        let order = await create_order(user_id, order_status_id);
+        console.debug(order);
 
-    let users_with_same_email: any = await find_user_by_email(
-        casted_user.email
-    );
-    console.log(users_with_same_email);
-    if (users_with_same_email)
-        return [400, { msg: "User with that email already exists" }];
-
-    let new_user: any = await create_user(casted_user);
-    let new_order_status: any = await create_order_status();
-
-    let user_id = new_user[0].user_id;
-    let order_status_id = new_order_status[0].order_status_id;
-
-    let order = await create_order(user_id, order_status_id);
-    console.debug(order);
-
-    return [200, new_user];
+        return [200, new_user];
+    }
 }
 
 export async function get_user_cart(user_id: number) {
@@ -91,7 +82,6 @@ export async function get_user_cart(user_id: number) {
     if (product_ids.length > 0) {
         var products: any = await batch_find_products_by_ids(product_ids);
         var data: any = [];
-        parse_links(products);
         products.forEach((product: any, index: any) => {
             data.push({
                 product: product,

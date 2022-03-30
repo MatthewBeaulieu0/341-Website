@@ -8,10 +8,9 @@ import { ProductsService } from 'src/app/services/products.service';
   selector: 'app-productpage',
   templateUrl: './productpage.component.html',
   styleUrls: ['./productpage.component.css'],
+  providers: [ProductsService],
 })
 export class ProductpageComponent implements OnInit {
-  data: any;
-
   // add section that gets information from database (get http request)
   constructor(
     private router: Router,
@@ -20,7 +19,7 @@ export class ProductpageComponent implements OnInit {
   ) {}
 
   productID: string;
-  product: Product[] = [];
+  product: Product[]=[];
   mainLink: string;
   subLink1: string;
   subLink2: string;
@@ -28,12 +27,13 @@ export class ProductpageComponent implements OnInit {
   subLink4: string;
   quantity: number = 1;
 
-  addToCart() {
+
+  addToCart(){
     console.log(this.product);
     console.log(this.quantity);
     const body = {
       product_id: this.productID,
-      quantity: this.quantity,
+      quantity: this.quantity
     };
     this.httpClient
       .put('http://localhost:3001/user/id/1/shopping_cart', body, {
@@ -45,7 +45,7 @@ export class ProductpageComponent implements OnInit {
       });
   }
 
-  selectPicture(source: string, i: number) {
+  selectPicture(source: string, i: number){
     let tempLink = this.mainLink;
     this.mainLink = source;
     // switch(i){
@@ -78,17 +78,19 @@ export class ProductpageComponent implements OnInit {
     this.router.navigate(['/shoppingcart']);
   }
 
-  ngOnInit() {
-    this.data = this._productsService.getData();
-    console.log('ngOnInit: ' + this.data);
-    this.productID = this.data;
+  ngOnInit(): void {
+    this._productsService.currentID.subscribe(
+      message => {
+        this.productID = message;
+        console.log("id in product page: " + message);
+      
+    }); //<= Always get current value!
+  
     this._productsService.getProduct(this.productID).subscribe((response) => {
       this.product = response[1];
       this.mainLink = this.product[0].link;
       this.subLink1 = this.mainLink;
-      this.subLink2 = this.product[0].link_array[1];
-      this.subLink3 = this.product[0].link_array[2];
-      this.subLink4 = this.product[0].link_array[3];
+      //console.log('This product ' );
       console.log(JSON.stringify(this.product[0].name));
     });
   }

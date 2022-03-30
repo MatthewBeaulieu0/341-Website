@@ -8,7 +8,9 @@ export class Product {
   public stock: number;
   public link: string;
   public featured: boolean;
-  public link_array: string[];
+  public link2: string;
+  public link3: string;
+  public link4: string;
   constructor(clone: Product = null) {
     this.product_id = 0;
     this.name = '';
@@ -19,7 +21,9 @@ export class Product {
     this.stock = 0;
     this.link = '';
     this.featured = false;
-    this.link_array = null;
+    this.link2 = '';
+    this.link3 = '';
+    this.link4 = '';
     if (!!clone) {
       this.product_id = clone.product_id;
       this.name = clone.name;
@@ -30,7 +34,9 @@ export class Product {
       this.stock = clone.stock;
       this.link = clone.link;
       this.featured = clone.featured;
-      this.link_array = clone.link_array;
+      this.link2 = clone.link2;
+      this.link3 = clone.link3;
+      this.link4 = clone.link4;
     }
   }
 }
