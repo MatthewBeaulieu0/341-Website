@@ -1,3 +1,4 @@
+import { parse_links } from "../helpers/links_helper";
 import { ErrorResponse } from "../models/errors";
 import { Filter, filter_schema, product_schema } from "../models/products";
 import {
@@ -8,7 +9,7 @@ import {
 
 export async function get_product_by_id(product_id: number) {
     let product: any = await find_product_by_id(product_id);
-    console.log(product)
+    console.log(product);
     if (product.length > 0) {
         // let updated_product = product_schema.cast(product);
         parse_links(product);
@@ -27,7 +28,7 @@ export async function create_new_product(product: any) {
             stripUnknown: true,
         });
         let new_product = await create_product(casted_product);
-        
+
         parse_links(new_product);
         return [200, new_product];
     }
@@ -70,13 +71,4 @@ function validate_filter_data(filter: Filter) {
         return [true, error_data];
     }
     return [false, {}];
-}
-
-function parse_links(products: any){
-    for(let product of products){
-        let links = product.link.split(", ");
-        product.link_array =  links;
-        product.link = links[0];
-    }
-    return products
 }
