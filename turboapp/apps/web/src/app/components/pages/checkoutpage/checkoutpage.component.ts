@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart';
 import { frontendUser } from 'src/app/models/frontendUser';
 import { CartService } from 'src/app/services/cart.service';
-import { GlobalUserService } from 'src/app/services/global-user.service';
 import { ShoppingcartComponent } from '../shoppingcart/shoppingcart.component';
 
 @Component({
@@ -19,44 +18,40 @@ export class CheckoutpageComponent implements OnInit {
   constructor(
     private router: Router,
     private httpClient: HttpClient,
-    private _cartService: CartService,
-    private globalUserService: GlobalUserService
+    private _cartService: CartService
   ) {}
-  // userInit() {
-  //   return new Promise<void>((resolve, reject) => {
-  //     let headers = new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //     });
-  //     this.httpClient
-  //       .post<any>('http://localhost:3001/user/api/session', null, {
-  //         withCredentials: true,
-  //         headers,
-  //       })
-  //       .subscribe(
-  //         (s) => {
-  //           this.user = s;
-  //           //console.log(this.user.user_id);
-  //           resolve();
-  //         },
-  //         (error) => {
-  //           return false;
-  //         }
-  //       );
-  //     if (!this.user) {
-  //       return false;
-  //     } else {
-  //       return true;
-  //     }
-  //   });
-  // }
-  cartInit() {
-    return new Promise<void>((resolve, reject) =>{
-    this._cartService.getCart().subscribe((response) => {
-      this.cart = response.data[1];
-    });resolve();});
+  userInit() {
+    return new Promise<void>((resolve, reject) => {
+      let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+      this.httpClient
+        .post<any>('http://localhost:3001/user/api/session', null, {
+          withCredentials: true,
+          headers,
+        })
+        .subscribe(
+          (s) => {
+            this.user = s;
+            console.log(this.user.user_id);
+            resolve();
+          },
+          (error) => {
+            return false;
+          }
+        );
+      if (!this.user) {
+        return false;
+      } else {
+        return true;
+      }
+    });
   }
-  ngOnInit(): void {
-    this.cartInit();
+  cartInit() {
+    console.log(this.user.user_id + 'IDDDD');
+    this._cartService.getCart(this.user.user_id).subscribe((response) => {
+      this.cart = response.data[1];
+    });
   }
   calculateTotal() {
     console.log(this.cart);
@@ -83,6 +78,9 @@ export class CheckoutpageComponent implements OnInit {
     return parseFloat((cart.quantity * cart.product.price).toFixed(2));
   }
 
+  ngOnInit(): void {
+    this.userInit().then((res) => this.cartInit());
+  }
   routeToShoppingCart() {
     this.router.navigate(['/shoppingcart']);
   }
