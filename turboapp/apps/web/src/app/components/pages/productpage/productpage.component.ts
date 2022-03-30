@@ -7,10 +7,10 @@ import { ProductsService } from 'src/app/services/products.service';
 @Component({
   selector: 'app-productpage',
   templateUrl: './productpage.component.html',
-  styleUrls: ['./productpage.component.css']
+  styleUrls: ['./productpage.component.css'],
 })
 export class ProductpageComponent implements OnInit {
-  data:any;
+  data: any;
 
   // add section that gets information from database (get http request)
   constructor(
@@ -20,7 +20,7 @@ export class ProductpageComponent implements OnInit {
   ) {}
 
   productID: string;
-  product: Product[]=[];
+  product: Product[] = [];
   mainLink: string;
   subLink1: string;
   subLink2: string;
@@ -28,13 +28,12 @@ export class ProductpageComponent implements OnInit {
   subLink4: string;
   quantity: number = 1;
 
-
-  addToCart(){
+  addToCart() {
     console.log(this.product);
     console.log(this.quantity);
     const body = {
       product_id: this.productID,
-      quantity: this.quantity
+      quantity: this.quantity,
     };
     this.httpClient
       .put('http://localhost:3001/user/id/1/shopping_cart', body, {
@@ -46,7 +45,7 @@ export class ProductpageComponent implements OnInit {
       });
   }
 
-  selectPicture(source: string, i: number){
+  selectPicture(source: string, i: number) {
     let tempLink = this.mainLink;
     this.mainLink = source;
     // switch(i){
@@ -87,7 +86,9 @@ export class ProductpageComponent implements OnInit {
       this.product = response[1];
       this.mainLink = this.product[0].link;
       this.subLink1 = this.mainLink;
-      //console.log('This product ' );
+      this.subLink2 = this.product[0].link_array[1];
+      this.subLink3 = this.product[0].link_array[2];
+      this.subLink4 = this.product[0].link_array[3];
       console.log(JSON.stringify(this.product[0].name));
     });
   }

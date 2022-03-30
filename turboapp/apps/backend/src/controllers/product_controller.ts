@@ -11,6 +11,7 @@ export async function get_product_by_id(product_id: number) {
     console.log(product)
     if (product.length > 0) {
         // let updated_product = product_schema.cast(product);
+        parse_links(product);
         return [200, product];
     } else {
         return [404, { msg: "Product not found" }];
@@ -26,6 +27,8 @@ export async function create_new_product(product: any) {
             stripUnknown: true,
         });
         let new_product = await create_product(casted_product);
+        
+        parse_links(new_product);
         return [200, new_product];
     }
 }
@@ -40,6 +43,7 @@ export async function get_filtered_products(filter: Filter) {
         return [400, error_data];
     } else {
         let products = await filter_products(stripped_filer);
+        parse_links(products);
         return [200, products];
     }
 }
@@ -66,4 +70,13 @@ function validate_filter_data(filter: Filter) {
         return [true, error_data];
     }
     return [false, {}];
+}
+
+function parse_links(products: any){
+    for(let product of products){
+        let links = product.link.split(", ");
+        product.link_array =  links;
+        product.link = links[0];
+    }
+    return products
 }
