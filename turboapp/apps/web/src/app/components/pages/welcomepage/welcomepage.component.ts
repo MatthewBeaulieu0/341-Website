@@ -11,10 +11,10 @@ export class WelcomepageComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private statusService: LoginStatusService
+    //private statusService: LoginStatusService
     ) { }
   
-  status :boolean = this.statusService.getLoginStatus();
+  //status :boolean = this.statusService.getLoginStatus();
   ngOnInit(): void {
   }
 

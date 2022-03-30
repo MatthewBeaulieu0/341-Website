@@ -18,7 +18,7 @@ export class AppComponent  implements AfterViewInit{
   }
   ngAfterViewInit(): void {
     //this.statusService.setLoginStatus(this.authService.isAuthenticated());
-    this.statusService.setLoginStatus(this.authService.isAuthenticated());
+    //this.statusService.setLoginStatus(this.authService.isAuthenticated());
   }
  
   
