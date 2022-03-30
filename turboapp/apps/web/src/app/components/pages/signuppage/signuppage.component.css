@@ -29,6 +29,10 @@ input[type=password] {
     width: 50%;
 }
 
+input[type=date] {
+    width: 50%;
+}
+
 
 .form-group .test{
     width: 120%;

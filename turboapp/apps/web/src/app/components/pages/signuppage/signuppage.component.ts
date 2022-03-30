@@ -12,11 +12,11 @@ export class SignuppageComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  log(x) {
+  // log(x) {
 
-    console.log(x);
+  //   console.log(x);
     
-  }
+  // }
 
 
   constructor(private httpClient: HttpClient, private router: Router) {}
