@@ -22,6 +22,7 @@ import { hash } from "bcrypt";
 
 import dotenv from "dotenv";
 import { create_order_status } from "../services/orderstatus_services";
+import { parse_links } from "../helpers/links_helper";
 const saltRounds = 4;
 dotenv.config();
 
@@ -46,15 +47,18 @@ export async function create_new_user(user: any) {
     console.log("Create User:" + JSON.stringify(user));
     let [err, error_data] = validate_user_data(user);
     if (err) return [400, error_data];
-    
+
     let casted_user = user_schema.cast(user, { stripUnknown: true });
     casted_user.password = await hash(casted_user.password, saltRounds);
 
-    console.log(casted_user.email)
+    console.log(casted_user.email);
 
-    let users_with_same_email: any = await find_user_by_email(casted_user.email)
+    let users_with_same_email: any = await find_user_by_email(
+        casted_user.email
+    );
     console.log(users_with_same_email);
-    if(users_with_same_email) return [400, {msg: "User with that email already exists"}];
+    if (users_with_same_email)
+        return [400, { msg: "User with that email already exists" }];
 
     let new_user: any = await create_user(casted_user);
     let new_order_status: any = await create_order_status();
@@ -87,6 +91,7 @@ export async function get_user_cart(user_id: number) {
     if (product_ids.length > 0) {
         var products: any = await batch_find_products_by_ids(product_ids);
         var data: any = [];
+        parse_links(products);
         products.forEach((product: any, index: any) => {
             data.push({
                 product: product,
