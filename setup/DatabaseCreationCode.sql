@@ -86,4 +86,4 @@ ALTER TABLE `fake_amazon`.`user`
 CHANGE COLUMN `password` `password` CHAR(60) NOT NULL ;
 
 ALTER TABLE `fake_amazon`.`product` 
-CHANGE COLUMN `link` `link` CHAR(360) NOT NULL ;
+CHANGE COLUMN `link` `link` CHAR(255) NOT NULL ;
