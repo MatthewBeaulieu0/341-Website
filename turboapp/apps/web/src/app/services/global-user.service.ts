@@ -10,7 +10,7 @@ export class GlobalUserService {
   getNewUser(){
     return this.newUser;
   }
-  setLoginStatus(newUser: frontendUser){
+  setNewUser(newUser: frontendUser){
     this.newUser = newUser;
   }
   constructor() { }

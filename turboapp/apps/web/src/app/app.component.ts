@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { AuthServiceNewUser } from './auth/auth.service.newUser';
+import { frontendUser } from './models/frontendUser';
+import { GlobalUserService } from './services/global-user.service';
 import { LoginStatusService } from './services/login-status.service';
 
 
@@ -13,12 +16,15 @@ import { LoginStatusService } from './services/login-status.service';
 export class AppComponent  implements AfterViewInit{
 
   title = 'web';
-  constructor(private authService: AuthService, private statusService:LoginStatusService){
+  user: frontendUser;
+  constructor(private authService: AuthService, private statusService:LoginStatusService, private newUserService:AuthServiceNewUser, private globalUserService:GlobalUserService){
     
   }
-  ngAfterViewInit(): void {
+  async ngAfterViewInit(): Promise<void> {
     //this.statusService.setLoginStatus(this.authService.isAuthenticated());
-    //this.statusService.setLoginStatus(this.authService.isAuthenticated());
+    this.user= await this.newUserService.isNewUser();
+    console.log(this.user + ":D");
+    this.globalUserService.setNewUser(this.user);
   }
  
   
