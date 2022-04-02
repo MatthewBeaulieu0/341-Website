@@ -173,6 +173,7 @@ user.get("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
 });
 
 user.put("/id/:user_id/checkout/", async (req: Request, res: Response) => {
+    console.log("checkout m8");
     try {
         let user_id = parseInt(req.params.user_id);
         let data = await checkout_order(user_id);

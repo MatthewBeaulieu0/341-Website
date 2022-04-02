@@ -89,7 +89,9 @@ export class ShoppingcartComponent implements OnInit {
     };
     this.httpClient
       .delete(
-        'http://localhost:3001/user/id/' + this.globalUserService.getNewUser().user_id + '/shopping_cart',
+        'http://localhost:3001/user/id/' +
+          this.globalUserService.getNewUser().user_id +
+          '/shopping_cart',
         options
       )
       .subscribe((s) => {
@@ -140,16 +142,27 @@ export class ShoppingcartComponent implements OnInit {
   //   });
   // }
   cartInit() {
-    return new Promise<void>((resolve, reject) =>{
-    this._cartService.getCart().subscribe((response) => {
-      this.cart = response.data[1];
-    });resolve();});
+    return new Promise<void>((resolve, reject) => {
+      this._cartService.getCart().subscribe((response) => {
+        this.cart = response.data[1];
+      });
+      resolve();
+    });
   }
   ngOnInit(): void {
     this.cartInit();
   }
 
   routeToCheckOutPage() {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    this.httpClient.put(
+      'http://localhost:3001/id/' +
+        this.globalUserService.getNewUser().user_id +
+        'checkout',
+      headers
+    );
     this.router.navigate(['/checkoutpage']);
   }
 

@@ -23,6 +23,7 @@ import { hash } from "bcrypt";
 import dotenv from "dotenv";
 import { create_order_status } from "../services/orderstatus_services";
 import { parse_links } from "../helpers/links_helper";
+import { transform_orders } from "../helpers/order_helper";
 const saltRounds = 4;
 dotenv.config();
 
@@ -166,7 +167,8 @@ export async function checkout_order(user_id: number) {
         return [404, { msg: "User not found" }];
     }
     let order_id: number = order[0].order_id;
-
+    let order_str = "1:2;2:1;3:1,1:1";
+    transform_orders(order_str);
     let result = await empty_shopping_cart(order_id);
     if (result) {
         return [200, { order_status: "Paid" }];
