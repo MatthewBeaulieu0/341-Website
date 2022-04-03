@@ -154,15 +154,6 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   routeToCheckOutPage() {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-    this.httpClient.put(
-      'http://localhost:3001/id/' +
-        this.globalUserService.getNewUser().user_id +
-        'checkout',
-      headers
-    );
     this.router.navigate(['/checkoutpage']);
   }
 

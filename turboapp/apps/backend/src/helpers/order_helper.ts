@@ -6,8 +6,8 @@ export function transform_orders(orders: string) {
         let megaString = diffOrders[i].split(";");
         data[i] = [] as any;
         for (var j = 0; j < megaString.length; j++) {
-            data[i][j] = [megaString[j]];
+            data[i][j] = megaString[j];
         }
     }
-    console.log(data);
+    console.log(data[0][0]);
 }
