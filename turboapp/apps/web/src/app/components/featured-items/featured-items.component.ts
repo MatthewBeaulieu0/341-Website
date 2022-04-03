@@ -50,18 +50,7 @@ export class FeaturedItemsComponent implements OnInit {
     });
   }
 
-  addToCart(product: Product) {
-    console.log(product);
-    const body = {
-      product_id: product.product_id,
-    };
-    this.httpClient
-      .put('http://localhost:3001/user/id/' + this.globalUserService.getNewUser().user_id +  '/shopping_cart', body, {
-        responseType: 'text',
-        headers: { 'content-type': 'application/json' },
-      })
-      .subscribe((s) => {
-        console.log(s);
-      });
+  routeToProductPage(){
+    this.router.navigate(['/productpage']);
   }
 }

@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<table>
+    <tr *ngFor="let product of products" (click) = "sendProductID(product.product_id)">
+        <div>{{product.name}}</div>
+        <div>{{product.price}}</div>
+    </tr>    
+</table>
+
+<app-footer></app-footer>
