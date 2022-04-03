@@ -9,6 +9,7 @@ import { SignuppageComponent } from './components/pages/signuppage/signuppage.co
 import { LoginpageComponent } from './components/pages/loginpage/loginpage.component';
 import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
+import { SellerpageComponent } from './components/pages/sellerpage/sellerpage.component';
 const routes: Routes = [
   { path: '', redirectTo: 'welcomepage', pathMatch: 'full' },
   { path: 'mainpage', component: MainpageComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'signup', component: SignuppageComponent },
   { path: 'login', component: LoginpageComponent },
   { path: 'checkoutpage', component: CheckoutpageComponent },
+  { path: 'sellerpage', component: SellerpageComponent }
 ];
 
 @NgModule({
