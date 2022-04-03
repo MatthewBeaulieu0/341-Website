@@ -1,4 +1,5 @@
 export function transform_orders(orders: string) {
+    add_order_to_string();
     let diffOrders = orders.split(",");
     console.log(diffOrders);
     var data = [];
@@ -10,4 +11,7 @@ export function transform_orders(orders: string) {
         }
     }
     console.log(data[0][0]);
+    console.log(data);
 }
+//Function to add the current order to the string
+function add_order_to_string() {}

@@ -167,8 +167,9 @@ export async function checkout_order(user_id: number) {
         return [404, { msg: "User not found" }];
     }
     let order_id: number = order[0].order_id;
-    let order_str = "1:2;2:1;3:1,1:1";
-    transform_orders(order_str);
+    let user = await find_user_by_id(user_id);
+    console.log(user);
+    transform_orders(user[0].orders);
     let result = await empty_shopping_cart(order_id);
     if (result) {
         return [200, { order_status: "Paid" }];
