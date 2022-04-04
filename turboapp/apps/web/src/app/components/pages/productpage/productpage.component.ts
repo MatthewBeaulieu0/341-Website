@@ -84,7 +84,7 @@ export class ProductpageComponent implements OnInit {
     this.data = this._productsService.getData();
     console.log('ngOnInit: ' + this.data);
     this.productID = this.data;
-    this._productsService.getProduct(this.productID).subscribe((response) => {
+    this._productsService.getProductbyID(this.productID).subscribe((response) => {
       this.product = response[1];
       this.mainLink = this.product[0].link;
       this.subLink1 = this.mainLink;

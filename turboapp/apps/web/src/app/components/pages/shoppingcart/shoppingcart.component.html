@@ -28,10 +28,6 @@
         <tr *ngFor="let cart of cart; let i = index">
           <td>
             <div  class="cart-box">
-              <script>
-                console.log("Product: " + product);
-                
-              </script>
               <img src="{{ cart.product.link }}" />
               <div class="info-box">
                 <p class="cart-product-title">{{ cart.product.name }}</p>
