@@ -8,6 +8,7 @@ import {
     get_user_by_email,
     delete_product_from_cart,
     checkout_order,
+    view_orders,
 } from "../controllers/user_controllers";
 import { User } from "../models/users";
 //import { sign, verify } from "jsonwebtoken";
@@ -177,6 +178,20 @@ user.put("/id/:user_id/checkout/", async (req: Request, res: Response) => {
     try {
         let user_id = parseInt(req.params.user_id);
         let data = await checkout_order(user_id);
+        let status: any = data[0];
+        res.json({ data }).status(status);
+    } catch (err: any) {
+        res.status(400);
+        res.json({ errType: err.name, errMsg: err.message });
+    }
+});
+
+user.get("/id/:user_id/orders/", async (req: Request, res: Response) => {
+    console.log("order m8");
+    try {
+        let user_id = parseInt(req.params.user_id);
+        let data = await view_orders(user_id);
+        console.log(data);
         let status: any = data[0];
         res.json({ data }).status(status);
     } catch (err: any) {

@@ -1,5 +1,4 @@
 export function transform_orders(orders: string) {
-    add_order_to_string();
     let diffOrders = orders.split(",");
     console.log(diffOrders);
     var data = [];
@@ -7,11 +6,9 @@ export function transform_orders(orders: string) {
         let megaString = diffOrders[i].split(";");
         data[i] = [] as any;
         for (var j = 0; j < megaString.length; j++) {
-            data[i][j] = megaString[j];
+            let order_tuple:any = megaString[j].split(':');
+            data[i][j] = {"product_id": order_tuple[0], "quantity": order_tuple[1]}
         }
     }
-    console.log(data[0][0]);
-    console.log(data);
+    return data;
 }
-//Function to add the current order to the string
-function add_order_to_string() {}
