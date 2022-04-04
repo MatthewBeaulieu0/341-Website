@@ -1,0 +1,42 @@
+.seller-form{
+    background-color: black;
+    text-align: center;
+    border-radius: 2em;
+    color: white;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    background: rgba(0, 0, 0, 0.7) 
+}
+.image {
+    background: url(https://assets.entrepreneur.com/content/3x2/2000/20190801143905-GettyImages-1128215665.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 120%;
+    margin-bottom: -50px;
+
+}
+
+label {
+    text-align: center;
+}
+
+input[type=text] {
+    width: 50%;
+}
+
+input[type=number] {
+    width: 50%;
+}
+
+.post-btn {
+    margin-top: 40px;
+    width: 30%;
+    background:#f89c3c;
+    border-radius: 0.5em;
+    height: 40px;
+}
+
+.post-btn:hover{
+    background:red;
+}
