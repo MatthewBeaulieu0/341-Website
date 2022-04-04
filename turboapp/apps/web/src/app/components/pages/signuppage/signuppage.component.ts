@@ -86,12 +86,16 @@ export class SignuppageComponent implements OnInit {
       console.log('invalid Date');
     }
 
-    if (!this.checkboxes[0].checked) {
+    if (this.checkboxes[0].checked) {
       console.log(this.checkboxes[0].value);
+      //this.router.navigate(['/mainpage']);
+
     }
     if (!this.checkboxes[1].checked) {
       console.log(this.checkboxes[1].value);
+
     }
+    
     if (
       /^[a-z ,.'-]+$/i.test(data.firstname) &&
       /^[a-z ,.'-]+$/i.test(data.lastname) &&
