@@ -43,10 +43,10 @@ jobs:
            echo Install Dependencies
            cd turboapp
            cd apps
-           cd backend
-           npm i
-           cd ..
            cd web
+           npm i
+           cd..
+           cd backend
            npm i
            cd ..
            cd ..
