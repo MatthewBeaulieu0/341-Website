@@ -45,7 +45,7 @@ jobs:
            cd apps
            cd web
            npm i
-           cd..
+           cd ..
            cd backend
            npm i
            cd ..
