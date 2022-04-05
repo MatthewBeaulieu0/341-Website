@@ -8,11 +8,17 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./signuppage.component.css'],
 })
 export class SignuppageComponent implements OnInit {
-  routeToLogInPage() {
+  routeToLoginPage() {
     this.router.navigate(['/login']);
   }
 
-  //Fixing stuff :)
+  // log(x) {
+
+  //   console.log(x);
+    
+  // }
+
+
   constructor(private httpClient: HttpClient, private router: Router) {}
   user: User = {
     name: '',
