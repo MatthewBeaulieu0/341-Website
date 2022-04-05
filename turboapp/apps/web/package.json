@@ -22,8 +22,8 @@
     "@angular/router": "~13.1.0",
     "@ng-bootstrap/ng-bootstrap": "^11.0.0",
     "bootstrap": "^4.6.0",
-    "component": "^0.19.9",
-    "ng-bootstrap": "^0.46.0",
+    "component": "^1.1.0",
+    "ng-bootstrap": "^1.6.3",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

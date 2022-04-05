@@ -104,15 +104,3 @@ export async function remove_from_user_cart(
 
     return result;
 }
-
-export async function update_user_orders(user_id: number, orders: string){
-    var sql = `UPDATE user SET orders=? WHERE user_id = ?`;
-    try {
-        var result = await query(sql, [orders, user_id]);
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }    
-    
-    return result;
-}
