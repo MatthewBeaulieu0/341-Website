@@ -157,7 +157,9 @@
                 <td>${{ this.calculateTotal() }}</td>
               </tr>
             </table>
-            <button class="pay-btn">Pay</button>
+            <a (click)="payButton()">
+              <button class="pay-btn">Pay</button>
+            </a>
           </div>
         </div>
       </div>
