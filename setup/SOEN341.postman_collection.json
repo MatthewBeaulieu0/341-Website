@@ -1,300 +1,284 @@
 {
-	"info": {
-		"_postman_id": "3a5f6804-4b8b-4d2d-a9d0-280c1298e45a",
-		"name": "SOEN341",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "user_routes",
-			"item": [
-				{
-					"name": "http://localhost:3001/user/id/:user_id/shopping_cart",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"product_id\": 2,\r\n    \"quantity\": 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3001/user/id/:user_id/shopping_cart",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"user",
-								"id",
-								":user_id",
-								"shopping_cart"
-							],
-							"variable": [
-								{
-									"key": "user_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:3001/user/id/:user_id/shopping_cart",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"product_id\": 16\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3001/user/id/:user_id/shopping_cart",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"user",
-								"id",
-								":user_id",
-								"shopping_cart"
-							],
-							"variable": [
-								{
-									"key": "user_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:3001/user/id/:user_id/shopping_cart",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3001/user/id/:user_id/shopping_cart",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"user",
-								"id",
-								":user_id",
-								"shopping_cart"
-							],
-							"variable": [
-								{
-									"key": "user_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:3001/user/api/login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"matthew.beaulieu631@gmail.com\",\r\n    \"password\":\"Domino1103\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3001/user/api/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"user",
-								"api",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/id/:user_id/checkout/",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3001/user/id/:user_id/checkout/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"user",
-								"id",
-								":user_id",
-								"checkout",
-								""
-							],
-							"variable": [
-								{
-									"key": "user_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:3001/user/api/login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3001/user/api/verify",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"user",
-								"api",
-								"verify"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "product_routes",
-			"item": [
-				{
-					"name": "http://localhost:3001/product/:product_id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3001/product/id/:product_id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"product",
-								"id",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "19"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:3001/product/products",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3001/product/filter/products?name=&category=&price=10&limit=100&skip=0",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"product",
-								"filter",
-								"products"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": ""
-								},
-								{
-									"key": "category",
-									"value": ""
-								},
-								{
-									"key": "price",
-									"value": "10"
-								},
-								{
-									"key": "limit",
-									"value": "100"
-								},
-								{
-									"key": "skip",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:3001/product/",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\"name\": \"super cool usb 6\",\r\n\"description\": \"the name says it all\",\r\n\"price\": 69,\r\n\"currency\": \"CAD\",\r\n\"brand\": \"superCoolBrand\",\r\n\"seller\": \"superCoolCompany\",\r\n\"stock\": 69\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3001/product/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"product",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	]
+    "info": {
+        "_postman_id": "3a5f6804-4b8b-4d2d-a9d0-280c1298e45a",
+        "name": "SOEN341",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "user_routes",
+            "item": [
+                {
+                    "name": "http://localhost:3001/user/id/:user_id/shopping_cart",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"product_id\": 5,\r\n    \"quantity\": 1\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:3001/user/id/:user_id/shopping_cart",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["user", "id", ":user_id", "shopping_cart"],
+                            "variable": [
+                                {
+                                    "key": "user_id",
+                                    "value": "2"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:3001/user/id/:user_id/shopping_cart",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"product_id\": 16\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:3001/user/id/:user_id/shopping_cart",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["user", "id", ":user_id", "shopping_cart"],
+                            "variable": [
+                                {
+                                    "key": "user_id",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:3001/user/id/:user_id/shopping_cart",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3001/user/id/:user_id/shopping_cart",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["user", "id", ":user_id", "shopping_cart"],
+                            "variable": [
+                                {
+                                    "key": "user_id",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:3001/user/api/login",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"email\": \"matthew.beaulieu631@gmail.com\",\r\n    \"password\":\"Domino1103\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:3001/user/api/login",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["user", "api", "login"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/id/:user_id/checkout/",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3001/user/id/:user_id/checkout/",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["user", "id", ":user_id", "checkout", ""],
+                            "variable": [
+                                {
+                                    "key": "user_id",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:3001/user/api/login",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3001/user/api/verify",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["user", "api", "verify"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:3001/user/id/:user_id/checkout/",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3001/user/id/:user_id/checkout/",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["user", "id", ":user_id", "checkout", ""],
+                            "variable": [
+                                {
+                                    "key": "user_id",
+                                    "value": "2"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:3001/user/id/:user_id/orders",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3001/user/id/:user_id/orders ",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["user", "id", ":user_id", "orders "],
+                            "variable": [
+                                {
+                                    "key": "user_id",
+                                    "value": "2"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "product_routes",
+            "item": [
+                {
+                    "name": "http://localhost:3001/product/:product_id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3001/product/id/:product_id",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["product", "id", ":product_id"],
+                            "variable": [
+                                {
+                                    "key": "product_id",
+                                    "value": "19"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:3001/product/products",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3001/product/filter/products?name=&category=&price=10&limit=100&skip=0",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["product", "filter", "products"],
+                            "query": [
+                                {
+                                    "key": "name",
+                                    "value": ""
+                                },
+                                {
+                                    "key": "category",
+                                    "value": ""
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "10"
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "100"
+                                },
+                                {
+                                    "key": "skip",
+                                    "value": "0"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:3001/product/",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n\"name\": \"super cool usb 6\",\r\n\"description\": \"the name says it all\",\r\n\"price\": 69,\r\n\"currency\": \"CAD\",\r\n\"brand\": \"superCoolBrand\",\r\n\"seller\": \"superCoolCompany\",\r\n\"stock\": 69\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:3001/product/",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3001",
+                            "path": ["product", ""]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
 }
