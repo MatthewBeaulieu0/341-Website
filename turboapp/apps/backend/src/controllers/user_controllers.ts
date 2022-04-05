@@ -15,6 +15,7 @@ import {
     find_user_by_id,
     create_user,
     find_user_by_email,
+    update_user_orders,
 } from "../services/user_services";
 import { delete_product_by_id } from "../services/product_services";
 
@@ -22,6 +23,8 @@ import { hash } from "bcrypt";
 
 import dotenv from "dotenv";
 import { create_order_status } from "../services/orderstatus_services";
+import { parse_links } from "../helpers/links_helper";
+import { transform_orders } from "../helpers/order_helper";
 const saltRounds = 4;
 dotenv.config();
 
@@ -46,15 +49,18 @@ export async function create_new_user(user: any) {
     console.log("Create User:" + JSON.stringify(user));
     let [err, error_data] = validate_user_data(user);
     if (err) return [400, error_data];
-    
+
     let casted_user = user_schema.cast(user, { stripUnknown: true });
     casted_user.password = await hash(casted_user.password, saltRounds);
 
-    console.log(casted_user.email)
+    console.log(casted_user.email);
 
-    let users_with_same_email: any = await find_user_by_email(casted_user.email)
+    let users_with_same_email: any = await find_user_by_email(
+        casted_user.email
+    );
     console.log(users_with_same_email);
-    if(users_with_same_email) return [400, {msg: "User with that email already exists"}];
+    if (users_with_same_email)
+        return [400, { msg: "User with that email already exists" }];
 
     let new_user: any = await create_user(casted_user);
     let new_order_status: any = await create_order_status();
@@ -87,6 +93,7 @@ export async function get_user_cart(user_id: number) {
     if (product_ids.length > 0) {
         var products: any = await batch_find_products_by_ids(product_ids);
         var data: any = [];
+        parse_links(products);
         products.forEach((product: any, index: any) => {
             data.push({
                 product: product,
@@ -161,13 +168,41 @@ export async function checkout_order(user_id: number) {
         return [404, { msg: "User not found" }];
     }
     let order_id: number = order[0].order_id;
+    let user = await find_user_by_id(user_id);
+    user = user[0];
+    console.log(user);
 
+    let orderlines = await get_orderline_by_order_id(order_id);
+    
+    let order_stringed = ""
+    for (const [i, orderline] of orderlines.entries()) {
+        order_stringed = order_stringed + orderline.product_id + ":" + orderline.quantity;
+        if (i != orderlines.length-1) order_stringed += ';'
+    }
+
+    if (user.orders == undefined) user.orders = "";
+
+    let new_orders = order_stringed;
+    if (user.orders != "") new_orders = new_orders + ',' + user.orders; 
+
+    console.log(new_orders);
+    await update_user_orders(user.user_id, new_orders);
+    
     let result = await empty_shopping_cart(order_id);
     if (result) {
         return [200, { order_status: "Paid" }];
     } else {
         return [404, { msg: "User not found" }];
     }
+}
+
+export async function view_orders(user_id: number){
+    let user = await find_user_by_id(user_id);
+    user = user[0];
+
+    user.orders = transform_orders(user.orders);
+
+    return[200, {orders: user.orders}]
 }
 
 function validate_user_data(user: User) {
