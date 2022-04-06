@@ -5,6 +5,8 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { GlobalUserService } from 'src/app/services/global-user.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserNotLoggedInDialogComponent } from '../../user-not-logged-in-dialog/user-not-logged-in-dialog.component';
 
 @Component({
   selector: 'app-search-page',
@@ -23,7 +25,8 @@ export class SearchPageComponent implements OnInit {
     private productsService: ProductsService,
     private router: Router,
     private httpClient: HttpClient,
-    private globalUserService: GlobalUserService
+    private globalUserService: GlobalUserService,
+    private modalService: NgbModal
     ) { 
     
   }
@@ -47,7 +50,8 @@ export class SearchPageComponent implements OnInit {
       product_id: product_id,
       quantity: 1,
     };
-    this.httpClient
+    if(this.globalUserService.getNewUser()){
+      this.httpClient
       .put('http://localhost:3001/user/id/' + this.globalUserService.getNewUser().user_id +  '/shopping_cart', body, {
         responseType: 'text',
         headers: { 'content-type': 'application/json' },
@@ -55,6 +59,11 @@ export class SearchPageComponent implements OnInit {
       .subscribe((s) => {
         console.log(s);
       });
+    } else {
+      const modalRef = this.modalService.open(UserNotLoggedInDialogComponent);
+      modalRef.componentInstance.name = 'World';
+    }
+
     
   }
 

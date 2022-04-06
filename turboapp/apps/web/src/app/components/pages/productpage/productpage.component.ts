@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
 import { GlobalUserService } from 'src/app/services/global-user.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserNotLoggedInDialogComponent } from '../../user-not-logged-in-dialog/user-not-logged-in-dialog.component';
 
 @Component({
   selector: 'app-productpage',
@@ -12,13 +14,15 @@ import { GlobalUserService } from 'src/app/services/global-user.service';
 })
 export class ProductpageComponent implements OnInit {
   data: any;
+  //userLoggedIn: boolean;
 
   // add section that gets information from database (get http request)
   constructor(
     private router: Router,
     private _productsService: ProductsService,
     private httpClient: HttpClient,
-    private globalUserService: GlobalUserService
+    private globalUserService: GlobalUserService,
+    private modalService: NgbModal
   ) {}
 
   productID: string;
@@ -37,7 +41,8 @@ export class ProductpageComponent implements OnInit {
       product_id: this.productID,
       quantity: this.quantity,
     };
-    this.httpClient
+    if(this.globalUserService.getNewUser()){
+      this.httpClient
       .put('http://localhost:3001/user/id/' + this.globalUserService.getNewUser().user_id +  '/shopping_cart', body, {
         responseType: 'text',
         headers: { 'content-type': 'application/json' },
@@ -45,7 +50,11 @@ export class ProductpageComponent implements OnInit {
       .subscribe((s) => {
         console.log(s);
       });
-  }
+    } else {
+      const modalRef = this.modalService.open(UserNotLoggedInDialogComponent);
+      modalRef.componentInstance.name = 'World';
+    };
+    }
 
   selectPicture(source: string, i: number) {
     let tempLink = this.mainLink;
