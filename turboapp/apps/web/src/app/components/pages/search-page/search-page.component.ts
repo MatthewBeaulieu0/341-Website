@@ -30,7 +30,6 @@ export class SearchPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchService.getSearchProducts().subscribe((products) => {
-      console.log(products);
       this.products = products[1];
     });;
   }
@@ -43,22 +42,20 @@ export class SearchPageComponent implements OnInit {
   }
 
   addToCart(product_id: number) {
-    this.productsService.getProductbyID(product_id.toString()).subscribe((data) => {
-      this.product = data[1];
-      console.log("product in search " + this.product)
-      const body = {
-        product_id: this.product.product_id,
-        quantity: 1,
-      };
-      this.httpClient
-        .put('http://localhost:3001/user/id/' + this.globalUserService.getNewUser().user_id +  '/shopping_cart', body, {
-          responseType: 'text',
-          headers: { 'content-type': 'application/json' },
-        })
-        .subscribe((s) => {
-          console.log(s);
-        });
-    });
+    console.log(product_id);
+    const body = {
+      product_id: product_id,
+      quantity: 1,
+    };
+    this.httpClient
+      .put('http://localhost:3001/user/id/' + this.globalUserService.getNewUser().user_id +  '/shopping_cart', body, {
+        responseType: 'text',
+        headers: { 'content-type': 'application/json' },
+      })
+      .subscribe((s) => {
+        console.log(s);
+      });
+    
   }
 
 }

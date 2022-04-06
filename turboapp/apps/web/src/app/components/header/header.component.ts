@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     console.log('item name sent ' + this.searchInput);
     //this.data = String(name);
     this.searchService.setQuery(this.searchInput);
-    this.routeToSearchPage();
+    this.routeToSearchPage("/searchpage");
   }
 
   //status :boolean = this.statusService.getLoginStatus();
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
     console.log('item name sent ' + name);
     this.data = String(name);
     this.searchService.setQuery(this.data);
-    this.routeToSearchPage();
+    this.routeToSearchPage("/searchpage");
   }
 
   routeToShoppingCart(){
@@ -59,8 +59,9 @@ export class HeaderComponent implements OnInit {
   routeToSignUpPage(){
     this.router.navigate(['/signup']);
   }
-  routeToSearchPage(){
-    this.router.navigate(['/searchpage']);
+  routeToSearchPage(uri: string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
   }
 
 }
