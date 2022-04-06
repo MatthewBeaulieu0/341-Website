@@ -1,0 +1,186 @@
+* {
+    font-family: "Quicksand", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+  }
+
+.checkout-header{
+    text-align: center;
+    margin: 35px;
+}
+
+.checkout-header h1{
+    font-family:'Dancing Script', cursive;
+    color: white;
+    font-size: 75px;
+    text-decoration: underline;
+    text-decoration-style:wavy;
+    text-decoration-thickness: 3px;
+    text-underline-position: under;
+    animation: move 15s linear infinite;
+    -webkit-animation: move 15s linear infinite;
+    animation-play-state: running;
+}
+
+.sign-up-form{
+    background-color: #4488dd;
+    text-align: center;
+    border-radius: 2em;
+    color: white;
+}
+
+.checkout-form{
+    background-color:white;
+    border-radius: 2em;
+    box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+}
+
+.payment-form-2{
+    margin-top: 55px;
+}
+
+.shopping-cart-form{
+    text-align: center;
+    margin-top: 55px;
+}
+
+.checkout-form-2{
+    margin-top: 55px;
+}
+
+.sign-up-form input{
+    width: 90%;
+    border: none;
+    background:rgba(255,255,255,0.1);
+    line-height: 3em;
+    color: white;
+    padding-left: 15px;
+    margin: 15px;
+}
+
+.sign-up-form h5{
+    text-align: left;
+    padding-left: 32px;
+}
+
+.sign-up-form i{
+    text-align: left;
+    padding-left: 32px;
+    margin:25px;
+    font-size: 30px;
+}
+
+.container-2{
+    background-color: #cae1ef;
+
+}
+
+.footer {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    background-color:rgb(28, 29, 31);
+    clear: both;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    right:0;
+    left:0;
+    bottom: 0;
+    padding-top: 10px;
+    height: auto;
+    text-align: center;
+    font-size: smaller;
+    opacity: 1.1;
+
+  }
+
+  .medialogo .fa{
+      align-items: center;
+      text-align: center;
+      color: white;
+      flex-direction: column;
+      font-size:x-large;
+      padding: 10px;
+      width: 30px;
+      
+  }
+
+  .medialogo p{
+      padding-bottom: 40px;
+  }
+
+  
+  .fa:hover{
+      color: #f89c3c;
+      cursor: pointer;
+    
+  }
+
+  .row-test{
+      color:#cae1ef;
+  }
+
+  .shopping-cart-form .responsive img{
+    height:100px;
+    width: 120px;
+    margin-left:-15px;
+    padding: 15px;
+  }
+
+.responsive td{
+    width: 10%;
+    padding:10px;
+
+  }
+
+  .responsive tr{
+    padding:50px;
+  }
+
+  .shopping-cart-form hr{
+    margin-bottom: 25px;
+  }
+  .shopping-cart-form .hr-2{
+    margin-top: 25px;
+    margin-top: 30px;
+    width:290%;
+  }
+
+  .shopping-cart-form .hr-2 tr{
+   padding:40px;
+  }
+
+  .pay-btn{
+    background:#f89c3c;
+    width:50%;
+    border-radius: 0.5em;
+    height: 40px;
+  }
+
+  .responsive{
+      margin-bottom: 50px;
+  }
+
+  .pay-btn:hover{
+    background:#e67a07;
+  }
+  .hr-2{
+      margin:0;
+  }
+
+  .back-to-cart{
+      margin-left: 50px;
+      margin-bottom: 35px;
+      font-weight: bold;
+  }
+
+  .back-to-cart i{
+    font-weight: bold;
+    font-size: 20px;
+  }

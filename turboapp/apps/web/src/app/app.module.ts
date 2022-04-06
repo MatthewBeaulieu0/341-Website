@@ -26,6 +26,7 @@ import { LoginpageComponent } from './components/pages/loginpage/loginpage.compo
 import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
+import { BuyerpageComponent } from './components/pages/buyerpage/buyerpage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { AuthService } from './auth/auth.service';
     SignupNavbarComponent,
     LoginpageComponent,
     CheckoutpageComponent,
+    BuyerpageComponent,
   ],
   imports: [
     BrowserModule,
