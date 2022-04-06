@@ -181,6 +181,8 @@ export async function checkout_order(user_id: number) {
         if (i != orderlines.length - 1) order_stringed += ";";
     }
 
+    if(order_stringed == "") return [404, {msg: "No items found in user shopping cart."}]
+
     if (user.orders == undefined) user.orders = "";
 
     let new_orders = order_stringed;
