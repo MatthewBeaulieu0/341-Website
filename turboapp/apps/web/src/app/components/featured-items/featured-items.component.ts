@@ -5,11 +5,12 @@ import { CartService } from 'src/app/services/cart.service';
 import { HttpClient } from '@angular/common/http';
 import { FeaturedItemsService } from 'src/app/services/featured-items.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { GlobalUserService } from 'src/app/services/global-user.service';
 
 @Component({
   selector: 'app-featured-items',
   templateUrl: './featured-items.component.html',
-  styleUrls: ['./featured-items.component.css']
+  styleUrls: ['./featured-items.component.css'],
 })
 export class FeaturedItemsComponent implements OnInit {
 
@@ -22,7 +23,9 @@ export class FeaturedItemsComponent implements OnInit {
   constructor(
     private _featuredItemsService: FeaturedItemsService,
     private _productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private globalUserService: GlobalUserService,
+    private httpClient: HttpClient
   ) {}
 
   sendProductID(id: number) {
@@ -45,5 +48,9 @@ export class FeaturedItemsComponent implements OnInit {
       console.log('This product' + JSON.stringify(this.featuredItems[0].name));
       console.log('This product' + JSON.stringify(this.featuredItems[0].price));
     });
+  }
+
+  routeToProductPage(){
+    this.router.navigate(['/productpage']);
   }
 }

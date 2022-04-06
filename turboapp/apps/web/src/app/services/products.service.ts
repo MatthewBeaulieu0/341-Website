@@ -24,7 +24,7 @@ export class ProductsService {
     return this.data;
   }
 
-  getProduct(productID: string) {
+  getProductbyID(productID: string) {
     var tempLink = 'http://localhost:3001/product/id/';
     var link = tempLink.concat(productID.toString());
     return this.httpClient
