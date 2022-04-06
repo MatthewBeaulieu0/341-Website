@@ -59,9 +59,9 @@ export async function create_new_user(user: any) {
         casted_user.email
     );
     console.log(users_with_same_email);
-    if (users_with_same_email)
-        return [400, { msg: "User with that email already exists" }];
-
+    if (users_with_same_email) {
+        return [401, { msg: "User with that email already exists" }];
+    }
     let new_user: any = await create_user(casted_user);
     let new_order_status: any = await create_order_status();
 
@@ -173,21 +173,22 @@ export async function checkout_order(user_id: number) {
     console.log(user);
 
     let orderlines = await get_orderline_by_order_id(order_id);
-    
-    let order_stringed = ""
+
+    let order_stringed = "";
     for (const [i, orderline] of orderlines.entries()) {
-        order_stringed = order_stringed + orderline.product_id + ":" + orderline.quantity;
-        if (i != orderlines.length-1) order_stringed += ';'
+        order_stringed =
+            order_stringed + orderline.product_id + ":" + orderline.quantity;
+        if (i != orderlines.length - 1) order_stringed += ";";
     }
 
     if (user.orders == undefined) user.orders = "";
 
     let new_orders = order_stringed;
-    if (user.orders != "") new_orders = new_orders + ',' + user.orders; 
+    if (user.orders != "") new_orders = new_orders + "," + user.orders;
 
     console.log(new_orders);
     await update_user_orders(user.user_id, new_orders);
-    
+
     let result = await empty_shopping_cart(order_id);
     if (result) {
         return [200, { order_status: "Paid" }];
@@ -196,13 +197,13 @@ export async function checkout_order(user_id: number) {
     }
 }
 
-export async function view_orders(user_id: number){
+export async function view_orders(user_id: number) {
     let user = await find_user_by_id(user_id);
     user = user[0];
 
     user.orders = transform_orders(user.orders);
 
-    return[200, {orders: user.orders}]
+    return [200, { orders: user.orders }];
 }
 
 function validate_user_data(user: User) {

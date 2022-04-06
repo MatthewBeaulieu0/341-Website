@@ -22,18 +22,21 @@ import dotenv from "dotenv";
 dotenv.config();
 import jwt from "jsonwebtoken";
 const { sign } = jwt;
-user.post("/api/signup", (req: Request, res: Response) => {
+user.post("/api/signup", async (req: Request, res: Response) => {
     try {
         let user = req.body.user;
         //console.log(user);
         let status,
-            data = create_new_user(user);
+            data = await create_new_user(user);
         res.json({ data });
         if (status == 200) {
             res.sendStatus(200);
         }
         if (status == 400) {
             res.sendStatus(400);
+        }
+        if (status == 401) {
+            res.sendStatus(401).json("Email already exists");
         }
     } catch (err: any) {
         res.status(400);
