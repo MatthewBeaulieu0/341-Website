@@ -88,7 +88,7 @@ export class CheckoutpageComponent implements OnInit {
     for (let i = 0; i < this.cart.length; i++) {
       subtotal += this.subtotalProduct(this.cart[i]);
     }
-    console.log(subtotal);
+    //  console.log(subtotal);
     return parseFloat(subtotal.toFixed(2));
   }
   subtotalProduct(cart: Cart) {

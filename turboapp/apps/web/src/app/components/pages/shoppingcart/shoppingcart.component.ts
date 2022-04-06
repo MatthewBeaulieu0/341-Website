@@ -154,6 +154,24 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   routeToCheckOutPage() {
+    console.log('Cart' + JSON.stringify(this.cart));
+    const body = {
+      cartItems: this.cart,
+    };
+    this.httpClient
+      .put(
+        'http://localhost:3001/id/' +
+          this.globalUserService.getNewUser().user_id +
+          '/update_cart',
+        body,
+        {
+          responseType: 'text',
+          headers: { 'content-type': 'application/json' },
+        }
+      )
+      .subscribe((response) => {
+        console.log(response);
+      });
     this.router.navigate(['/checkoutpage']);
   }
 

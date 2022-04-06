@@ -9,6 +9,7 @@ import {
     delete_product_from_cart,
     checkout_order,
     view_orders,
+    updateCart,
 } from "../controllers/user_controllers";
 import { User } from "../models/users";
 //import { sign, verify } from "jsonwebtoken";
@@ -113,7 +114,27 @@ user.get("/id/:user_id", async (req: Request, res: Response) => {
         res.json({ errType: err.name, errMsg: err.message });
     }
 });
-
+user.put("/id/:user_id/update_cart"),
+    async (req: Request, res: Response) => {
+        let user_id = parseInt(req.params.user_id);
+        console.log(user_id);
+        let cartItems = req.body.cartItems;
+        console.log("ID" + user_id + "Items" + cartItems);
+        try {
+            let status,
+                data = await updateCart(user_id, cartItems);
+            res.json({ data });
+            if (status == 200) {
+                res.sendStatus(200);
+            }
+            if (status == 404) {
+                res.sendStatus(404);
+            }
+        } catch (err: any) {
+            res.status(400);
+            res.json({ errType: err.name, errMsg: err.message });
+        }
+    };
 user.put("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
     try {
         let product_id = parseInt(req.body.product_id);

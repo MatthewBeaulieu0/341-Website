@@ -161,7 +161,17 @@ export async function delete_product_from_cart(
         return [404, { msg: "User or Product not found" }];
     }
 }
-
+export async function updateCart(user_id: number, cartItems: Array<any>) {
+    let order: any = await get_order(user_id);
+    if (!order[0]) {
+        return [404, { msg: "User not found" }];
+    }
+    let order_id: number = order[0].order_id;
+    cartItems.forEach((element) => {
+        increment_quantity(order_id, element.product_id, element.quantity);
+    });
+    return [200, { msg: "cart is updated" }];
+}
 export async function checkout_order(user_id: number) {
     let order: any = await get_order(user_id);
     if (!order[0]) {
@@ -181,7 +191,8 @@ export async function checkout_order(user_id: number) {
         if (i != orderlines.length - 1) order_stringed += ";";
     }
 
-    if(order_stringed == "") return [404, {msg: "No items found in user shopping cart."}]
+    if (order_stringed == "")
+        return [404, { msg: "No items found in user shopping cart." }];
 
     if (user.orders == undefined) user.orders = "";
 
