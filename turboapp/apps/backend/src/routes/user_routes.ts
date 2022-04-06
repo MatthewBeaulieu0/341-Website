@@ -68,7 +68,9 @@ user.post("/api/login", async (req: Request, res: Response) => {
                 });
                 res.status(200).json(user);
             } else {
-                res.status(400);
+                res.status(401).json(
+                    "A user with such password email config does not exist"
+                );
             }
         }
     } catch (err: any) {
