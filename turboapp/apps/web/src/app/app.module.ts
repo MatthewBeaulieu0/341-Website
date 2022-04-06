@@ -18,6 +18,7 @@ import { Navbar1Component } from './components/navbar1/navbar1.component';
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductaisleComponent } from './components/pages/productaisle/productaisle.component';
+import { SearchPageComponent } from './components/pages/search-page/search-page.component';
 
 import { CartService } from './services/cart.service';
 import { ProductsService } from './services/products.service';
@@ -27,6 +28,8 @@ import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutp
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { BuyerpageComponent } from './components/pages/buyerpage/buyerpage.component';
+import { SearchService } from './services/search.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +49,7 @@ import { BuyerpageComponent } from './components/pages/buyerpage/buyerpage.compo
     LoginpageComponent,
     CheckoutpageComponent,
     BuyerpageComponent,
+    SearchPageComponent,
   ],
   imports: [
     BrowserModule,

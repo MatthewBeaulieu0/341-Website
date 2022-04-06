@@ -18,7 +18,7 @@ export class LoginpageComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 
-  routeToMainPage(){
+  routeToMainPage() {
     this.router.navigate(['/mainpage']);
   }
 
@@ -38,9 +38,20 @@ export class LoginpageComponent implements OnInit {
       .post<frontendUser>('http://localhost:3001/user/api/login', body, {
         withCredentials: true,
       })
-      .subscribe((response) => {
-        this.newUser = response;
-      });
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.newUser = response;
+          this.routeToMainPage();
+        },
+        (error) => {
+          alert('No such email/password combination exists');
+          this.routeToLoginPage();
+        }
+      );
+  }
+  routeToLoginPage() {
+    this.router.navigate(['/login']);
   }
   // requestAnnoyingThing() {
   //   this.httpClient
