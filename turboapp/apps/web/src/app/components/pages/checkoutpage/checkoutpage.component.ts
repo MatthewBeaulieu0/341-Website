@@ -63,15 +63,18 @@ export class CheckoutpageComponent implements OnInit {
     return new Promise<void>((resolve, reject) => {
       this._cartService.getCart().subscribe((response) => {
         this.cart = response.data[1];
+        console.log(this.cart);
       });
       resolve();
     });
   }
   ngOnInit(): void {
-    this.cartInit();
+    (async () => {
+      const data = await this.cartInit();
+    })();
   }
   calculateTotal() {
-    console.log(this.cart);
+    // console.log(this.cart);
     return (
       this.calculateSubtotal() +
       this.calculateTax() +

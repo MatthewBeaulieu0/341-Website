@@ -92,7 +92,7 @@ user.post("/api/session", [verifyJWT], async (req: Request, res: Response) => {
     }
 });
 
-user.post("api/logout", async (_req: Request, res: Response) => {
+user.post("/api/logout", async (_req: Request, res: Response) => {
     res.cookie("FrontendUser", "", {
         expires: new Date(Date.now()),
         path: "/",
@@ -120,26 +120,29 @@ user.get("/id/:user_id", async (req: Request, res: Response) => {
     }
 });
 
-user.put("/id/:user_id/bulk_update_cart", async (req: Request, res: Response) => {
-    let user_id = parseInt(req.params.user_id);
-    console.log(user_id);
-    let items = req.body.items;
-    console.log("ID" + user_id + "Items" + items);
-    try {
-        let status,
-            data = await bulk_update_cart(user_id, items);
-        res.json({ data });
-        if (status == 200) {
-            res.sendStatus(200);
+user.put(
+    "/id/:user_id/bulk_update_cart",
+    async (req: Request, res: Response) => {
+        let user_id = parseInt(req.params.user_id);
+        console.log(user_id);
+        let items = req.body.items;
+        console.log("ID" + user_id + "Items" + items);
+        try {
+            let status,
+                data = await bulk_update_cart(user_id, items);
+            res.json({ data });
+            if (status == 200) {
+                res.sendStatus(200);
+            }
+            if (status == 404) {
+                res.sendStatus(404);
+            }
+        } catch (err: any) {
+            res.status(400);
+            res.json({ errType: err.name, errMsg: err.message });
         }
-        if (status == 404) {
-            res.sendStatus(404);
-        }
-    } catch (err: any) {
-        res.status(400);
-        res.json({ errType: err.name, errMsg: err.message });
     }
-});
+);
 
 user.put("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
     try {
