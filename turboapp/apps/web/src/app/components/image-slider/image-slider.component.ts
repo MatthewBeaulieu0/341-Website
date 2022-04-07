@@ -13,9 +13,9 @@ import {
 })
 export class ImageSliderComponent {
   images = [
-    'assets\\images\\cat1.jpg',
-    'assets\\images\\cat2.jpg',
-    '\\assets\\images\\vdaydeals.png',
+    'assets\\images\\cheezit-ad.png',
+    'assets\\images\\iphone-ad.jpg',
+    '\\assets\\images\\spotify-ad.jpg',
   ];
 
   paused = false;
