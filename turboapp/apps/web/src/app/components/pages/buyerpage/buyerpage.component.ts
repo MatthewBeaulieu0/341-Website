@@ -28,11 +28,6 @@ export class BuyerpageComponent implements OnInit {
       this.orders = response.data[1].orders;
       
 });
-      for(var i=0; i<this.orders.length; i++){
-        for(var j=0; this.orders[i].length; j++){
-          
-        }
-      }
   }
 
 
@@ -49,14 +44,14 @@ export class BuyerpageComponent implements OnInit {
   // });
   }
 
-  changeIdToName(id: number){
+//   changeIdToName(id: number){
     
-    this.httpClient.get('http://localhost:3001/product/id/' + id.toString())
-    .subscribe((response) => {
-      console.log(response[1][0].name);
-      return response[1][0].name;
-});
-  }
+//     this.httpClient.get('http://localhost:3001/product/id/' + id.toString())
+//     .subscribe((response) => {
+//       console.log(response[1][0].name);
+//       return response[1][0].name;
+// });
+//   }
 
   routeToMainPage(){
     //this.router.navigate['/mainPage']

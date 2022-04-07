@@ -94,9 +94,9 @@
                 <td> Order {{i+1}}</td>
                 
                 
-                 <td>{{order[0].product_id}} </td> 
-                 <td>{{order[0].quantity}} </td>
-                
+                <td *ngFor="let product of order;">{{product.name}}</td>
+                <td *ngFor="let product of order;">{{product.quantity}} </td>
+                <td *ngFor="let product of order;"> <img src="{{product.link}}" alt=""></td>
                 
                 
               </tr>
