@@ -1,0 +1,33 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<header class="header">
+    <div class="nav-bar">
+        <a [routerLink]='["/mainpage"]' (click)="routeToMainPage()">
+        <h2 class="colorofAmazonlogo">
+            <span style="color:rgb(230, 8, 8)" class="fakeFont">Fake</span>Amazon
+          </h2>
+        </a>
+
+        <form action="" class="search-bar">
+            <input type="search" name="" placeholder="Search" id="search-box">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+        <div class="left-icons">
+            <a [routerLink]='["/shoppingcart"]' class="fas fa-shopping-cart" (click)="routeToShoppingCart()"></a>
+            <a [routerLink]='["/signup"]' class="fas fa-user" (click)="routeToSignUpPage()"></a>
+        </div>
+    </div>
+
+    <div class="nav-bar-2">
+        <nav class="nav-bar-aisle">
+            <a (click)="routeToMainPage()">Home</a>
+            <a (click)="routeToMainPage()">Deals</a>
+            <a (click)="routeToMainPage()">Featured</a>
+            <a (click)="routeToProductPage()">Products</a>
+            <a (click)="routeToSellerPage()">Post Item</a>
+        </nav>
+    
+    </div>
+</header>
