@@ -10,7 +10,7 @@ product.use(express.json());
 
 product.post("/", async (req: Request, res: Response) => {
     try {
-        let product = req.body;
+        let product = req.body.product;
         let status,
             data = await create_new_product(product);
         res.json({ data });
