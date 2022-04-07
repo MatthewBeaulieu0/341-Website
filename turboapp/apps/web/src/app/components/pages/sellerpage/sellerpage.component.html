@@ -48,7 +48,7 @@
           <div class="col-6 seller-form">
             <form
             #sellerform="ngForm"
-            (ngSubmit)="onClickSubmit(sellerform.value); routeToMainPage()"
+            (ngSubmit)="onClickSeller(sellerform.value)"
           >
             <div id="form-group">
               <label for="itemName">Item name</label>
@@ -81,10 +81,21 @@
               <div class="alert alert-danger" *ngIf="!seller.valid && seller.touched">Seller is invalid</div>
             </div>
             <div id="form-group">
-              <label for="Stock">Number of Stock</label>
+              <label for="stock">Stock</label>
               <br>
               <input type="number" ngModel required name="stock" #stock="ngModel" pattern="^[0-9]+$" min="1">
               <div class="alert alert-danger" *ngIf="!stock.valid && stock.touched">Stock is invalid</div>
+            </div>
+            <div id="form-group">
+              <label for="link">Image Link</label>
+              <br>
+              <input type="file" ngModel required name="link" #link="ngModel" accept="image/jpeg">
+            </div>
+            <div id="form-group">
+              <label for="category">Category of Product</label>
+              <br>
+              <input type="text" ngModel required name="category" #category="ngModel" pattern="^[A-Za-z ,.'-]+$">
+              <div class="alert alert-danger" *ngIf="!category.valid && category.touched">Category of product is invalid</div>
             </div>
 
             <input type="submit" class="post-btn" value="Post item" />

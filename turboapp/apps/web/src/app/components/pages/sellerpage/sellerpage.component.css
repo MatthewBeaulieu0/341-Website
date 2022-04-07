@@ -29,6 +29,11 @@ input[type=number] {
     width: 50%;
 }
 
+input[type=file] {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .post-btn {
     margin-top: 40px;
     width: 30%;
