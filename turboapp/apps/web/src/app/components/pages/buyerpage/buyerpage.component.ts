@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { GlobalUserService } from 'src/app/services/global-user.service';
 import { UnionType } from 'typescript';
-
+import { ProductsService } from 'src/app/services/products.service';
 @Component({
   selector: 'app-buyerpage',
   templateUrl: './buyerpage.component.html',
@@ -12,10 +12,11 @@ export class BuyerpageComponent implements OnInit {
 
   orders: any;
   //testOrder : string[][]
-
+  name_id: string[] = []
   constructor(
   private globalUserService: GlobalUserService,
   private httpClient: HttpClient,
+  private getProductIdService: ProductsService
   ) {
 
     
@@ -27,9 +28,14 @@ export class BuyerpageComponent implements OnInit {
       this.orders = response.data[1].orders;
       
 });
-
-//this.changeIdToName("1");
+      for(var i=0; i<this.orders.length; i++){
+        for(var j=0; this.orders[i].length; j++){
+          
+        }
+      }
   }
+
+
 
   getOrders(): any{
     return this.httpClient
@@ -43,32 +49,17 @@ export class BuyerpageComponent implements OnInit {
   // });
   }
 
-  changeIdToName(id: string){
-    this.httpClient.get('http://localhost3001/product/id/' + id)
+  changeIdToName(id: number){
+    
+    this.httpClient.get('http://localhost:3001/product/id/' + id.toString())
     .subscribe((response) => {
-      console.log(response);
-      return response[1].name;
-      
+      console.log(response[1][0].name);
+      return response[1][0].name;
 });
   }
 
   routeToMainPage(){
     //this.router.navigate['/mainPage']
   }
-
-  transform_orders(orders: string) {
-    let diffOrders = orders.split(",");
-    console.log(diffOrders);
-    var data = [];
-    for (var i = 0; i < diffOrders.length; i++) {
-        let megaString = diffOrders[i].split(";");
-        data[i] = [] as any;
-        for (var j = 0; j < megaString.length; j++) {
-            let order_tuple:any = megaString[j].split(':');
-            data[i][j] = {"product_id": order_tuple[0], "quantity": order_tuple[1]}
-        }
-    }
-    return data;
-}
 
 }
