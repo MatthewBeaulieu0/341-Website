@@ -45,8 +45,10 @@ export class HeaderComponent implements OnInit {
   routeToShoppingCart() {
     this.router.navigate(['/shoppingcart']);
   }
-
-  routeToProductPage() {
+  routeToBuyerPage(){
+    this.router.navigate(['/buyerpage'])
+  }
+  routeToProductPage(){
     this.router.navigate(['/productpage']);
   }
 

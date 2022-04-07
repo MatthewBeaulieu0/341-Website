@@ -27,6 +27,7 @@ import { LoginpageComponent } from './components/pages/loginpage/loginpage.compo
 import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
+import { BuyerpageComponent } from './components/pages/buyerpage/buyerpage.component';
 import { SearchService } from './services/search.service';
 import { UserNotLoggedInDialogComponent } from './components/user-not-logged-in-dialog/user-not-logged-in-dialog.component';
 
@@ -48,6 +49,7 @@ import { UserNotLoggedInDialogComponent } from './components/user-not-logged-in-
     SignupNavbarComponent,
     LoginpageComponent,
     CheckoutpageComponent,
+    BuyerpageComponent,
     SearchPageComponent,
     UserNotLoggedInDialogComponent,
   ],
