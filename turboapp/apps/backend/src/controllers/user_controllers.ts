@@ -10,6 +10,7 @@ import { create_order, get_order } from "../services/order_services";
 import {
     batch_find_products_by_ids,
     empty_shopping_cart,
+    find_product_by_id,
 } from "../services/product_services";
 import {
     find_user_by_id,
@@ -203,9 +204,25 @@ export async function view_orders(user_id: number) {
     let user = await find_user_by_id(user_id);
     user = user[0];
 
-    user.orders = transform_orders(user.orders);
+    let orders = transform_orders(user.orders);
 
-    return [200, { orders: user.orders }];
+    for (let order of orders){
+        for (let product of order) {
+            console.log(product);
+            let found_product: any = await find_product_by_id(product.product_id)
+
+            if (found_product.length>0){
+                product.name = found_product[0].name;
+                product.link = found_product[0].link.split(',')[0]
+            }
+            else {
+                product.name = "Mystery Item: E";
+                product.link = "/assets/images/fake.jpeg"
+            }
+        }
+    }
+
+    return [200, { "orders": orders }];
 }
 
 function validate_user_data(user: User) {

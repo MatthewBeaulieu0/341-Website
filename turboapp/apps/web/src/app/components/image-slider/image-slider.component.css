@@ -2,9 +2,15 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 100%;
   margin-top: 25px;
 }
 img{
   border-radius: 18px;
+}
+.carousel{
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

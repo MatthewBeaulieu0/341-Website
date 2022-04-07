@@ -1,15 +1,13 @@
-<ngb-carousel #carousel [interval]="3000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+<ngb-carousel class="carousel" #carousel [interval]="3000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
   <ng-template ngbSlide *ngFor="let img of images; index as i">
     <div class="carousel-caption">
-      <h3 *ngIf="i==0">Wow cool stuff </h3>
-      <h3 *ngIf="i==1">Wow more cool stuff </h3>
-      <h3 *ngIf="i==2">Wow even cooler stuff </h3>
+      <h3 *ngIf="i==0">Get cheezy with Cheez it!</h3>
+      <h3 *ngIf="i==1">Because we respecc </h3>
+      <h3 *ngIf="i==2">Compare spotify minutes with your friends today! </h3>
     </div>
-    <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
       <div class="picsum-img-wrapper">
         <img [src]="img" alt="My image {{i + 1}} description" class="slideshow">
       </div>
-    </a>
   </ng-template>
 </ngb-carousel>
 
