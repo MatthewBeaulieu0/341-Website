@@ -28,6 +28,7 @@ import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutp
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { SearchService } from './services/search.service';
+import { SellerpageComponent } from './components/pages/sellerpage/sellerpage.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SearchService } from './services/search.service';
     LoginpageComponent,
     CheckoutpageComponent,
     SearchPageComponent,
+    SellerpageComponent,
   ],
   imports: [
     BrowserModule,
