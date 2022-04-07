@@ -50,7 +50,7 @@
           <div class="col-6 seller-form">
             <form
             #sellerform="ngForm"
-            (ngSubmit)="onClickSeller(sellerform.value)"
+            (ngSubmit)="onClickSeller(sellerform.value); routeToMainPage()"
           >
             <div id="form-group">
               <label for="itemName">Item name</label>
