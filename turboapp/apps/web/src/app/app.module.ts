@@ -30,6 +30,7 @@ import { AuthService } from './auth/auth.service';
 import { SearchService } from './services/search.service';
 import { SellerpageComponent } from './components/pages/sellerpage/sellerpage.component';
 import { SellerHeaderComponent } from './components/seller-header/seller-header.component';
+import { UserNotLoggedInDialogComponent } from './components/user-not-logged-in-dialog/user-not-logged-in-dialog.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SellerHeaderComponent } from './components/seller-header/seller-header.
     SearchPageComponent,
     SellerpageComponent,
     SellerHeaderComponent,
+    UserNotLoggedInDialogComponent,
   ],
   imports: [
     BrowserModule,

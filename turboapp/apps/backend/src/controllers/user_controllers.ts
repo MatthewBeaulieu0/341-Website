@@ -5,11 +5,13 @@ import {
     get_orderline_by_order_id,
     get_orderline_by_order_id_and_product_id,
     increment_quantity,
+    update_quantity,
 } from "../services/orderline_services";
 import { create_order, get_order } from "../services/order_services";
 import {
     batch_find_products_by_ids,
     empty_shopping_cart,
+    find_product_by_id,
 } from "../services/product_services";
 import {
     find_user_by_id,
@@ -127,7 +129,7 @@ export async function add_product_to_cart(
 
     // console.log("EXISTING ORDER:   ", existing_order);
 
-    if (existing_order[0]) {
+    if (existing_order.length > 0) {
         var result = await increment_quantity(order_id, product_id, quantity);
     } else {
         var result = await add_order_to_orderline(
@@ -161,6 +163,38 @@ export async function delete_product_from_cart(
         return [404, { msg: "User or Product not found" }];
     }
 }
+export async function bulk_update_cart(user_id: number, items: any) {
+    let order: any = await get_order(user_id);
+    if (!order[0]) {
+        return [404, { msg: "User not found" }];
+    }
+    let order_id: number = order[0].order_id;
+    for (const item of items) {
+        let product_id = item.product_id;
+        let quantity = item.quantity;
+
+        let existing_order: any =
+            await get_orderline_by_order_id_and_product_id(
+                order_id,
+                product_id
+            );
+
+        // console.log("EXISTING ORDER:   ", existing_order);
+
+        if (existing_order.length > 0) {
+            var result = await update_quantity(order_id, product_id, quantity);
+        } else {
+            var result = await add_order_to_orderline(
+                order_id,
+                product_id,
+                quantity
+            );
+        }
+        console.log(result);
+    }
+
+    return [200, { msg: "Products added to cart!" }];
+}
 
 export async function checkout_order(user_id: number) {
     let order: any = await get_order(user_id);
@@ -181,7 +215,8 @@ export async function checkout_order(user_id: number) {
         if (i != orderlines.length - 1) order_stringed += ";";
     }
 
-    if(order_stringed == "") return [404, {msg: "No items found in user shopping cart."}]
+    if (order_stringed == "")
+        return [404, { msg: "No items found in user shopping cart." }];
 
     if (user.orders == undefined) user.orders = "";
 
@@ -203,9 +238,26 @@ export async function view_orders(user_id: number) {
     let user = await find_user_by_id(user_id);
     user = user[0];
 
-    user.orders = transform_orders(user.orders);
+    let orders = transform_orders(user.orders);
 
-    return [200, { orders: user.orders }];
+    for (let order of orders) {
+        for (let product of order) {
+            console.log(product);
+            let found_product: any = await find_product_by_id(
+                product.product_id
+            );
+
+            if (found_product.length > 0) {
+                product.name = found_product[0].name;
+                product.link = found_product[0].link.split(",")[0];
+            } else {
+                product.name = "Mystery Item: E";
+                product.link = "/assets/images/fake.jpeg";
+            }
+        }
+    }
+
+    return [200, { orders: orders }];
 }
 
 function validate_user_data(user: User) {
