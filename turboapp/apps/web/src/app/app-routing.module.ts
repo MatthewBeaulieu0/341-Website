@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: 'buyerpage',
     component: BuyerpageComponent,
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
 
   { path: 'aislepage', component: ProductaisleComponent },

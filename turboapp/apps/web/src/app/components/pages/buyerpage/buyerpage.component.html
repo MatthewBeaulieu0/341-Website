@@ -73,7 +73,7 @@
         <h1>Orders</h1>
       </div>
       <div class="row back-to-cart">
-        <a>
+        <a [routerLink]="['/mainpage']" (click)="routeToMainPage()">
           <i class="fa fa-arrow-left"> Go back</i>
         </a>
       </div>
@@ -94,16 +94,20 @@
                 <td> Order {{i+1}}</td>
                 
                 
-                <td *ngFor="let product of order;">{{product.name}}</td>
-                <td *ngFor="let product of order;">{{product.quantity}} </td>
-                <td *ngFor="let product of order;"> <img src="{{product.link}}" alt=""></td>
+                <td><ul style="list-style-type:none"><li *ngFor="let product of order;">{{product.name}}</li></ul></td>
+                <td><ul style="list-style-type:none"><li *ngFor="let product of order;">{{product.quantity}}</li></ul></td>
+                <!-- <td><ul><li *ngFor="let product of order;"><img src="{{product.link}}" alt=""></li></ul></td> -->
+                <!-- <ul><li *ngFor="let product of order;">{{product.quantity}}</li></ul> -->
+                <!-- <td *ngFor="let product of order;">{{product.name}}</td>
+                <td *ngFor="let product of order;">{{product.quantity}}</td> -->
+                <td *ngFor="let product of order;"><img src="{{product.link}}" alt=""></td>
                 
                 
               </tr>
 
               <hr class="hr-2" />
               <tr>
-                <td>Total :</td>
+                <td></td>
                 <td></td>
                 <td></td>
               </tr>

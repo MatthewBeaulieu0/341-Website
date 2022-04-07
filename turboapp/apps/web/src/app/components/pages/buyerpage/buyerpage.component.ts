@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { GlobalUserService } from 'src/app/services/global-user.service';
-import { UnionType } from 'typescript';
 import { ProductsService } from 'src/app/services/products.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-buyerpage',
   templateUrl: './buyerpage.component.html',
@@ -11,12 +11,12 @@ import { ProductsService } from 'src/app/services/products.service';
 export class BuyerpageComponent implements OnInit {
 
   orders: any;
-  //testOrder : string[][]
   name_id: string[] = []
   constructor(
   private globalUserService: GlobalUserService,
   private httpClient: HttpClient,
-  private getProductIdService: ProductsService
+  private getProductIdService: ProductsService,
+  private router: Router
   ) {
 
     
@@ -35,7 +35,7 @@ export class BuyerpageComponent implements OnInit {
   getOrders(): any{
     return this.httpClient
       .get<any>(
-        'http://localhost:3001/user/id/2/orders'
+        'http://localhost:3001/user/id/' + this.globalUserService.getNewUser().user_id + '/orders'
       )
   //     .subscribe((response) => {
   //       console.log(response.data[1].orders);
@@ -54,7 +54,7 @@ export class BuyerpageComponent implements OnInit {
 //   }
 
   routeToMainPage(){
-    //this.router.navigate['/mainPage']
+    this.router.navigate['/mainPage']
   }
 
 }
