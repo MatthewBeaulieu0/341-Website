@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { frontendUser } from 'src/app/models/frontendUser';
+import { GlobalUserService } from 'src/app/services/global-user.service';
 import { LoginStatusService } from 'src/app/services/login-status.service';
 import { SearchService } from 'src/app/services/search.service';
 
@@ -12,13 +14,15 @@ import { SearchService } from 'src/app/services/search.service';
   //providers: [LoginStatusService]
 })
 export class HeaderComponent implements OnInit {
-
+  user: frontendUser;
   searchInput: string;
   data: string;
 
   constructor(
     private router: Router,
     private searchService: SearchService,
+    private globalUserService: GlobalUserService,
+    private httpClient: HttpClient
     //private statusService: LoginStatusService
     
     ) { }
@@ -57,7 +61,15 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/mainpage']);
   }
   routeToSignUpPage(){
-    this.router.navigate(['/signup']);
+    if(this.globalUserService.getNewUser().user_id){
+      this.httpClient
+      .post<frontendUser>('route_to_logout', {}).subscribe((response)=>{
+        this.user = response;
+      });
+    }
+    else{
+      this.router.navigate(['/signup']);
+    }
   }
   routeToSearchPage(uri: string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
