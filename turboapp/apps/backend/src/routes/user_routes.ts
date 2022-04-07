@@ -87,7 +87,7 @@ user.post("/api/session", [verifyJWT], async (req: Request, res: Response) => {
         return res.status(400).json({ errType: err.name, errMsg: err.message });
     }
 });
-user.post("api/logout", async (_req: Request, res: Response) => {
+user.post("/api/logout", async (_req: Request, res: Response) => {
     res.cookie("FrontendUser", "", {
         expires: new Date(Date.now()),
         path: "/",

@@ -14,4 +14,7 @@ export class GlobalUserService {
     this.newUser = newUser;
   }
   constructor() { }
+  destroyUser(){
+    this.newUser = null;
+  }
 }
