@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
-import { GlobalUserService } from 'src/app/services/global-user.service';
 
 @Component({
   selector: 'app-productpage',
@@ -17,8 +16,7 @@ export class ProductpageComponent implements OnInit {
   constructor(
     private router: Router,
     private _productsService: ProductsService,
-    private httpClient: HttpClient,
-    private globalUserService: GlobalUserService
+    private httpClient: HttpClient
   ) {}
 
   productID: string;
@@ -38,7 +36,7 @@ export class ProductpageComponent implements OnInit {
       quantity: this.quantity,
     };
     this.httpClient
-      .put('http://localhost:3001/user/id/' + this.globalUserService.getNewUser().user_id +  '/shopping_cart', body, {
+      .put('http://localhost:3001/user/id/1/shopping_cart', body, {
         responseType: 'text',
         headers: { 'content-type': 'application/json' },
       })
@@ -84,7 +82,7 @@ export class ProductpageComponent implements OnInit {
     this.data = this._productsService.getData();
     console.log('ngOnInit: ' + this.data);
     this.productID = this.data;
-    this._productsService.getProductbyID(this.productID).subscribe((response) => {
+    this._productsService.getProduct(this.productID).subscribe((response) => {
       this.product = response[1];
       this.mainLink = this.product[0].link;
       this.subLink1 = this.mainLink;

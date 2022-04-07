@@ -17,11 +17,6 @@ export class LoginpageComponent implements OnInit {
   routeToSignUpPage() {
     this.router.navigate(['/signup']);
   }
-
-  routeToMainPage() {
-    this.router.navigate(['/mainpage']);
-  }
-
   onClickLogin(data) {
     if (
       !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -38,20 +33,9 @@ export class LoginpageComponent implements OnInit {
       .post<frontendUser>('http://localhost:3001/user/api/login', body, {
         withCredentials: true,
       })
-      .subscribe(
-        (response) => {
-          console.log(response);
-          this.newUser = response;
-          this.routeToMainPage();
-        },
-        (error) => {
-          alert('No such email/password combination exists');
-          this.routeToLoginPage();
-        }
-      );
-  }
-  routeToLoginPage() {
-    this.router.navigate(['/login']);
+      .subscribe((response) => {
+        this.newUser = response;
+      });
   }
   // requestAnnoyingThing() {
   //   this.httpClient
