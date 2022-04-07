@@ -10,7 +10,8 @@ import { UnionType } from 'typescript';
 })
 export class BuyerpageComponent implements OnInit {
 
-  orders: string[][];
+  orders: any;
+  //testOrder : string[][]
 
   constructor(
   private globalUserService: GlobalUserService,
@@ -22,22 +23,33 @@ export class BuyerpageComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("BUYER PAGE");
-    this.getOrders();
-        
+     this.getOrders().subscribe((response) => {
+      this.orders = response.data[1].orders;
+      
+});
+
+//this.changeIdToName("1");
   }
 
-  getOrders(): void{
-    this.httpClient
+  getOrders(): any{
+    return this.httpClient
       .get<any>(
         'http://localhost:3001/user/id/2/orders'
       )
-      .subscribe((response) => {
-        console.log(response.data[1].orders);
-        this.orders = response.data[1].orders;
+  //     .subscribe((response) => {
+  //       console.log(response.data[1].orders);
+  //       response.data[1].orders;
         
-        
-  
-  });
+  // });
+  }
+
+  changeIdToName(id: string){
+    this.httpClient.get('http://localhost3001/product/id/' + id)
+    .subscribe((response) => {
+      console.log(response);
+      return response[1].name;
+      
+});
   }
 
   routeToMainPage(){

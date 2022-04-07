@@ -91,19 +91,14 @@
                 <th>Image</th>
               </tr>
               <tr *ngFor="let order of orders; index as i;"> 
-                  <td> Order {{i+1}}</td>
-                  
-                <!-- <td *ngFor=" let field of order">
-                    
-                    {{ field[0]}}
-                    {{ field[1] }}
-                </td> -->
-                <td>
-                  <span class="quantity"></span>
-                </td>
-                <td>
-                  <span class="price"></span>
-                </td>
+                <td> Order {{i+1}}</td>
+                
+                
+                 <!-- <td>{{changeIdToName(order[0].product_id)}} </td>  -->
+                 <td>{{order[0].quantity}} </td>
+                
+                
+                
               </tr>
 
               <hr class="hr-2" />
