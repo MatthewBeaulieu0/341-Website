@@ -152,7 +152,7 @@ export class ShoppingcartComponent implements OnInit {
     this.cartInit();
   }
 
-  routeToCheckOutPage() {
+  async routeToCheckOutPage() {
     console.log('Cart' + JSON.stringify(this.cart));
     let items: any = [];
     for (let cart_product of this.cart) {
@@ -165,7 +165,7 @@ export class ShoppingcartComponent implements OnInit {
     const body = {
       items: items,
     };
-    this.httpClient
+    const t = await this.httpClient
       .put(
         'http://localhost:3001/user/id/' +
           this.globalUserService.getNewUser().user_id +
@@ -176,10 +176,8 @@ export class ShoppingcartComponent implements OnInit {
           headers: { 'content-type': 'application/json' },
         }
       )
-      .subscribe((s) => {
-        console.log(s);
-      });
-    this.router.navigate(['/checkoutpage']);
+      .toPromise()
+      .then((Response) => this.router.navigate(['/checkoutpage']));
   }
 
   //   updateTotal(){
