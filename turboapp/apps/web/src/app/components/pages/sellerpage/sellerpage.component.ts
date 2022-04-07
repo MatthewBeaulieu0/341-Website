@@ -98,7 +98,7 @@ export class SellerpageComponent implements OnInit {
       /^[0-9]+$/i.test(data.price) &&
       /^[A-Za-z 0-9 ,.'-]+$/i.test(data.brand) &&
       /^[A-Za-z ,.'-]+$/i.test(data.seller) &&
-      // /^[0-9]+$/i.test(data.stock) &&
+      /^[0-9]+$/i.test(data.stock) &&
       /^[A-Za-z ,.'-]+$/i.test(data.category)
     )
     //testing all the conditions before sending to backend
