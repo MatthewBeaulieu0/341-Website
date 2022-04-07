@@ -63,8 +63,9 @@ export class HeaderComponent implements OnInit {
   routeToSignUpPage(){
     if(this.globalUserService.getNewUser().user_id){
       this.httpClient
-      .post<frontendUser>('route_to_logout', {}).subscribe((response)=>{
-        this.user = response;
+      .post<frontendUser>('http://localhost:3001/user/api/logout', {responseType: 'text',
+      headers: { 'content-type': 'application/json' }}).subscribe((response)=>{
+        console.log(response);
       });
     }
     else{
