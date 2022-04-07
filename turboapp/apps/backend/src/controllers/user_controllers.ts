@@ -211,8 +211,14 @@ export async function view_orders(user_id: number) {
             console.log(product);
             let found_product: any = await find_product_by_id(product.product_id)
 
-            if (found_product.length>0) product.name = found_product[0].name;
-            else product.name = "Mystery Item: E";
+            if (found_product.length>0){
+                product.name = found_product[0].name;
+                product.link = found_product[0].link.split(',')[0]
+            }
+            else {
+                product.name = "Mystery Item: E";
+                product.link = "/assets/images/fake.jpeg"
+            }
         }
     }
 
