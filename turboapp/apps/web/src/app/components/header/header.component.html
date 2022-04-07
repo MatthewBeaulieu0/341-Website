@@ -25,6 +25,7 @@
             <a (click)="routeToMainPage()">Deals</a>
             <a (click)="routeToMainPage()">Featured</a>
             <a (click)="routeToProductPage()">Products</a>
+            <a *ngIf = "globalUser.getNewUser().seller"(click)="routeToSellerPage()">Post Item </a>
         </nav>
     
     </div>

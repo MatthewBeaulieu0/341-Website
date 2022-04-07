@@ -10,6 +10,8 @@ import { LoginpageComponent } from './components/pages/loginpage/loginpage.compo
 import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { SearchPageComponent } from './components/pages/search-page/search-page.component';
+import { SellerHeaderComponent } from './components/seller-header/seller-header.component';
+import { SellerpageComponent } from './components/pages/sellerpage/sellerpage.component';
 const routes: Routes = [
   { path: '', redirectTo: 'welcomepage', pathMatch: 'full' },
   { path: 'mainpage', component: MainpageComponent },
@@ -28,6 +30,7 @@ const routes: Routes = [
   { path: 'signup', component: SignuppageComponent },
   { path: 'login', component: LoginpageComponent },
   { path: 'checkoutpage', component: CheckoutpageComponent },
+  { path: 'sellerpage', component: SellerpageComponent, canActivate:[AuthGuard] },
 ];
 
 @NgModule({

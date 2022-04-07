@@ -29,6 +29,7 @@ import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { SearchService } from './services/search.service';
 import { SellerpageComponent } from './components/pages/sellerpage/sellerpage.component';
+import { SellerHeaderComponent } from './components/seller-header/seller-header.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { SellerpageComponent } from './components/pages/sellerpage/sellerpage.co
     CheckoutpageComponent,
     SearchPageComponent,
     SellerpageComponent,
+    SellerHeaderComponent,
   ],
   imports: [
     BrowserModule,

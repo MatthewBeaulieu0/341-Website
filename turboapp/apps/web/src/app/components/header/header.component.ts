@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { GlobalUserService } from 'src/app/services/global-user.service';
 import { LoginStatusService } from 'src/app/services/login-status.service';
 import { SearchService } from 'src/app/services/search.service';
 
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private searchService: SearchService,
+    public globalUser: GlobalUserService,
     //private statusService: LoginStatusService
     
     ) { }
@@ -32,6 +34,9 @@ export class HeaderComponent implements OnInit {
 
   //status :boolean = this.statusService.getLoginStatus();
   ngOnInit(): void {
+
+    console.log(this.globalUser.getNewUser().seller);
+
 
   }
 
@@ -62,6 +67,10 @@ export class HeaderComponent implements OnInit {
   routeToSearchPage(uri: string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));
+  }
+
+  routeToSellerPage(){
+    this.router.navigate(['/sellerpage']);
   }
 
 }
