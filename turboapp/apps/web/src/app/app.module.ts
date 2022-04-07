@@ -18,6 +18,7 @@ import { Navbar1Component } from './components/navbar1/navbar1.component';
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductaisleComponent } from './components/pages/productaisle/productaisle.component';
+import { SearchPageComponent } from './components/pages/search-page/search-page.component';
 
 import { CartService } from './services/cart.service';
 import { ProductsService } from './services/products.service';
@@ -28,6 +29,8 @@ import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { SellerpageComponent } from './components/pages/sellerpage/sellerpage.component';
 import { SellerHeaderComponent } from './components/seller-header/seller-header.component';
+import { SearchService } from './services/search.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +51,7 @@ import { SellerHeaderComponent } from './components/seller-header/seller-header.
     CheckoutpageComponent,
     SellerpageComponent,
     SellerHeaderComponent,
+    SearchPageComponent,
   ],
   imports: [
     BrowserModule,
