@@ -20,7 +20,7 @@ export class SellerpageComponent implements OnInit {
     stock: 0,
     brand: '',
     seller: '',
-    link: "src/assets/images/banana.jpeg",
+    link: "assets/images/banana.jpeg",
     category: ''
 
   };
