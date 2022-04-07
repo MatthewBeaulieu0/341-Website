@@ -1,3 +1,3 @@
 # Services
 
-Contains all the services that communicate with the database. These are called by the controllers.
+The services are considered the API that the Controllers use to query the database with their requests. They are often called to serveral different controllers to accomplish the controllers implementation fot he buisness logic. Services are split into dealing with each of the different tables we have. So an example would mean product_services deal with addings and fetching data from the product table.
