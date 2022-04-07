@@ -9,7 +9,7 @@ import {
     delete_product_from_cart,
     checkout_order,
     view_orders,
-    updateCart,
+    bulk_update_cart,
 } from "../controllers/user_controllers";
 import { User } from "../models/users";
 //import { sign, verify } from "jsonwebtoken";
@@ -23,6 +23,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import jwt from "jsonwebtoken";
 const { sign } = jwt;
+
 user.post("/api/signup", async (req: Request, res: Response) => {
     try {
         let user = req.body.user;
@@ -44,6 +45,7 @@ user.post("/api/signup", async (req: Request, res: Response) => {
         res.json({ errType: err.name, errMsg: err.message });
     }
 });
+
 user.post("/api/login", async (req: Request, res: Response) => {
     let user;
     try {
@@ -80,6 +82,7 @@ user.post("/api/login", async (req: Request, res: Response) => {
     }
     return user;
 });
+
 user.post("/api/session", [verifyJWT], async (req: Request, res: Response) => {
     try {
         console.log(req.user);
@@ -88,6 +91,7 @@ user.post("/api/session", [verifyJWT], async (req: Request, res: Response) => {
         return res.status(400).json({ errType: err.name, errMsg: err.message });
     }
 });
+
 user.post("api/logout", async (_req: Request, res: Response) => {
     res.cookie("FrontendUser", "", {
         expires: new Date(Date.now()),
@@ -96,6 +100,7 @@ user.post("api/logout", async (_req: Request, res: Response) => {
     });
     return res.status(200).json(true);
 });
+
 user.get("/id/:user_id", async (req: Request, res: Response) => {
     let user_id = parseInt(req.params.user_id);
     console.log(user_id);
@@ -114,27 +119,28 @@ user.get("/id/:user_id", async (req: Request, res: Response) => {
         res.json({ errType: err.name, errMsg: err.message });
     }
 });
-user.put("/id/:user_id/update_cart"),
-    async (req: Request, res: Response) => {
-        let user_id = parseInt(req.params.user_id);
-        console.log(user_id);
-        let cartItems = req.body.cartItems;
-        console.log("ID" + user_id + "Items" + cartItems);
-        try {
-            let status,
-                data = await updateCart(user_id, cartItems);
-            res.json({ data });
-            if (status == 200) {
-                res.sendStatus(200);
-            }
-            if (status == 404) {
-                res.sendStatus(404);
-            }
-        } catch (err: any) {
-            res.status(400);
-            res.json({ errType: err.name, errMsg: err.message });
+
+user.put("/id/:user_id/bulk_update_cart", async (req: Request, res: Response) => {
+    let user_id = parseInt(req.params.user_id);
+    console.log(user_id);
+    let items = req.body.items;
+    console.log("ID" + user_id + "Items" + items);
+    try {
+        let status,
+            data = await bulk_update_cart(user_id, items);
+        res.json({ data });
+        if (status == 200) {
+            res.sendStatus(200);
         }
-    };
+        if (status == 404) {
+            res.sendStatus(404);
+        }
+    } catch (err: any) {
+        res.status(400);
+        res.json({ errType: err.name, errMsg: err.message });
+    }
+});
+
 user.put("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
     try {
         let product_id = parseInt(req.body.product_id);

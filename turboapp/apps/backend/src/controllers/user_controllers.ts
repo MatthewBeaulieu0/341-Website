@@ -127,7 +127,7 @@ export async function add_product_to_cart(
 
     // console.log("EXISTING ORDER:   ", existing_order);
 
-    if (existing_order[0]) {
+    if (existing_order.length>0) {
         var result = await increment_quantity(order_id, product_id, quantity);
     } else {
         var result = await add_order_to_orderline(
@@ -161,17 +161,41 @@ export async function delete_product_from_cart(
         return [404, { msg: "User or Product not found" }];
     }
 }
-export async function updateCart(user_id: number, cartItems: Array<any>) {
+export async function bulk_update_cart(
+    user_id: number,
+    items: any
+) {
     let order: any = await get_order(user_id);
     if (!order[0]) {
         return [404, { msg: "User not found" }];
     }
     let order_id: number = order[0].order_id;
-    cartItems.forEach((element) => {
-        increment_quantity(order_id, element.product_id, element.quantity);
-    });
-    return [200, { msg: "cart is updated" }];
+    for (const item of items){
+        let product_id = item.product_id;
+        let quantity = item.quantity;
+
+        let existing_order: any = await get_orderline_by_order_id_and_product_id(
+            order_id,
+            product_id
+        );
+
+        // console.log("EXISTING ORDER:   ", existing_order);
+
+        if (existing_order.length>0) {
+            var result = await increment_quantity(order_id, product_id, quantity);
+        } else {
+            var result = await add_order_to_orderline(
+                order_id,
+                product_id,
+                quantity
+            );
+        }
+        console.log(result);
+    }
+
+    return [200, { msg: "Products added to cart!" }];
 }
+
 export async function checkout_order(user_id: number) {
     let order: any = await get_order(user_id);
     if (!order[0]) {
