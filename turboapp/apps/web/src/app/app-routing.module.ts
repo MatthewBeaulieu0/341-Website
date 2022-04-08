@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'signup', component: SignuppageComponent },
   { path: 'login', component: LoginpageComponent },
   { path: 'checkoutpage', component: CheckoutpageComponent },
-  { path: 'sellerpage', component: SellerpageComponent, canActivate:[AuthGuard] },
+  { path: 'sellerpage', component: SellerpageComponent },
 ];
 
 @NgModule({

@@ -35,8 +35,8 @@ export class HeaderComponent implements OnInit {
   //status :boolean = this.statusService.getLoginStatus();
   ngOnInit(): void {
 
-    console.log(this.globalUserService.getNewUser());
-    console.log(this.globalUserService.getNewUser().seller);
+    // console.log(this.globalUserService.getNewUser());
+    // console.log(this.globalUserService.getNewUser().seller);
 
 
   }
@@ -82,6 +82,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/signup']);
     }
   }
+
   routeToSearchPage(uri: string) {
     this.router
       .navigateByUrl('/', { skipLocationChange: true })
@@ -89,7 +90,14 @@ export class HeaderComponent implements OnInit {
   }
 
   routeToSellerPage(){
-    this.router.navigate(['/sellerpage']);
+    if (this.globalUserService.getNewUser().seller){
+      this.router.navigate(['/sellerpage']);
+      return true;
+    }
+    else{
+     alert('You are not a seller');
+      return false;
+    }
   }
 
 }
