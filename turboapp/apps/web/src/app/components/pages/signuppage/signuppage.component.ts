@@ -15,6 +15,10 @@ export class SignuppageComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 
+  routeToSellerPage(){
+    this.router.navigate(['/sellerpage']);
+  }
+
   // log(x) {
 
   //   console.log(x);
@@ -146,9 +150,17 @@ export class SignuppageComponent implements OnInit {
             alert('Please enter a real age value');
             console.log('Age is not good');
             this.routeToSignupPage();
-          } else {
-            this.routeToLoginPage();
+          } else 
+            {
+              if (JSON.parse(s).data[1][0].seller == 1)
+              this.routeToSellerPage();
+            
+              else{
+              this.routeToLoginPage();
+            }
           }
+          
+          
         });
     }
   }
