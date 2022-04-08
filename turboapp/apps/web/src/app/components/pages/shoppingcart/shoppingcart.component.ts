@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Cart } from 'src/app/models/cart';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CartService } from 'src/app/services/cart.service';

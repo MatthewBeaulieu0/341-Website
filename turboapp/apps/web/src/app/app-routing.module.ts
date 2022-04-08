@@ -8,6 +8,7 @@ import { WelcomepageComponent } from './components/pages/welcomepage/welcomepage
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 import { LoginpageComponent } from './components/pages/loginpage/loginpage.component';
 import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
+import { BuyerpageComponent } from './components/pages/buyerpage/buyerpage.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { SearchPageComponent } from './components/pages/search-page/search-page.component';
 import { SellerHeaderComponent } from './components/seller-header/seller-header.component';
@@ -24,7 +25,11 @@ const routes: Routes = [
     component: ShoppingcartComponent,
     canActivate: [AuthGuard],
   },
-
+  {
+    path: 'buyerpage',
+    component: BuyerpageComponent,
+    canActivate: [AuthGuard],
+  },
 
   { path: 'aislepage', component: ProductaisleComponent },
   { path: 'signup', component: SignuppageComponent },

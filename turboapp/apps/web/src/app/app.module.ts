@@ -27,6 +27,7 @@ import { LoginpageComponent } from './components/pages/loginpage/loginpage.compo
 import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
+import { BuyerpageComponent } from './components/pages/buyerpage/buyerpage.component';
 import { SearchService } from './services/search.service';
 import { SellerpageComponent } from './components/pages/sellerpage/sellerpage.component';
 import { SellerHeaderComponent } from './components/seller-header/seller-header.component';
@@ -50,6 +51,7 @@ import { UserNotLoggedInDialogComponent } from './components/user-not-logged-in-
     SignupNavbarComponent,
     LoginpageComponent,
     CheckoutpageComponent,
+    BuyerpageComponent,
     SearchPageComponent,
     SellerpageComponent,
     SellerHeaderComponent,
