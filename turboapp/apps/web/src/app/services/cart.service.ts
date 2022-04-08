@@ -4,6 +4,7 @@ import { Product } from '../models/product';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Cart } from '../models/cart';
+import { GlobalUserService } from './global-user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,12 +14,13 @@ export class CartService {
   eventCallback$ = this.eventCallback.asObservable(); // Stream
 
   private cart: Cart[] = [];
+  
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private globalUser: GlobalUserService) {}
 
-  getCart(user_id) {
+  getCart() {
     return this.httpClient.get<any>(
-      'http://localhost:3001/user/id/' + user_id + '/shopping_cart'
+      'http://localhost:3001/user/id/' + this.globalUser.getNewUser().user_id + '/shopping_cart'
     );
     // .subscribe((response) => {
     //   this.cart = response.data[1];
