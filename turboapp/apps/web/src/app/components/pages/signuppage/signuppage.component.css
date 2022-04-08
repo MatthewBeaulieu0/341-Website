@@ -21,9 +21,27 @@ margin-bottom: 15px;
 font-family:initial;
 }
 
-.sign-up-form input{
-    margin-bottom: 20px;
+input[type=text] {
     width: 50%;
+}
+
+input[type=password] {
+    width: 50%;
+}
+
+input[type=date] {
+    width: 50%;
+}
+
+
+.form-group .test{
+    width: 120%;
+    margin-left: 25%;
+}
+
+
+.form-group .button{
+    margin-right: 50%;
 }
 
 .sign-up-form .checkbox{
@@ -71,4 +89,10 @@ font-family:initial;
   .btn-light span::after{
     cursor: pointer;
     transition: 0.4;
+  }
+
+  .alert{
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: -3%;
   }

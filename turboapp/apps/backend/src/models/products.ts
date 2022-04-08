@@ -6,7 +6,6 @@ export const product_schema = yup.object().shape({
     price: yup.number().required().positive(),
     brand: yup.string(),
     seller: yup.string(),
-    other: yup.object(),
     stock: yup.number().required().integer(),
     link: yup
         .string()

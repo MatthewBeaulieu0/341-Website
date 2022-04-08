@@ -8,24 +8,34 @@ import { WelcomepageComponent } from './components/pages/welcomepage/welcomepage
 import { SignuppageComponent } from './components/pages/signuppage/signuppage.component';
 import { LoginpageComponent } from './components/pages/loginpage/loginpage.component';
 import { CheckoutpageComponent } from './components/pages/checkoutpage/checkoutpage.component';
+import { BuyerpageComponent } from './components/pages/buyerpage/buyerpage.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
+import { SearchPageComponent } from './components/pages/search-page/search-page.component';
+import { SellerHeaderComponent } from './components/seller-header/seller-header.component';
+import { SellerpageComponent } from './components/pages/sellerpage/sellerpage.component';
 const routes: Routes = [
   { path: '', redirectTo: 'welcomepage', pathMatch: 'full' },
   { path: 'mainpage', component: MainpageComponent },
   { path: 'welcomepage', component: WelcomepageComponent },
   { path: 'productpage', component: ProductpageComponent },
+  { path: 'searchpage', component: SearchPageComponent},
 
   {
     path: 'shoppingcart',
     component: ShoppingcartComponent,
     canActivate: [AuthGuard],
   },
-
+  {
+    path: 'buyerpage',
+    component: BuyerpageComponent,
+    canActivate: [AuthGuard],
+  },
 
   { path: 'aislepage', component: ProductaisleComponent },
   { path: 'signup', component: SignuppageComponent },
   { path: 'login', component: LoginpageComponent },
   { path: 'checkoutpage', component: CheckoutpageComponent },
+  { path: 'sellerpage', component: SellerpageComponent },
 ];
 
 @NgModule({

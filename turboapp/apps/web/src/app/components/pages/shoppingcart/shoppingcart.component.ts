@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Cart } from 'src/app/models/cart';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CartService } from 'src/app/services/cart.service';
@@ -59,7 +59,7 @@ export class ShoppingcartComponent implements OnInit {
     for (let i = 0; i < this.cart.length; i++) {
       subtotal += this.subtotalProduct(this.cart[i]);
     }
-    console.log(subtotal);
+    // console.log(subtotal);
     return parseFloat(subtotal.toFixed(2));
   }
 
@@ -70,7 +70,6 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   calculateTotal() {
-    console.log(this.cart);
     return (
       this.calculateSubtotal() +
       this.calculateTax() +
@@ -89,7 +88,9 @@ export class ShoppingcartComponent implements OnInit {
     };
     this.httpClient
       .delete(
-        'http://localhost:3001/user/id/' + this.globalUserService.getNewUser().user_id + '/shopping_cart',
+        'http://localhost:3001/user/id/' +
+          this.globalUserService.getNewUser().user_id +
+          '/shopping_cart',
         options
       )
       .subscribe((s) => {
@@ -140,17 +141,43 @@ export class ShoppingcartComponent implements OnInit {
   //   });
   // }
   cartInit() {
-    return new Promise<void>((resolve, reject) =>{
-    this._cartService.getCart().subscribe((response) => {
-      this.cart = response.data[1];
-    });resolve();});
+    return new Promise<void>((resolve, reject) => {
+      this._cartService.getCart().subscribe((response) => {
+        this.cart = response.data[1];
+      });
+      resolve();
+    });
   }
   ngOnInit(): void {
     this.cartInit();
   }
 
-  routeToCheckOutPage() {
-    this.router.navigate(['/checkoutpage']);
+  async routeToCheckOutPage() {
+    console.log('Cart' + JSON.stringify(this.cart));
+    let items: any = [];
+    for (let cart_product of this.cart) {
+      let id = cart_product.product.product_id;
+      console.log(id);
+      let quantity = cart_product.quantity;
+      items.push({ product_id: id, quantity: quantity });
+    }
+    console.log(items);
+    const body = {
+      items: items,
+    };
+    const t = await this.httpClient
+      .put(
+        'http://localhost:3001/user/id/' +
+          this.globalUserService.getNewUser().user_id +
+          '/bulk_update_cart',
+        body,
+        {
+          responseType: 'text',
+          headers: { 'content-type': 'application/json' },
+        }
+      )
+      .toPromise()
+      .then((Response) => this.router.navigate(['/checkoutpage']));
   }
 
   //   updateTotal(){

@@ -8,6 +8,8 @@ import {
     get_user_by_email,
     delete_product_from_cart,
     checkout_order,
+    view_orders,
+    bulk_update_cart,
 } from "../controllers/user_controllers";
 import { User } from "../models/users";
 //import { sign, verify } from "jsonwebtoken";
@@ -21,12 +23,13 @@ import dotenv from "dotenv";
 dotenv.config();
 import jwt from "jsonwebtoken";
 const { sign } = jwt;
-user.post("/api/signup", (req: Request, res: Response) => {
+
+user.post("/api/signup", async (req: Request, res: Response) => {
     try {
         let user = req.body.user;
         //console.log(user);
         let status,
-            data = create_new_user(user);
+            data = await create_new_user(user);
         res.json({ data });
         if (status == 200) {
             res.sendStatus(200);
@@ -34,11 +37,15 @@ user.post("/api/signup", (req: Request, res: Response) => {
         if (status == 400) {
             res.sendStatus(400);
         }
+        if (status == 401) {
+            res.sendStatus(401).json("Email already exists");
+        }
     } catch (err: any) {
         res.status(400);
         res.json({ errType: err.name, errMsg: err.message });
     }
 });
+
 user.post("/api/login", async (req: Request, res: Response) => {
     let user;
     try {
@@ -64,7 +71,9 @@ user.post("/api/login", async (req: Request, res: Response) => {
                 });
                 res.status(200).json(user);
             } else {
-                res.status(400);
+                res.status(401).json(
+                    "A user with such password email config does not exist"
+                );
             }
         }
     } catch (err: any) {
@@ -73,6 +82,7 @@ user.post("/api/login", async (req: Request, res: Response) => {
     }
     return user;
 });
+
 user.post("/api/session", [verifyJWT], async (req: Request, res: Response) => {
     try {
         console.log(req.user);
@@ -81,7 +91,8 @@ user.post("/api/session", [verifyJWT], async (req: Request, res: Response) => {
         return res.status(400).json({ errType: err.name, errMsg: err.message });
     }
 });
-user.post("api/logout", async (_req: Request, res: Response) => {
+
+user.post("/api/logout", async (_req: Request, res: Response) => {
     res.cookie("FrontendUser", "", {
         expires: new Date(Date.now()),
         path: "/",
@@ -89,6 +100,7 @@ user.post("api/logout", async (_req: Request, res: Response) => {
     });
     return res.status(200).json(true);
 });
+
 user.get("/id/:user_id", async (req: Request, res: Response) => {
     let user_id = parseInt(req.params.user_id);
     console.log(user_id);
@@ -107,6 +119,30 @@ user.get("/id/:user_id", async (req: Request, res: Response) => {
         res.json({ errType: err.name, errMsg: err.message });
     }
 });
+
+user.put(
+    "/id/:user_id/bulk_update_cart",
+    async (req: Request, res: Response) => {
+        let user_id = parseInt(req.params.user_id);
+        console.log(user_id);
+        let items = req.body.items;
+        console.log("ID" + user_id + "Items" + items);
+        try {
+            let status,
+                data = await bulk_update_cart(user_id, items);
+            res.json({ data });
+            if (status == 200) {
+                res.sendStatus(200);
+            }
+            if (status == 404) {
+                res.sendStatus(404);
+            }
+        } catch (err: any) {
+            res.status(400);
+            res.json({ errType: err.name, errMsg: err.message });
+        }
+    }
+);
 
 user.put("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
     try {
@@ -173,9 +209,24 @@ user.get("/id/:user_id/shopping_cart/", async (req: Request, res: Response) => {
 });
 
 user.put("/id/:user_id/checkout/", async (req: Request, res: Response) => {
+    console.log("checkout m8");
     try {
         let user_id = parseInt(req.params.user_id);
         let data = await checkout_order(user_id);
+        let status: any = data[0];
+        res.json({ data }).status(status);
+    } catch (err: any) {
+        res.status(400);
+        res.json({ errType: err.name, errMsg: err.message });
+    }
+});
+
+user.get("/id/:user_id/orders/", async (req: Request, res: Response) => {
+    console.log("order m8");
+    try {
+        let user_id = parseInt(req.params.user_id);
+        let data = await view_orders(user_id);
+        console.log(data);
         let status: any = data[0];
         res.json({ data }).status(status);
     } catch (err: any) {

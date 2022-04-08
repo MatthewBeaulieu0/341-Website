@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵresetJitOptions } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart';
 import { frontendUser } from 'src/app/models/frontendUser';
@@ -22,6 +22,16 @@ export class CheckoutpageComponent implements OnInit {
     private _cartService: CartService,
     private globalUserService: GlobalUserService
   ) {}
+
+  // let headers =new HttpHeaders({
+  //   'Content-Type': 'application/json',
+  // });
+  // this.httpClient.put(
+  //   'http://localhost:3001/id/' +
+  //     this.globalUserService.getNewUser().user_id +
+  //     'checkout',
+  //   headers
+  // );
   // userInit() {
   //   return new Promise<void>((resolve, reject) => {
   //     let headers = new HttpHeaders({
@@ -50,16 +60,21 @@ export class CheckoutpageComponent implements OnInit {
   //   });
   // }
   cartInit() {
-    return new Promise<void>((resolve, reject) =>{
-    this._cartService.getCart().subscribe((response) => {
-      this.cart = response.data[1];
-    });resolve();});
+    return new Promise<void>((resolve, reject) => {
+      this._cartService.getCart().subscribe((response) => {
+        this.cart = response.data[1];
+        console.log(this.cart);
+      });
+      resolve();
+    });
   }
   ngOnInit(): void {
-    this.cartInit();
+    (async () => {
+      const data = await this.cartInit();
+    })();
   }
   calculateTotal() {
-    console.log(this.cart);
+    // console.log(this.cart);
     return (
       this.calculateSubtotal() +
       this.calculateTax() +
@@ -76,7 +91,7 @@ export class CheckoutpageComponent implements OnInit {
     for (let i = 0; i < this.cart.length; i++) {
       subtotal += this.subtotalProduct(this.cart[i]);
     }
-    console.log(subtotal);
+    //  console.log(subtotal);
     return parseFloat(subtotal.toFixed(2));
   }
   subtotalProduct(cart: Cart) {
@@ -85,5 +100,22 @@ export class CheckoutpageComponent implements OnInit {
 
   routeToShoppingCart() {
     this.router.navigate(['/shoppingcart']);
+  }
+  payButton() {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    this.httpClient
+      .put(
+        'http://localhost:3001/user/id/' +
+          this.globalUserService.getNewUser().user_id +
+          '/checkout',
+        options
+      )
+      .subscribe((s) => {
+        console.log(s);
+      });
   }
 }

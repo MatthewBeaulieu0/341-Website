@@ -10,7 +10,7 @@ product.use(express.json());
 
 product.post("/", async (req: Request, res: Response) => {
     try {
-        let product = req.body;
+        let product = req.body.product;
         let status,
             data = await create_new_product(product);
         res.json({ data });
@@ -50,7 +50,7 @@ product.get("/filter/products", async (req: Request, res: Response) => {
     for(const [key, value] of Object.entries(req.query)){
         filter[key] = value;
     }
-    
+    console.log(req.query)
     try {
         let status,
             data = await get_filtered_products(filter);

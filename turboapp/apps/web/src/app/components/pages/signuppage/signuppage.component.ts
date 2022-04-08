@@ -8,11 +8,23 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./signuppage.component.css'],
 })
 export class SignuppageComponent implements OnInit {
-  routeToLogInPage() {
+  routeToLoginPage() {
     this.router.navigate(['/login']);
   }
+  routeToSignupPage() {
+    this.router.navigate(['/signup']);
+  }
 
-  //Fixing stuff :)
+  routeToSellerPage(){
+    this.router.navigate(['/sellerpage']);
+  }
+
+  // log(x) {
+
+  //   console.log(x);
+
+  // }
+
   constructor(private httpClient: HttpClient, private router: Router) {}
   user: User = {
     name: '',
@@ -117,7 +129,6 @@ export class SignuppageComponent implements OnInit {
       this.user.address = address;
       console.log(this.user);
       //HTTP header
-
       const body = {
         user: this.user,
       };
@@ -128,6 +139,28 @@ export class SignuppageComponent implements OnInit {
         })
         .subscribe((s) => {
           console.log(s);
+          if (JSON.parse(s).data[0] == 401) {
+            alert('A user with the same email already exists');
+            console.log('Someone with same email');
+            this.routeToSignupPage();
+          } else if (
+            JSON.parse(s).data[0] == 400 &&
+            JSON.parse(s).data[1].errMsg == 'age must be a positive number'
+          ) {
+            alert('Please enter a real age value');
+            console.log('Age is not good');
+            this.routeToSignupPage();
+          } else 
+            {
+              if (JSON.parse(s).data[1][0].seller == 1)
+              this.routeToSellerPage();
+            
+              else{
+              this.routeToLoginPage();
+            }
+          }
+          
+          
         });
     }
   }

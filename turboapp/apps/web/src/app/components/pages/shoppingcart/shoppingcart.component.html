@@ -28,10 +28,6 @@
         <tr *ngFor="let cart of cart; let i = index">
           <td>
             <div  class="cart-box">
-              <script>
-                console.log("Product: " + product);
-                
-              </script>
               <img src="{{ cart.product.link }}" />
               <div class="info-box">
                 <p class="cart-product-title">{{ cart.product.name }}</p>
@@ -52,9 +48,15 @@
               <script>
                 console.log(i);
               </script>
-              <input type="number" [(ngModel)]= "cart.quantity" (keyup)="updateCart($event, cart.product.product_id)" min="1" class="cart-quantity" />
+              <input
+                type="number"
+                [(ngModel)]="cart.quantity"
+                (keyup)="updateCart($event, cart.product.product_id)"
+                min="1"
+                class="cart-quantity"
+              />
             </td>
-            <td class="cart-price"> {{subtotalProduct(cart)}} $</td>
+            <td class="cart-price">{{ subtotalProduct(cart) }} $</td>
           </div>
         </tr>
       </table>
@@ -63,22 +65,24 @@
         <table>
           <tr>
             <td>Subtotal</td>
-            <td class="subtotal-price"><span> {{this.calculateSubtotal()}} $</span></td>
+            <td class="subtotal-price">
+              <span> {{ this.calculateSubtotal() }} $</span>
+            </td>
           </tr>
           <tr>
             <td>Tax</td>
-            <td> {{this.calculateTax()}} $</td>
+            <td>{{ this.calculateTax() }} $</td>
           </tr>
           <tr>
             <td>Delivery Fees</td>
-            <td> {{this.deliveryFees}} $</td>
+            <td>{{ this.deliveryFees }} $</td>
           </tr>
           <tr>
             <td>Total</td>
-            <td class="total-price"> {{this.calculateTotal()}} $</td>
+            <td class="total-price">{{ this.calculateTotal() }} $</td>
           </tr>
           <tr>
-            <a [routerLink]='["/checkoutpage"]' (click)="routeToCheckOutPage()">
+            <a [routerLink]="['/checkoutpage']" (click)="routeToCheckOutPage()">
               <button type="button" class="btn btn-dark">Check Out</button>
             </a>
           </tr>
@@ -86,42 +90,40 @@
       </div>
     </div>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="container-fluid"> 
- 
-    <div class="row footer-row"> 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <div class="container-fluid">
+      <div class="row footer-row">
         <footer class="col-12 footer">
-            <h4> Fake Amazon Inc.</h4>
-            <p> 
-                Thank you for using our website. 
-            <br>
-                We are a small group of entrepreneurs trying to become the next Jeff Bezos.
-  
-            </p>
-                <div class="medialogo">
-  
-                    <a href="#" class="fa fa-facebook"></a>
-  
-                    <a href="#" class="fa fa-twitter"></a>
-  
-                    <a href="#" class="fa fa-instagram"></a>
-  
-                    <a href="#" class="fa fa-reddit"></a>
-            
-  
-                </div>
-  
-                <p>
-                    Don't forget to follow us on social media for a chance to win 1 year worth of free socks!
-  
-                </p>
-            <br> Copyright &copy; FakeAmazon All rights reserved.
-  
+          <h4>Fake Amazon Inc.</h4>
+          <p>
+            Thank you for using our website.
+            <br />
+            We are a small group of entrepreneurs trying to become the next Jeff
+            Bezos.
+          </p>
+          <div class="medialogo">
+            <a href="#" class="fa fa-facebook"></a>
+
+            <a href="#" class="fa fa-twitter"></a>
+
+            <a href="#" class="fa fa-instagram"></a>
+
+            <a href="#" class="fa fa-reddit"></a>
+          </div>
+
+          <p>
+            Don't forget to follow us on social media for a chance to win 1 year
+            worth of free socks!
+          </p>
+          <br />
+          Copyright &copy; FakeAmazon All rights reserved.
         </footer>
       </div>
-  
-  </div>
-  
+    </div>
+
     <!-- cart ends -->
     <script>
       //Update total price
