@@ -75,10 +75,9 @@
 
         <div class="col-3 item-description">
           <h2>{{ product[0].name }}</h2>
-          <h5>{{ product[0].price }}</h5>
+          <h5>${{ product[0].price }}</h5>
           <br />
           <h6>{{ product[0].description }}</h6>
-          <h3>{{ productID || "null" }}</h3>
           <br />
           <form (submit)="addToCart()">
             <label for="quantity">Quantity selected:&nbsp;</label>
