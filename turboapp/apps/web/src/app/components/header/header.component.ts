@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private searchService: SearchService,
-    private globalUserService: GlobalUserService,
+    public globalUserService: GlobalUserService,
     private httpClient: HttpClient //private statusService: LoginStatusService
   ) {}
 
@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
   //status :boolean = this.statusService.getLoginStatus();
   ngOnInit(): void {
 
+    console.log(this.globalUserService.getNewUser());
     console.log(this.globalUserService.getNewUser().seller);
 
 
