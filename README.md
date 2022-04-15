@@ -35,11 +35,11 @@ This website will be an e-commerce website which will try to replicate the exper
 
 # Team members
 
-| Name                     |      Github      |                         Email |
+| Name                     |      GitHub id   |                         Email |
 | :----------------------- | :--------------: | ----------------------------: |
 | Mihai Olaru              |   mihaicolaru    |       mihai.c.olaru@gmail.com |
 | Rohan Das                |   RandomKingRD   |              rohandas@live.ca |
-| Mohamad Salim            |  Mohamad Salim   | mohammedsalim1909@hotmail.com |
+| Mohamad Salim            |  MohamadGSalim   | mohammedsalim1909@hotmail.com |
 | Diana Alexandra Merlusca |    dianaoana1    |   dianamerlusca2001@gmail.com |
 | Matthew Beaulieu         | MatthewBeaulieu0 | matthew.beaulieu631@gmail.com |
 | Anna Hsu                 |     AnnaHsu1     |       annahsu2000@hotmail.com |
