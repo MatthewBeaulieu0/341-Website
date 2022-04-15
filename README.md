@@ -50,7 +50,7 @@ This website will be an e-commerce website which will try to replicate the exper
 
 Frontend: Angular <br />
 StyleSheet Software : CSS<br />
-Backend : Express.js <br />
+Backend : Express.js (https://expressjs.com/)  <br />
 Project Base : Node.js <br />
 Database : MySQL <br />
 Build System : Turborepo <br />
@@ -66,6 +66,6 @@ Typescript <br />
 | Clear Goal For the Website         | Shopping Cart Developed         |   Architecture of the code     |     Product Pages Developed     |
 | Task Breakdown         | Browsing for Items (in Progress)         |     Acceptance Testing for every issue       |    Browsing for Items Developed      |
 | Issues        | CI Test Infrastructure         |    Browsing for Items (Small Bug but mostly finished)    |      Additional Feature Completed (Search Page with Filtering)    |
-| Work Assigned to Members         | Issues Risk and Priority Assessment         |     Product Pages (In Progress)     |          |
-|          |          |        |          |
+| Work Assigned to Members         | Issues Risk and Priority Assessment         |     Product Pages (In Progress)     |  CI running on every commit         |
+|          |          |        |      Acceptance testing for every user story    |
 
