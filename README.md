@@ -48,12 +48,12 @@ This website will be an e-commerce website which will try to replicate the exper
 
 # Technologies
 
-Frontend: Angular <br />
+Frontend: Angular https://angular.io/ <br />
 StyleSheet Software : CSS<br />
-Backend : Express.js  [![Express JS][express-shield]](https://expressjs.com/)   <br />
-Project Base : Node.js <br />
-Database : MySQL <br />
-Build System : Turborepo <br />
+Backend : Express.js https://expressjs.com/ <br />
+Project Base : Node.js https://nodejs.org/en/ <br />
+Database : MySQL https://www.mysql.com/ <br />
+Build System : Turborepo https://turborepo.org/ <br />
 
 # Language
 
