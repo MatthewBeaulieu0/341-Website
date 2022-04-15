@@ -63,8 +63,9 @@ Typescript <br />
 
 | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 | :------: | :------: | :------: | :------: |
-| Clear Goal For the Website         | Shopping Cart Developed         |          |          |
-| Task Breakdown         | Browsing for Items (in Progress)         |          |          |
-| Issues        | CI Test Infrastructure         |          |          |
-| Work Assigned to Members         | Issues Risk and Priority Assessment         |          |          |
-|          |          |          |          |
+| Clear Goal For the Website         | Shopping Cart Developed         |   Architecture of the code     |     Product Pages Developed     |
+| Task Breakdown         | Browsing for Items (in Progress)         |     Acceptance Testing for every issue       |    Browsing for Items Developed      |
+| Issues        | CI Test Infrastructure         |    Browsing for Items (Small Bug but mostly finished)    |      Additional Feature Completed (Search Page with Filtering)    |
+| Work Assigned to Members         | Issues Risk and Priority Assessment         |     Product Pages (In Progress)     |          |
+|          |          |        |          |
+
