@@ -38,7 +38,7 @@ This website will be an e-commerce website which will try to replicate the exper
 | Name                     |      Github      |                         Email |
 | :----------------------- | :--------------: | ----------------------------: |
 | Mihai Olaru              |   mihaicolaru    |       mihai.c.olaru@gmail.com |
-| Rohan Das                |     Super77      |              rohandas@live.ca |
+| Rohan Das                |   RandomKingRD   |              rohandas@live.ca |
 | Mohamad Salim            |  Mohamad Salim   | mohammedsalim1909@hotmail.com |
 | Diana Alexandra Merlusca |    dianaoana1    |   dianamerlusca2001@gmail.com |
 | Matthew Beaulieu         | MatthewBeaulieu0 | matthew.beaulieu631@gmail.com |
